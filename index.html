@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mascotas & Animales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0B1120;
+      --card: #1E293B;
+      --inner: #283548;
+      --border: #334155;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+      --blue: #38BDF8;
+      --green: #34D399;
+      --pink: #F472B6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Lexend', sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+
+    header {
+      background: var(--card); border: 2px solid var(--border); border-radius: 12px;
+      padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .title { font-size: 16pt; font-weight: 900; color: var(--blue); }
+
+    .btn {
+      background: #0284C7; color: #FFF; border: 2px solid var(--blue);
+      padding: 8px 14px; border-radius: 8px; font-weight: 900; cursor: pointer; font-size: 9.5pt;
+    }
+    .btn:hover { background: #0369A1; }
+    .btn-alt { background: var(--inner); border-color: var(--border); color: var(--text); }
+
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      background: var(--card); border: 1.5px solid var(--border); color: var(--muted);
+      padding: 6px 14px; border-radius: 20px; font-size: 9pt; font-weight: 800; cursor: pointer;
+    }
+    .chip.active { background: rgba(56, 189, 248, 0.2); border-color: var(--blue); color: var(--blue); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .item-card {
+      background: var(--card); border: 2.5px solid var(--border); border-radius: 14px;
+      overflow: hidden; cursor: pointer; transition: 0.15s;
+    }
+    .item-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+
+    .item-img {
+      width: 100%; height: 150px; background: #000; background-size: cover; background-position: center;
+      display: flex; align-items: flex-end; padding: 8px; position: relative;
+    }
+    .item-img::after {
+      content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,17,32,0.9), transparent 70%);
+    }
+
+    .badge {
+      position: relative; z-index: 2; font-size: 8pt; font-weight: 900; padding: 2px 8px; border-radius: 6px; text-transform: uppercase;
+    }
+    .badge-perro { background: rgba(56, 189, 248, 0.25); color: var(--blue); border: 1px solid var(--blue); }
+    .badge-gato { background: rgba(244, 114, 182, 0.25); color: var(--pink); border: 1px solid var(--pink); }
+    .badge-oveja { background: rgba(52, 211, 153, 0.25); color: var(--green); border: 1px solid var(--green); }
+
+    .item-info { padding: 10px; }
+    .item-name { font-size: 13pt; font-weight: 900; color: #FFF; }
+    .item-sub { font-size: 8.5pt; color: var(--muted); font-weight: 700; margin-top: 2px; }
+
+    /* MODAL */
+    .overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none;
+      align-items: center; justify-content: center; padding: 12px; z-index: 1000; backdrop-filter: blur(4px);
+    }
+    .modal {
+      background: var(--card); border: 2px solid var(--border); border-radius: 14px;
+      width: 720px; max-width: 95vw; max-height: 90vh; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 14px;
+    }
+
+    .cover-box {
+      width: 100%; height: 160px; border-radius: 8px; border: 2px dashed var(--border);
+      background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; cursor: pointer; background-color: #0F172A;
+    }
+
+    .tabs { display: flex; gap: 6px; border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+    .tab-btn {
+      background: transparent; border: none; color: var(--muted); font-size: 10.5pt;
+      font-weight: 900; padding: 6px 12px; cursor: border-radius: 6px;
+    }
+    .tab-btn.active { color: var(--blue); background: rgba(56, 189, 248, 0.15); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .field { display: flex; flex-direction: column; gap: 3px; }
+    .field label { font-size: 8pt; font-weight: 800; color: var(--muted); text-transform: uppercase; }
+    .field input, .field select, .field textarea {
+      background: var(--inner); border: 2px solid var(--border); border-radius: 6px;
+      padding: 8px 10px; color: #FFF; font-size: 9.5pt; font-weight: 700; outline: none;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--blue); }
+
+    .album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-top: 8px; }
+    .album-img {
+      aspect-ratio: 1; border-radius: 6px; border: 2px solid var(--border); background-size: cover; background-position: center; position: relative;
+    }
+    .album-tag {
+      position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.8);
+      font-size: 7.5pt; padding: 3px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="title">🐾 Ficha Mascotas & Rebaño</div>
+      <div style="font-size:9pt; color:var(--muted); font-weight:700;">Sheets + Drive en vivo</div>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button class="btn btn-alt" onclick="sincronizar()">🔄 Sincronizar</button>
+      <button class="btn" onclick="abrirNuevo()">＋ Nuevo</button>
+    </div>
+  </header>
+
+  <div class="filters">
+    <button class="chip active" onclick="filtrar('todos', this)">Todos</button>
+    <button class="chip" onclick="filtrar('Perro', this)">🐶 Perros</button>
+    <button class="chip" onclick="filtrar('Gato', this)">🐱 Gatos</button>
+    <button class="chip" onclick="filtrar('Oveja', this)">🐑 Ovejas</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <!-- MODAL -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 id="modalName" style="color:var(--blue); font-size:15pt;">Ficha</h3>
+        <button class="btn btn-alt" style="padding:4px 10px;" onclick="cerrar()">✕</button>
+      </div>
+
+      <!-- PORTADA -->
+      <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
+        <span id="coverTxt" style="font-size:9.5pt; font-weight:800; color:var(--blue);">📸 Clic para cambiar foto de portada</span>
+      </div>
+      <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
+
+      <div class="tabs">
+        <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">Ficha</button>
+        <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">Manejo & Salud</button>
+        <button class="tab-btn" id="tabBtn3" onclick="verTab(3)">Fotos de su Vida</button>
+      </div>
+
+      <!-- TAB 1: FICHA -->
+      <div id="tab1">
+        <div class="form-row">
+          <div class="field"><label>Nombre o Arete *</label><input type="text" id="fNom"></div>
+          <div class="field">
+            <label>Especie</label>
+            <select id="fEsp">
+              <option value="Perro">Perro 🐶</option>
+              <option value="Gato">Gato 🐱</option>
+              <option value="Oveja">Oveja / Cordero 🐑</option>
+            </select>
+          </div>
+          <div class="field"><label>Raza</label><input type="text" id="fRaza"></div>
+          <div class="field"><label>F. Nacimiento</label><input type="date" id="fNac"></div>
+          <div class="field"><label>F. Defunción</label><input type="date" id="fDef"></div>
+        </div>
+        <div class="field" style="margin-top:8px;">
+          <label>Notas / Tratamientos / Cuidados</label>
+          <textarea id="fNot" rows="3"></textarea>
+        </div>
+        <button class="btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="guardarFicha()">💾 Guardar Ficha</button>
+      </div>
+
+      <!-- TAB 2: BITÁCORA -->
+      <div id="tab2" style="display:none;">
+        <div style="background:var(--inner); padding:10px; border-radius:8px; margin-bottom:10px;">
+          <span style="font-size:8.5pt; font-weight:900; color:#FACC15;">+ Registrar Control</span>
+          <div class="form-row" style="margin-top:6px;">
+            <div class="field"><label>Fecha</label><input type="date" id="bFec"></div>
+            <div class="field">
+              <label>Tipo</label>
+              <select id="bTip">
+                <option value="Vacunación">Vacunación</option>
+                <option value="Desparasitación">Desparasitación</option>
+                <option value="Esquila">Esquila</option>
+                <option value="Pezuñas">Corte Pezuñas</option>
+                <option value="Control">Control Médico</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="margin-top:6px;"><label>Detalle / Fármaco</label><input type="text" id="bDet" placeholder="Producto, dosis o procedimiento"></div>
+          <div class="field" style="margin-top:6px;"><label>Próximo Control</label><input type="date" id="bProx"></div>
+          <button class="btn" style="margin-top:8px; width:100%; justify-content:center;" onclick="guardarBitacora()">＋ Agregar Registro</button>
+        </div>
+        <div id="bitLista" style="display:flex; flex-direction:column; gap:6px;"></div>
+      </div>
+
+      <!-- TAB 3: ÁLBUM -->
+      <div id="tab3" style="display:none;">
+        <div style="display:flex; gap:8px;">
+          <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Momento / Título...">
+          <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
+        </div>
+        <input type="file" id="fileVida" accept="image/*" style="display:none;" onchange="subirFotoVida(this)">
+        <div class="album-grid" id="albGrid"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // URL PROVISORIA (LUEGO PEGAREMOS AQUÍ LA DE TU APPS SCRIPT):
+    const API_URL = "URL_DE_TU_GOOGLE_APPS_SCRIPT";
+
+    let mascotas = [];
+    let bitacora = [];
+    let fotos = [];
+    let actual = null;
+    let b64Portada = null;
+    let filtroEsp = "todos";
+
+    async function sincronizar() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        if (data.status === "success") {
+          mascotas = data.mascotas || [];
+          bitacora = data.bitacora || [];
+          fotos = data.fotos || [];
+          render();
+        }
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+
+    function filtrar(esp, el) {
+      filtroEsp = esp;
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      if (el) el.classList.add("active");
+      render();
+    }
+
+    function render() {
+      const g = document.getElementById("grid");
+      g.innerHTML = "";
+      let lista = mascotas;
+      if (filtroEsp !== "todos") {
+        lista = mascotas.filter(m => (m.especie || "").toLowerCase() === filtroEsp.toLowerCase());
+      }
+      lista.forEach(m => {
+        const c = document.createElement("div");
+        c.className = "item-card";
+        c.onclick = () => abrir(m);
+
+        const img = m.fotoPortada ? `style="background-image:url('${m.fotoPortada}')"` : '';
+        let bClass = 'badge-perro';
+        if (m.especie === 'Gato') bClass = 'badge-gato';
+        if (m.especie === 'Oveja') bClass = 'badge-oveja';
+
+        c.innerHTML = `
+          <div class="item-img" ${img}>
+            <span class="badge ${bClass}">${m.especie}</span>
+          </div>
+          <div class="item-info">
+            <div class="item-name">${m.nombre}</div>
+            <div class="item-sub">${m.raza || 'Familiar'}</div>
+          </div>
+        `;
+        g.appendChild(c);
+      });
+    }
+
+    function abrir(m) {
+      actual = m;
+      b64Portada = null;
+      document.getElementById("modalName").textContent = `🐾 ${m.nombre}`;
+      document.getElementById("fNom").value = m.nombre;
+      document.getElementById("fEsp").value = m.especie || "Perro";
+      document.getElementById("fRaza").value = m.raza || "";
+      document.getElementById("fNac").value = m.nacimiento || "";
+      document.getElementById("fDef").value = m.defuncion || "";
+      document.getElementById("fNot").value = m.notas || "";
+
+      const box = document.getElementById("coverBox");
+      const txt = document.getElementById("coverTxt");
+      if (m.fotoPortada) {
+        box.style.backgroundImage = `url('${m.fotoPortada}')`;
+        txt.style.display = "none";
+      } else {
+        box.style.backgroundImage = "none";
+        txt.style.display = "block";
+      }
+
+      verTab(1);
+      renderBitacora(m.nombre);
+      renderFotos(m.nombre);
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    function abrirNuevo() {
+      abrir({ nombre: "", especie: "Oveja", raza: "", nacimiento: "", defuncion: "", fotoPortada: "", notas: "", fila: null });
+    }
+
+    function cerrar() {
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    function verTab(n) {
+      [1, 2, 3].forEach(i => {
+        document.getElementById("tab" + i).style.display = (i === n) ? "block" : "none";
+        document.getElementById("tabBtn" + i).className = (i === n) ? "tab-btn active" : "tab-btn";
+      });
+    }
+
+    function previewPortada(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.getElementById("coverBox").style.backgroundImage = `url('${e.target.result}')`;
+        document.getElementById("coverTxt").style.display = "none";
+        b64Portada = { base64: e.target.result.split(',')[1], mimeType: file.type };
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function guardarFicha() {
+      const nom = document.getElementById("fNom").value.trim();
+      if (!nom) return alert("Ingresa nombre o arete.");
+
+      const payload = {
+        accion: "guardar_mascota",
+        fila: actual ? actual.fila : null,
+        nombre: nom,
+        especie: document.getElementById("fEsp").value,
+        raza: document.getElementById("fRaza").value,
+        nacimiento: document.getElementById("fNac").value,
+        defuncion: document.getElementById("fDef").value,
+        notas: document.getElementById("fNot").value,
+        fotoPortadaActual: actual ? actual.fotoPortada : "",
+        fotoPortadaNueva: b64Portada
+      };
+
+      await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+
+      cerrar();
+      sincronizar();
+    }
+
+    function renderBitacora(nom) {
+      const c = document.getElementById("bitLista");
+      c.innerHTML = "";
+      const evs = bitacora.filter(b => b.mascota === nom);
+      if (evs.length === 0) {
+        c.innerHTML = `<span style="font-size:8.5pt; color:var(--muted);">Sin registros aún.</span>`;
+        return;
+      }
+      evs.forEach(e => {
+        c.innerHTML += `
+          <div style="background:var(--inner); padding:8px; border-radius:6px; font-size:8.5pt; border-left:3px solid var(--green);">
+            <b>${e.fecha} [${e.tipo}]</b>: ${e.detalle} ${e.proximoControl ? '➔ Próx: ' + e.proximoControl : ''}
+          </div>
+        `;
+      });
+    }
+
+    async function guardarBitacora() {
+      if (!actual) return;
+      const det = document.getElementById("bDet").value.trim();
+      if (!det) return alert("Escribe el detalle.");
+
+      await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          accion: "guardar_bitacora",
+          mascota: actual.nombre,
+          fecha: document.getElementById("bFec").value,
+          tipo: document.getElementById("bTip").value,
+          detalle: det,
+          proximoControl: document.getElementById("bProx").value
+        })
+      });
+
+      document.getElementById("bDet").value = "";
+      sincronizar();
+    }
+
+    function renderFotos(nom) {
+      const g = document.getElementById("albGrid");
+      g.innerHTML = "";
+      fotos.filter(f => f.mascota === nom).forEach(f => {
+        g.innerHTML += `
+          <div class="album-img" style="background-image:url('${f.url}')">
+            <div class="album-tag">${f.titulo}</div>
+          </div>
+        `;
+      });
+    }
+
+    async function subirFotoVida(input) {
+      if (!input.files || !input.files[0] || !actual) return;
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            accion: "subir_foto_album",
+            mascota: actual.nombre,
+            titulo: document.getElementById("albTit").value || "Recuerdo",
+            archivo: { base64: e.target.result.split(',')[1], mimeType: file.type }
+          })
+        });
+        document.getElementById("albTit").value = "";
+        sincronizar();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    sincronizar();
+  </script>
+</body>
+</html>
