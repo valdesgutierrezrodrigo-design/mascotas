@@ -33,7 +33,7 @@
       font-family: 'Quicksand', sans-serif !important; 
     }
 
-    /* Fondo principal */
+    /* Fondo principal adaptable */
     html, body {
       background-color: var(--kraft-bg);
       background-image: 
@@ -274,7 +274,7 @@
       text-align: center;
     }
 
-    /* Botón flotante para crear cuando la grilla está vacía */
+    /* Botón para crear cuando está vacío */
     .postit-card.create-new {
       border-style: dashed;
       background: rgba(250, 245, 235, 0.85);
@@ -584,7 +584,8 @@
   </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwuQug9z9cBOUEgNRoo-lt6Mz_W1-UH3syKEG2L4s-VX9gu8Zp_sSelzowurPnKTqCoog/exec";
+    // URL DE TU IMPLEMENTACIÓN DE GOOGLE APPS SCRIPT
+    const API_URL = "https://script.google.com/macros/s/AKfycbyJ8ROAebzWCbn5_1pfhBUs7jdhw4sz-ryEOlAUYp5dxOhaWpuK1ChcMZhQAc0Km64cXQ/exec";
 
     let mascotas = [];
     let salud = [];
@@ -955,7 +956,7 @@
       reader.readAsDataURL(file);
     }
 
-    // Inicio
+    // Inicializar
     aplicarFondoGuardado();
     sincronizar();
   </script>
