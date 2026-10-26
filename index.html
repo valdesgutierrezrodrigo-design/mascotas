@@ -30,7 +30,7 @@
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
-      font-family: 'Quicksand', sans-serif !important; 
+      font-family: 'Quicksand', sans-serif; 
     }
 
     html, body {
@@ -41,9 +41,9 @@
       background-size: 24px 24px;
       background-position: 0 0, 12px 12px;
       background-attachment: fixed;
-      color: var(--text-dark) !important;
+      color: var(--text-dark);
       min-height: 100vh;
-      font-size: 19px !important;
+      font-size: 17px;
     }
 
     body.custom-wallpaper {
@@ -54,7 +54,7 @@
     }
 
     body {
-      padding: 24px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -62,10 +62,10 @@
 
     /* ENCABEZADO */
     header {
-      background: var(--card-bg) !important;
-      border: 3.5px solid var(--kraft-border) !important;
-      border-radius: 22px;
-      padding: 16px 26px;
+      background: var(--card-bg);
+      border: 3.5px solid var(--kraft-border);
+      border-radius: 20px;
+      padding: 16px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -76,54 +76,54 @@
 
     .brand { display: flex; align-items: center; gap: 16px; }
     .brand-icon {
-      width: 65px; height: 65px; border-radius: 50%;
+      width: 60px; height: 60px; border-radius: 50%;
       background: #FFF; color: var(--vet-purple);
       display: flex; align-items: center; justify-content: center;
-      font-size: 32pt; border: 3px solid var(--kraft-border);
+      font-size: 28pt; border: 3px solid var(--kraft-border);
       box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
     .brand-title {
-      font-family: 'Nunito', sans-serif !important;
-      font-size: 27pt !important;
-      font-weight: 900 !important;
-      color: var(--vet-purple) !important;
+      font-family: 'Nunito', sans-serif;
+      font-size: 24pt;
+      font-weight: 900;
+      color: var(--vet-purple);
       line-height: 1.1;
     }
     .brand-sub {
-      font-size: 14.5pt !important;
-      color: var(--text-muted) !important;
-      font-weight: 800 !important;
-      margin-top: 3px;
+      font-size: 13pt;
+      color: var(--text-muted);
+      font-weight: 800;
+      margin-top: 2px;
     }
 
     /* BOTONES */
     .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
     .btn {
-      background: var(--vet-purple) !important;
-      color: #FFF !important;
-      border: none !important;
-      padding: 12px 22px !important;
-      border-radius: 16px !important;
-      font-weight: 900 !important;
+      background: var(--vet-purple);
+      color: #FFF;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 14px;
+      font-weight: 900;
       cursor: pointer;
-      font-size: 14pt !important;
+      font-size: 13.5pt;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       box-shadow: 0 4px 14px rgba(60, 28, 89, 0.35);
       transition: all 0.2s ease;
     }
-    .btn:hover { background: #260E3B !important; transform: translateY(-2px); }
+    .btn:hover { background: #260E3B; transform: translateY(-2px); }
     .btn-alt {
-      background: #FFF !important;
-      border: 3px solid var(--kraft-border) !important;
-      color: var(--vet-purple) !important;
-      box-shadow: none !important;
+      background: #FFF;
+      border: 2.5px solid var(--kraft-border);
+      color: var(--vet-purple);
+      box-shadow: none;
     }
     .btn-alt:hover { 
-      background: var(--vet-teal) !important; 
-      border-color: var(--vet-teal) !important; 
-      color: #FFF !important; 
+      background: var(--vet-teal); 
+      border-color: var(--vet-teal); 
+      color: #FFF; 
     }
 
     /* FILTROS Y BUSCADOR */
@@ -136,50 +136,50 @@
     }
     .filters { display: flex; gap: 10px; flex-wrap: wrap; }
     .chip {
-      background: var(--card-bg) !important;
-      border: 3px solid var(--kraft-border) !important;
-      color: var(--text-dark) !important;
-      padding: 10px 20px !important;
-      border-radius: 34px !important;
-      font-size: 14pt !important;
-      font-weight: 900 !important;
+      background: var(--card-bg);
+      border: 2.5px solid var(--kraft-border);
+      color: var(--text-dark);
+      padding: 9px 18px;
+      border-radius: 30px;
+      font-size: 13pt;
+      font-weight: 900;
       cursor: pointer;
       box-shadow: var(--shadow-box);
       transition: 0.2s;
     }
     .chip:hover, .chip.active {
-      background: var(--vet-teal) !important;
-      border-color: var(--vet-purple) !important;
-      color: #FFF !important;
+      background: var(--vet-teal);
+      border-color: var(--vet-purple);
+      color: #FFF;
       box-shadow: 0 4px 14px rgba(51, 139, 130, 0.45);
     }
 
     .search-box {
       display: flex;
       align-items: center;
-      background: var(--card-bg) !important;
-      border: 3px solid var(--kraft-border) !important;
-      border-radius: 34px !important;
-      padding: 10px 22px !important;
+      background: var(--card-bg);
+      border: 2.5px solid var(--kraft-border);
+      border-radius: 30px;
+      padding: 9px 20px;
       gap: 10px;
-      min-width: 320px;
+      min-width: 300px;
       box-shadow: var(--shadow-box);
     }
     .search-box input {
-      background: transparent !important;
-      border: none !important;
-      outline: none !important;
-      color: var(--text-dark) !important;
-      font-size: 14pt !important;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-dark);
+      font-size: 13pt;
       width: 100%;
-      font-weight: 800 !important;
+      font-weight: 800;
     }
 
     /* GRILLA DE POST-ITS ARRASTRABLES */
     .postit-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 28px;
       justify-content: flex-start;
       align-items: flex-start;
       padding: 10px 4px 50px 4px;
@@ -189,29 +189,22 @@
       background: var(--postit-bg);
       border: 3px solid #7D634C;
       border-radius: 12px;
-      width: 250px;
-      padding: 24px 16px 16px 16px;
+      width: 245px;
+      padding: 22px 14px 14px 14px;
       position: relative;
       cursor: grab;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       box-shadow: 0 10px 20px rgba(35, 20, 10, 0.35);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       transform: rotate(var(--rot, -1.5deg));
       user-select: none;
     }
 
-    .postit-card:active {
-      cursor: grabbing;
-    }
-
-    .postit-card.dragging {
-      opacity: 0.35;
-      transform: scale(0.95);
-    }
-
+    .postit-card:active { cursor: grabbing; }
+    .postit-card.dragging { opacity: 0.35; transform: scale(0.95); }
     .postit-card:hover {
       transform: translateY(-8px) scale(1.03) rotate(0deg) !important;
       box-shadow: 0 18px 30px rgba(35, 20, 10, 0.45);
@@ -224,8 +217,8 @@
       top: 6px;
       left: 50%;
       transform: translateX(-50%);
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       background: radial-gradient(circle at 35% 35%, #FF7676, #9E1A1A);
       border: 1.5px solid #5A0000;
       border-radius: 50%;
@@ -255,7 +248,7 @@
 
     .postit-photo {
       width: 100%;
-      height: 190px;
+      height: 185px;
       border-radius: 8px;
       background-color: #E7DCce;
       background-size: cover;
@@ -267,33 +260,33 @@
       overflow: hidden;
       position: relative;
     }
-    .postit-fallback { font-size: 50pt; opacity: 0.9; }
+    .postit-fallback { font-size: 48pt; opacity: 0.9; }
 
     .postit-tag-chip {
       position: absolute;
       bottom: 6px;
       left: 6px;
       background: rgba(255, 255, 255, 0.95);
-      font-size: 9.5pt;
+      font-size: 9pt;
       font-weight: 900;
-      padding: 3px 8px;
+      padding: 3px 7px;
       border-radius: 6px;
       color: var(--vet-purple);
       border: 1px solid #7D634C;
     }
 
     .postit-name {
-      font-family: 'Caveat', cursive, 'Nunito', sans-serif !important;
-      font-size: 26pt !important;
-      font-weight: 700 !important;
-      color: var(--vet-purple) !important;
+      font-family: 'Caveat', cursive, 'Nunito', sans-serif;
+      font-size: 24pt;
+      font-weight: 700;
+      color: var(--vet-purple);
       text-align: center;
       line-height: 1;
       margin-top: 2px;
     }
 
     .postit-species {
-      font-size: 12.5pt;
+      font-size: 12pt;
       color: var(--text-muted);
       font-weight: 800;
       text-align: center;
@@ -302,12 +295,12 @@
     .postit-gphotos-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: #FFF;
       border: 1.5px solid var(--kraft-border);
       border-radius: 12px;
       padding: 4px 10px;
-      font-size: 11pt;
+      font-size: 10.5pt;
       font-weight: 900;
       color: var(--vet-purple);
       text-decoration: none;
@@ -323,129 +316,164 @@
     .postit-card.create-new {
       border-style: dashed;
       background: rgba(250, 245, 235, 0.85);
-      min-height: 290px;
+      min-height: 280px;
       justify-content: center;
       cursor: pointer;
     }
 
-    /* MODAL */
+    /* MODAL DE HISTORIA CLÍNICA */
     .overlay {
       position: fixed; inset: 0; background: rgba(35, 20, 12, 0.75);
       display: none; align-items: center; justify-content: center;
-      padding: 20px; z-index: 1000; backdrop-filter: blur(8px);
+      padding: 16px; z-index: 1000; backdrop-filter: blur(8px);
     }
     .modal {
-      background: var(--card-bg) !important;
-      border: 4px solid var(--kraft-border) !important;
-      border-radius: 28px;
-      width: 900px;
-      max-width: 96vw;
-      max-height: 94vh;
+      background: var(--card-bg);
+      border: 3.5px solid var(--kraft-border);
+      border-radius: 24px;
+      width: 860px;
+      max-width: 95vw;
+      max-height: 92vh;
       overflow-y: auto;
-      padding: 30px;
+      padding: 24px 28px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
     }
 
     .vet-header {
       text-align: center;
-      padding-bottom: 14px;
-      border-bottom: 3.5px dashed var(--kraft-border);
+      padding-bottom: 12px;
+      border-bottom: 3px dashed var(--kraft-border);
       position: relative;
     }
     .vet-header h2 {
-      font-family: 'Nunito', sans-serif !important;
-      font-size: 26pt !important;
-      font-weight: 900 !important;
-      color: var(--vet-purple) !important;
+      font-family: 'Nunito', sans-serif;
+      font-size: 22pt;
+      font-weight: 900;
+      color: var(--vet-purple);
+      margin-top: 4px;
     }
     .vet-header span {
-      font-size: 13.5pt !important;
-      font-weight: 900 !important;
-      color: var(--vet-teal) !important;
+      font-size: 11pt;
+      font-weight: 900;
+      color: var(--vet-teal);
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }
 
-    .section-banner {
-      background: var(--vet-teal) !important;
-      color: #FFF !important;
-      font-family: 'Nunito', sans-serif !important;
-      font-size: 16pt !important;
-      font-weight: 900 !important;
-      text-align: center;
-      padding: 8px 16px;
-      border-radius: 14px;
-      margin: 16px 0 12px 0;
-    }
-    .section-subtitle {
-      font-family: 'Nunito', sans-serif !important;
-      font-size: 15.5pt !important;
-      font-weight: 900 !important;
-      color: var(--vet-purple) !important;
-      text-align: center;
-      margin: 14px 0 8px 0;
-    }
-
-    .tabs {
-      display: flex; gap: 10px; border-bottom: 3px solid var(--kraft-border);
-      padding-bottom: 12px; overflow-x: auto;
-    }
-    .tab-btn {
-      background: #FFF !important; border: 2.5px solid var(--kraft-border) !important; 
-      color: var(--text-dark) !important;
-      font-size: 13.5pt !important; font-weight: 900 !important; padding: 10px 18px !important;
-      cursor: pointer; border-radius: 14px !important; white-space: nowrap;
-    }
-    .tab-btn.active { 
-      color: #FFF !important; 
-      background: var(--vet-purple) !important; 
-      border-color: var(--vet-purple) !important; 
-    }
-
+    /* CONTENEDOR DE FOTO DE PORTADA EN MODAL */
     .cover-box {
-      width: 100%; height: 230px; border-radius: 18px;
-      border: 3.5px dashed var(--vet-teal);
-      background-color: #EFE4D6; background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: 0.2s;
+      width: 100%;
+      height: 190px !important;
+      min-height: 190px !important;
+      border-radius: 16px;
+      border: 3px dashed var(--vet-teal);
+      background-color: #EFE4D6;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
     }
     .cover-box:hover { border-color: var(--vet-purple); }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    .field { display: flex; flex-direction: column; gap: 6px; }
+    /* PESTAÑAS (TABS) REPARADAS */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2.5px solid var(--kraft-border);
+      padding-bottom: 10px;
+      overflow-x: auto;
+      min-height: 48px;
+      align-items: center;
+    }
+    .tab-btn {
+      background: #FFF;
+      border: 2px solid var(--kraft-border); 
+      color: var(--text-dark);
+      font-size: 11.5pt;
+      font-weight: 800;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 12px;
+      white-space: nowrap;
+      transition: 0.2s;
+      flex-shrink: 0;
+    }
+    .tab-btn.active { 
+      color: #FFF; 
+      background: var(--vet-purple); 
+      border-color: var(--vet-purple); 
+    }
+
+    .section-banner {
+      background: var(--vet-teal);
+      color: #FFF;
+      font-family: 'Nunito', sans-serif;
+      font-size: 13.5pt;
+      font-weight: 900;
+      text-align: center;
+      padding: 7px 14px;
+      border-radius: 12px;
+      margin: 14px 0 10px 0;
+    }
+    .section-subtitle {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13pt;
+      font-weight: 900;
+      color: var(--vet-purple);
+      text-align: center;
+      margin: 12px 0 6px 0;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 4px; }
     .field label {
-      font-size: 13pt !important; font-weight: 900 !important; color: var(--vet-purple) !important;
+      font-size: 11.5pt;
+      font-weight: 900;
+      color: var(--vet-purple);
     }
     .field input, .field select, .field textarea {
-      background: #FFF !important; border: 2.5px solid var(--kraft-border) !important; 
-      border-radius: 14px !important; padding: 12px 16px !important; 
-      color: var(--text-dark) !important; font-size: 14pt !important;
-      outline: none; font-weight: 800 !important;
+      background: #FFF;
+      border: 2px solid var(--kraft-border); 
+      border-radius: 12px;
+      padding: 9px 13px; 
+      color: var(--text-dark);
+      font-size: 12pt;
+      outline: none;
+      font-weight: 700;
     }
     .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--vet-teal) !important;
-      box-shadow: 0 0 0 4px rgba(51, 139, 130, 0.3) !important;
+      border-color: var(--vet-teal);
+      box-shadow: 0 0 0 3px rgba(51, 139, 130, 0.3);
     }
 
     .record-card {
-      background: #FFF !important; padding: 18px !important; border-radius: 16px !important;
-      border: 3px solid var(--kraft-border) !important; border-left: 10px solid var(--vet-teal) !important;
-      display: flex; flex-direction: column; gap: 8px; font-size: 14pt !important;
+      background: #FFF;
+      padding: 14px;
+      border-radius: 14px;
+      border: 2px solid var(--kraft-border);
+      border-left: 8px solid var(--vet-teal);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12pt;
     }
 
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-top: 16px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; margin-top: 14px; }
     .gallery-card {
-      aspect-ratio: 1; border-radius: 16px; border: 3px solid var(--kraft-border);
+      aspect-ratio: 1; border-radius: 14px; border: 2.5px solid var(--kraft-border);
       background-size: cover; background-position: center; position: relative; overflow: hidden;
     }
     .gallery-title {
       position: absolute; bottom: 0; left: 0; right: 0;
       background: rgba(45, 20, 65, 0.92); color: #FFF;
-      font-size: 11pt; font-weight: 800; padding: 8px; text-align: center;
+      font-size: 10pt; font-weight: 800; padding: 6px; text-align: center;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
   </style>
@@ -485,7 +513,7 @@
     </div>
   </div>
 
-  <!-- GRILLA PRINCIPAL DE POST-ITS ARRASTRABLES -->
+  <!-- GRILLA PRINCIPAL DE POST-ITS -->
   <div class="postit-grid" id="grid"></div>
 
   <!-- MODAL / HISTORIA CLÍNICA -->
@@ -494,22 +522,24 @@
       
       <div class="vet-header">
         <div style="position: absolute; right: 0; top: 0;">
-          <button class="btn btn-alt" style="padding: 6px 16px; font-size: 12.5pt;" onclick="cerrar()">✕ Cerrar</button>
+          <button class="btn btn-alt" style="padding: 5px 14px; font-size: 11pt;" onclick="cerrar()">✕ Cerrar</button>
         </div>
         <span>CONSULTORIO VETERINARIO FAMILIAR</span>
         <h2 id="modalName">HISTORIA CLÍNICA</h2>
       </div>
 
+      <!-- RECUADRO DE FOTO GRANDE Y VISIBLE -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
-        <span id="coverTxt" style="font-size:14pt; font-weight:900; color:var(--vet-purple);">📸 Haz clic para cargar o cambiar la foto</span>
+        <span id="coverTxt" style="font-size:12.5pt; font-weight:800; color:var(--vet-purple); text-align:center; padding:10px;">📸 Haz clic aquí para cargar o cambiar la foto principal</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
+      <!-- TABS BIEN VISIBLES -->
       <div class="tabs">
-        <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">Datos & Reseña</button>
-        <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">Clínica & Salud</button>
-        <button class="tab-btn" id="tabBtn3" onclick="verTab(3)">Control de Peso</button>
-        <button class="tab-btn" id="tabBtn4" onclick="verTab(4)">Álbum de Recuerdos</button>
+        <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">📋 Datos & Reseña</button>
+        <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">💉 Clínica & Salud</button>
+        <button class="tab-btn" id="tabBtn3" onclick="verTab(3)">⚖️ Control de Peso</button>
+        <button class="tab-btn" id="tabBtn4" onclick="verTab(4)">🖼️ Álbum de Recuerdos</button>
       </div>
 
       <!-- TAB 1: DATOS GENERALES -->
@@ -526,7 +556,7 @@
           </div>
         </div>
 
-        <div class="section-banner" style="margin-top:20px;">Datos de la Mascota</div>
+        <div class="section-banner" style="margin-top:16px;">Datos de la Mascota</div>
         <div class="form-row">
           <div class="field"><label>Nombre o Arete *</label><input type="text" id="fNom"></div>
           <div class="field">
@@ -539,7 +569,7 @@
           </div>
         </div>
 
-        <div class="form-row-3" style="margin-top:16px;">
+        <div class="form-row-3" style="margin-top:12px;">
           <div class="field">
             <label>Sexo</label>
             <select id="fSexo">
@@ -557,14 +587,13 @@
           <div class="field"><label>N° Microchip</label><input type="text" id="fChip" placeholder="956000000..."></div>
         </div>
 
-        <div class="form-row-3" style="margin-top:16px;">
+        <div class="form-row-3" style="margin-top:12px;">
           <div class="field"><label>Raza</label><input type="text" id="fRaza"></div>
           <div class="field"><label>Fecha de Nacimiento</label><input type="date" id="fNac"></div>
           <div class="field"><label>Fecha Defunción (si aplica)</label><input type="date" id="fDef"></div>
         </div>
 
-        <!-- ENLACE DE GOOGLE FOTOS -->
-        <div class="section-banner" style="margin-top:20px;">Álbum en la Nube (Google Fotos)</div>
+        <div class="section-banner" style="margin-top:16px;">Álbum en la Nube (Google Fotos)</div>
         <div class="field">
           <label>Enlace del Álbum de Google Fotos</label>
           <input type="url" id="fGFotos" placeholder="https://photos.app.goo.gl/...">
@@ -575,14 +604,14 @@
           <textarea id="fNot" rows="3" placeholder="Carácter, alergias, antecedentes médicos, anécdotas o cuidados..."></textarea>
         </div>
 
-        <button class="btn" style="margin-top:20px; width:100%; justify-content:center; font-size:15pt; padding:15px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
+        <button class="btn" style="margin-top:18px; width:100%; justify-content:center; font-size:13.5pt; padding:12px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
       </div>
 
       <!-- TAB 2: CLÍNICA & SALUD -->
       <div id="tab2" style="display:none;">
-        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
+        <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:16px; border-radius:16px; margin-bottom:16px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registrar Atención / Tratamiento</div>
-          <div class="form-row-3" style="margin-top:12px;">
+          <div class="form-row-3" style="margin-top:10px;">
             <div class="field"><label>Fecha</label><input type="date" id="cFecha"></div>
             <div class="field">
               <label>Categoría</label>
@@ -596,29 +625,29 @@
             </div>
             <div class="field"><label>Próxima Dosis / Control</label><input type="date" id="cProx"></div>
           </div>
-          <div class="field" style="margin-top:12px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
-          <div class="field" style="margin-top:12px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, indicaciones..."></div>
-          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
+          <div class="field" style="margin-top:10px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
+          <div class="field" style="margin-top:10px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, indicaciones..."></div>
+          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
         </div>
-        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:12px;"></div>
+        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
 
       <!-- TAB 3: CONTROL DE PESO -->
       <div id="tab3" style="display:none;">
-        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
+        <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:16px; border-radius:16px; margin-bottom:16px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registro de Peso</div>
-          <div class="form-row" style="margin-top:12px;">
+          <div class="form-row" style="margin-top:10px;">
             <div class="field"><label>Fecha de Pesaje</label><input type="date" id="pFecha"></div>
             <div class="field"><label>Peso (kg)</label><input type="number" step="0.01" id="pKg" placeholder="Ej: 5.20"></div>
           </div>
-          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
+          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
         </div>
-        <div id="pesoLista" style="display:flex; flex-direction:column; gap:12px;"></div>
+        <div id="pesoLista" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
 
       <!-- TAB 4: ÁLBUM FOTOGRÁFICO -->
       <div id="tab4" style="display:none;">
-        <div style="display:flex; gap:12px;">
+        <div style="display:flex; gap:10px;">
           <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Descripción de la foto o momento...">
           <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
         </div>
@@ -773,7 +802,7 @@
         addCard.onclick = abrirNuevo;
         addCard.innerHTML = `
           <div class="postit-pin"></div>
-          <div style="font-size:46pt; text-align:center;">＋</div>
+          <div style="font-size:42pt; text-align:center;">＋</div>
           <div class="postit-name">Nueva Mascota</div>
           <div class="postit-species">Toca aquí para crear ficha</div>
         `;
@@ -985,18 +1014,18 @@
       c.innerHTML = "";
       const evs = salud.filter(s => s.mascota === nom);
       if (evs.length === 0) {
-        c.innerHTML = `<span style="font-size:13.5pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
+        c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
         return;
       }
       evs.forEach(e => {
         c.innerHTML += `
           <div class="record-card">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <b style="color:var(--vet-purple); font-size:15pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
-              <span style="color:var(--text-muted); font-size:13pt; font-weight:800;">${e.fecha || ''}</span>
+              <b style="color:var(--vet-purple); font-size:13pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
+              <span style="color:var(--text-muted); font-size:11pt; font-weight:800;">${e.fecha || ''}</span>
             </div>
-            ${e.tratamiento ? `<div style="margin-top:6px;"><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
-            ${e.proximaDosis ? `<div style="color:var(--vet-green-tag); font-size:13.5pt; font-weight:900; margin-top:6px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
+            ${e.tratamiento ? `<div style="margin-top:4px;"><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
+            ${e.proximaDosis ? `<div style="color:var(--vet-green-tag); font-size:11.5pt; font-weight:900; margin-top:4px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
           </div>
         `;
       });
@@ -1032,15 +1061,15 @@
       c.innerHTML = "";
       const lista = pesos.filter(p => p.mascota === nom);
       if (lista.length === 0) {
-        c.innerHTML = `<span style="font-size:13.5pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
+        c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
         return;
       }
       lista.forEach(p => {
         c.innerHTML += `
           <div class="record-card" style="border-left-color: var(--vet-purple) !important;">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:16pt; font-weight:900; color:var(--vet-purple);">${p.peso} kg</span>
-              <span style="color:var(--text-muted); font-size:13pt; font-weight:800;">Fecha: ${p.fecha}</span>
+              <span style="font-size:14pt; font-weight:900; color:var(--vet-purple);">${p.peso} kg</span>
+              <span style="color:var(--text-muted); font-size:11pt; font-weight:800;">Fecha: ${p.fecha}</span>
             </div>
           </div>
         `;
