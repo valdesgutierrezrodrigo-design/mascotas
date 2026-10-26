@@ -10,15 +10,15 @@
 
   <style>
     :root {
-      /* Color idéntico al papel kraft / reciclado de la referencia */
+      /* Papel kraft texturizado */
       --kraft-bg: #B79C82;
       --kraft-dark: #9E8267;
       --kraft-border: #6E533B;
       
-      /* Tarjetas y fondos interiores en papel pergamino claro */
+      /* Tarjetas en papel pergamino claro */
       --card-bg: #FAF5EB;
       
-      /* Colores temáticos veterinaria */
+      /* Colores temáticos */
       --vet-purple: #3C1C59;
       --vet-teal: #338B82;
       --vet-teal-light: #4EABA1;
@@ -37,7 +37,7 @@
       font-family: 'Quicksand', sans-serif !important; 
     }
 
-    /* Fondo principal: papel kraft texturizado */
+    /* Fondo principal: papel kraft */
     html, body {
       background-color: var(--kraft-bg) !important;
       background-image: 
@@ -47,14 +47,14 @@
       background-position: 0 0, 12px 12px !important;
       color: var(--text-dark) !important;
       min-height: 100vh;
-      font-size: 20px !important; /* LETRA BASE GRANDE */
+      font-size: 20px !important;
     }
 
     body {
       padding: 26px;
       display: flex;
       flex-direction: column;
-      gap: 26px;
+      gap: 24px;
     }
 
     /* ENCABEZADO */
@@ -81,7 +81,7 @@
     }
     .brand-title {
       font-family: 'Nunito', sans-serif !important;
-      font-size: 30pt !important; /* TÍTULO DESTACADO */
+      font-size: 30pt !important;
       font-weight: 900 !important;
       color: var(--vet-purple) !important;
       line-height: 1.1;
@@ -91,6 +91,41 @@
       color: var(--text-muted) !important;
       font-weight: 800 !important;
       margin-top: 4px;
+    }
+
+    /* BANNER ILUSTRADO RÚSTICO */
+    .hero-banner {
+      background: var(--card-bg);
+      border: 3.5px solid var(--kraft-border);
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      box-shadow: var(--shadow-box);
+      max-height: 230px;
+    }
+    .hero-img {
+      width: 250px;
+      height: 230px;
+      object-fit: cover;
+      border-right: 3.5px solid var(--kraft-border);
+    }
+    .hero-text {
+      padding: 24px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero-text h3 {
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 22pt;
+      font-weight: 900;
+      color: var(--vet-purple);
+    }
+    .hero-text p {
+      font-size: 15pt;
+      color: var(--text-muted);
+      font-weight: 800;
     }
 
     /* BOTONES */
@@ -385,6 +420,15 @@
     </div>
   </header>
 
+  <!-- BANNER ILUSTRADO RÚSTICO -->
+  <div class="hero-banner">
+    <img src="Gemini_Generated_Image_n07ja7n07ja7n07j.jpg" alt="Familia Animal Rinconada de Idahue" class="hero-img">
+    <div class="hero-text">
+      <h3>Registro Familiar de Salud Animal</h3>
+      <p>Cuidado integral, vacunas, controles de peso y bitácora clínica para nuestros compañeros de vida en Rinconada de Idahue.</p>
+    </div>
+  </div>
+
   <!-- BARRA DE FILTROS & BUSCADOR -->
   <div class="toolbar">
     <div class="filters">
@@ -582,7 +626,7 @@
         const matchEsp = (filtroEsp === "todos") || ((m.especie || "").toLowerCase() === filtroEsp.toLowerCase());
         const matchText = !q || 
           (m.nombre || "").toLowerCase().includes(q) || 
-          (m.raza || "").toLowerCase().includes(q) ||
+          (m.raza || "").toLowerCase().includes(q) || 
           (m.microchip || "").toString().includes(q);
         return matchEsp && matchText;
       });
