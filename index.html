@@ -33,7 +33,6 @@
       font-family: 'Quicksand', sans-serif !important; 
     }
 
-    /* Fondo principal adaptable */
     html, body {
       background-color: var(--kraft-bg);
       background-image: 
@@ -47,7 +46,6 @@
       font-size: 19px !important;
     }
 
-    /* Fondo cuando cargas una foto */
     body.custom-wallpaper {
       background-size: cover !important;
       background-position: center center !important;
@@ -177,7 +175,7 @@
       font-weight: 800 !important;
     }
 
-    /* GRILLA DE FICHAS FLOTANTES TIPO POST-IT */
+    /* GRILLA DE POST-ITS ARRASTRABLES */
     .postit-grid {
       display: flex;
       flex-wrap: wrap;
@@ -187,22 +185,31 @@
       padding: 10px 4px 50px 4px;
     }
 
-    /* FICHA POST-IT */
     .postit-card {
       background: var(--postit-bg);
       border: 3px solid #7D634C;
       border-radius: 12px;
       width: 250px;
-      padding: 24px 16px 18px 16px;
+      padding: 24px 16px 16px 16px;
       position: relative;
-      cursor: pointer;
+      cursor: grab;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       box-shadow: 0 10px 20px rgba(35, 20, 10, 0.35);
-      transition: all 0.25s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       transform: rotate(var(--rot, -1.5deg));
+      user-select: none;
+    }
+
+    .postit-card:active {
+      cursor: grabbing;
+    }
+
+    .postit-card.dragging {
+      opacity: 0.35;
+      transform: scale(0.95);
     }
 
     .postit-card:hover {
@@ -212,7 +219,6 @@
       border-color: var(--vet-purple);
     }
 
-    /* Chincheta superior */
     .postit-pin {
       position: absolute;
       top: 6px;
@@ -226,10 +232,30 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
 
-    /* Marco de foto */
+    .btn-edit-pin {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      background: #FFF;
+      border: 1.5px solid var(--kraft-border);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11pt;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .btn-edit-pin:hover {
+      background: var(--vet-teal);
+      color: #FFF;
+    }
+
     .postit-photo {
       width: 100%;
-      height: 200px;
+      height: 190px;
       border-radius: 8px;
       background-color: #E7DCce;
       background-size: cover;
@@ -241,14 +267,14 @@
       overflow: hidden;
       position: relative;
     }
-    .postit-fallback { font-size: 55pt; opacity: 0.9; }
+    .postit-fallback { font-size: 50pt; opacity: 0.9; }
 
     .postit-tag-chip {
       position: absolute;
-      bottom: 8px;
-      left: 8px;
+      bottom: 6px;
+      left: 6px;
       background: rgba(255, 255, 255, 0.95);
-      font-size: 10pt;
+      font-size: 9.5pt;
       font-weight: 900;
       padding: 3px 8px;
       border-radius: 6px;
@@ -264,7 +290,6 @@
       text-align: center;
       line-height: 1;
       margin-top: 2px;
-      letter-spacing: 0.5px;
     }
 
     .postit-species {
@@ -274,18 +299,36 @@
       text-align: center;
     }
 
-    /* Botón para crear cuando está vacío */
+    .postit-gphotos-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFF;
+      border: 1.5px solid var(--kraft-border);
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 11pt;
+      font-weight: 900;
+      color: var(--vet-purple);
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 2px;
+    }
+    .postit-gphotos-link:hover {
+      background: var(--vet-teal);
+      color: #FFF;
+      border-color: var(--vet-teal);
+    }
+
     .postit-card.create-new {
       border-style: dashed;
       background: rgba(250, 245, 235, 0.85);
       min-height: 290px;
       justify-content: center;
-    }
-    .postit-card.create-new:hover {
-      background: #FAF5EB;
+      cursor: pointer;
     }
 
-    /* MODAL DE HISTORIA CLÍNICA */
+    /* MODAL */
     .overlay {
       position: fixed; inset: 0; background: rgba(35, 20, 12, 0.75);
       display: none; align-items: center; justify-content: center;
@@ -419,7 +462,6 @@
       </div>
     </div>
     <div class="actions">
-      <!-- SUBIR Y RESTABLECER FONDO -->
       <button class="btn btn-alt" onclick="document.getElementById('inputFondoPantalla').click()">🖼️ Fondo</button>
       <input type="file" id="inputFondoPantalla" accept="image/*" style="display:none;" onchange="subirFondoPantalla(this)">
       <button class="btn btn-alt" onclick="restablecerFondoDefecto()" title="Restablecer fondo original">↺ Restablecer</button>
@@ -443,14 +485,13 @@
     </div>
   </div>
 
-  <!-- GRILLA PRINCIPAL DE POST-ITS FLOTANTES -->
+  <!-- GRILLA PRINCIPAL DE POST-ITS ARRASTRABLES -->
   <div class="postit-grid" id="grid"></div>
 
   <!-- MODAL / HISTORIA CLÍNICA -->
   <div class="overlay" id="overlay">
     <div class="modal">
       
-      <!-- ENCABEZADO MODAL -->
       <div class="vet-header">
         <div style="position: absolute; right: 0; top: 0;">
           <button class="btn btn-alt" style="padding: 6px 16px; font-size: 12.5pt;" onclick="cerrar()">✕ Cerrar</button>
@@ -459,13 +500,11 @@
         <h2 id="modalName">HISTORIA CLÍNICA</h2>
       </div>
 
-      <!-- PORTADA PRINCIPAL -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
         <span id="coverTxt" style="font-size:14pt; font-weight:900; color:var(--vet-purple);">📸 Haz clic para cargar o cambiar la foto</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
-      <!-- TABS -->
       <div class="tabs">
         <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">Datos & Reseña</button>
         <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">Clínica & Salud</button>
@@ -522,6 +561,13 @@
           <div class="field"><label>Raza</label><input type="text" id="fRaza"></div>
           <div class="field"><label>Fecha de Nacimiento</label><input type="date" id="fNac"></div>
           <div class="field"><label>Fecha Defunción (si aplica)</label><input type="date" id="fDef"></div>
+        </div>
+
+        <!-- ENLACE DE GOOGLE FOTOS -->
+        <div class="section-banner" style="margin-top:20px;">Álbum en la Nube (Google Fotos)</div>
+        <div class="field">
+          <label>Enlace del Álbum de Google Fotos</label>
+          <input type="url" id="fGFotos" placeholder="https://photos.app.goo.gl/...">
         </div>
 
         <div class="section-subtitle">Anamnesis / Observaciones Especiales</div>
@@ -584,8 +630,7 @@
   </div>
 
   <script>
-    // URL DE TU IMPLEMENTACIÓN DE GOOGLE APPS SCRIPT
-    const API_URL = "https://script.google.com/macros/s/AKfycbyJ8ROAebzWCbn5_1pfhBUs7jdhw4sz-ryEOlAUYp5dxOhaWpuK1ChcMZhQAc0Km64cXQ/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbwAJCJnUNp-a7MdD_afoOGR8TAzOjrydiXUv7gPYAT6Rk95mRUuCCpqVYm5ciaNXQMSDw/exec";
 
     let mascotas = [];
     let salud = [];
@@ -594,8 +639,9 @@
     let actual = null;
     let b64Portada = null;
     let filtroEsp = "todos";
+    let draggedIndex = null;
 
-    // 1) BASE DE DATOS LOCAL (IndexedDB) PARA FONDO DE PANTALLA PERSISTENTE
+    // BASE DE DATOS LOCAL (IndexedDB)
     const DB_NAME = "MascotasFondoDB";
     const STORE_NAME = "fondos";
 
@@ -663,13 +709,26 @@
       }
     }
 
-    // 2) SINCRONIZACIÓN Y RENDERIZADO
+    // SINCRONIZACIÓN Y PERSISTENCIA
     async function sincronizar() {
       try {
         const res = await fetch(API_URL);
         const data = await res.json();
         if (data.status === "success") {
-          mascotas = data.mascotas || [];
+          const nuevas = data.mascotas || [];
+          if (mascotas.length > 0) {
+            const ordenGuardado = JSON.parse(localStorage.getItem("orden_mascotas") || "[]");
+            if (ordenGuardado.length > 0) {
+              nuevas.sort((a, b) => {
+                let ia = ordenGuardado.indexOf(a.nombre);
+                let ib = ordenGuardado.indexOf(b.nombre);
+                if (ia === -1) ia = 999;
+                if (ib === -1) ib = 999;
+                return ia - ib;
+              });
+            }
+          }
+          mascotas = nuevas;
           salud = data.salud || data.bitacora || [];
           pesos = data.pesos || [];
           fotos = data.fotos || [];
@@ -687,7 +746,12 @@
       render();
     }
 
-    // 3) FICHAS FLOTANTES TIPO POST-IT
+    function guardarOrdenLocal() {
+      const orden = mascotas.map(m => m.nombre);
+      localStorage.setItem("orden_mascotas", JSON.stringify(orden));
+    }
+
+    // RENDERIZADO DRAG & DROP
     function render() {
       const g = document.getElementById("grid");
       g.innerHTML = "";
@@ -702,7 +766,6 @@
         return matchEsp && matchText;
       });
 
-      // Si no hay ninguna mascota, muestra solo el Post-it para crear una
       if (lista.length === 0) {
         const addCard = document.createElement("div");
         addCard.className = "postit-card create-new";
@@ -718,31 +781,71 @@
         return;
       }
 
-      // Rotaciones naturales para estilo post-it
-      const rotaciones = [-2.2, 1.8, -1.2, 2.4, -1.8, 1.2];
+      const rotaciones = [-2, 1.8, -1.2, 2.2, -1.6, 1.4];
 
       lista.forEach((m, idx) => {
         const card = document.createElement("div");
         card.className = "postit-card";
+        card.draggable = true;
+        card.dataset.index = idx;
         const rot = rotaciones[idx % rotaciones.length];
         card.style.setProperty("--rot", `${rot}deg`);
-        card.onclick = () => abrir(m);
+
+        card.addEventListener("dragstart", (e) => {
+          draggedIndex = idx;
+          card.classList.add("dragging");
+          e.dataTransfer.effectAllowed = "move";
+        });
+
+        card.addEventListener("dragend", () => {
+          card.classList.remove("dragging");
+          draggedIndex = null;
+        });
+
+        card.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = "move";
+        });
+
+        card.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (draggedIndex !== null && draggedIndex !== idx) {
+            const itemMovido = mascotas.splice(draggedIndex, 1)[0];
+            mascotas.splice(idx, 0, itemMovido);
+            guardarOrdenLocal();
+            render();
+          }
+        });
+
+        card.onclick = (e) => {
+          if (!e.target.closest(".btn-edit-pin") && !e.target.closest(".postit-gphotos-link")) {
+            abrir(m);
+          }
+        };
 
         const imgStyle = m.fotoPortada ? `background-image:url('${m.fotoPortada}')` : '';
         const fallbackIcon = m.especie === 'Gato' ? '🐱' : (m.especie === 'Oveja' ? '🐑' : '🐶');
         const chipText = m.microchip ? `<div class="postit-tag-chip">Chip: ${m.microchip}</div>` : '';
+        const googleFotosBtn = m.googleFotos ? `<a href="${m.googleFotos}" target="_blank" class="postit-gphotos-link" title="Ver Google Fotos">📸 Ver Fotos</a>` : '';
 
         card.innerHTML = `
           <div class="postit-pin"></div>
+          <button class="btn-edit-pin" title="Editar Mascota" onclick="abrirEditar(event, ${idx})">✏️</button>
           <div class="postit-photo" style="${imgStyle}">
             ${!m.fotoPortada ? `<div class="postit-fallback">${fallbackIcon}</div>` : ''}
             ${chipText}
           </div>
           <div class="postit-name">${m.nombre}</div>
           <div class="postit-species">${m.especie} • ${m.raza || 'Compañero familiar'}</div>
+          ${googleFotosBtn}
         `;
         g.appendChild(card);
       });
+    }
+
+    function abrirEditar(event, idx) {
+      event.stopPropagation();
+      abrir(mascotas[idx]);
     }
 
     function abrir(m) {
@@ -759,6 +862,7 @@
       document.getElementById("fDef").value = m.defuncion || "";
       document.getElementById("fTutores").value = m.tutores || "";
       document.getElementById("fContacto").value = m.contacto || "Rinconada de Idahue, Coltauco";
+      document.getElementById("fGFotos").value = m.googleFotos || "";
       document.getElementById("fNot").value = m.notas || "";
 
       const box = document.getElementById("coverBox");
@@ -779,7 +883,7 @@
     }
 
     function abrirNuevo() {
-      abrir({ nombre: "", especie: "Perro", sexo: "Macho", esterilizado: "Sí", microchip: "", raza: "", nacimiento: "", defuncion: "", tutores: "", contacto: "", notas: "", fotoPortada: "", fila: null });
+      abrir({ nombre: "", especie: "Perro", sexo: "Macho", esterilizado: "Sí", microchip: "", raza: "", nacimiento: "", defuncion: "", tutores: "", contacto: "", googleFotos: "", notas: "", fotoPortada: "", fila: null });
     }
 
     function cerrar() { document.getElementById("overlay").style.display = "none"; }
@@ -809,6 +913,12 @@
       const nom = document.getElementById("fNom").value.trim();
       if (!nom) return alert("Por favor ingresa un nombre para la mascota.");
 
+      const btnGuardar = event ? event.target : null;
+      if (btnGuardar) {
+        btnGuardar.disabled = true;
+        btnGuardar.innerText = "⏳ Guardando...";
+      }
+
       const payload = {
         accion: "guardar_mascota",
         fila: actual ? actual.fila : null,
@@ -822,19 +932,52 @@
         defuncion: document.getElementById("fDef").value,
         tutores: document.getElementById("fTutores").value,
         contacto: document.getElementById("fContacto").value,
+        googleFotos: document.getElementById("fGFotos").value.trim(),
         notas: document.getElementById("fNot").value,
         fotoPortadaActual: actual ? actual.fotoPortada : "",
         fotoPortadaNueva: b64Portada
       };
 
-      await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      });
+      try {
+        await fetch(API_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
 
-      cerrar();
-      sincronizar();
+        const mLocal = { 
+          ...payload, 
+          fotoPortada: b64Portada ? `data:${b64Portada.mimeType};base64,${b64Portada.base64}` : payload.fotoPortadaActual 
+        };
+
+        const idx = mascotas.findIndex(m => m.nombre.toLowerCase() === nom.toLowerCase());
+        if (idx >= 0) {
+          mascotas[idx] = mLocal;
+        } else {
+          mascotas.unshift(mLocal);
+        }
+
+        guardarOrdenLocal();
+
+        const inputBusqueda = document.getElementById("busqueda");
+        if (inputBusqueda) inputBusqueda.value = "";
+
+        cerrar();
+        render();
+
+        setTimeout(sincronizar, 2500);
+
+      } catch (err) {
+        console.error("Error al guardar:", err);
+        cerrar();
+        render();
+      } finally {
+        if (btnGuardar) {
+          btnGuardar.disabled = false;
+          btnGuardar.innerText = "💾 Guardar Ficha Clínica";
+        }
+      }
     }
 
     function renderSalud(nom) {
@@ -866,6 +1009,7 @@
 
       await fetch(API_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
           accion: "guardar_salud",
@@ -910,6 +1054,7 @@
 
       await fetch(API_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
           accion: "guardar_peso",
@@ -942,6 +1087,7 @@
       reader.onload = async (e) => {
         await fetch(API_URL, {
           method: "POST",
+          mode: "no-cors",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             accion: "subir_foto_album",
@@ -956,7 +1102,6 @@
       reader.readAsDataURL(file);
     }
 
-    // Inicializar
     aplicarFondoGuardado();
     sincronizar();
   </script>
