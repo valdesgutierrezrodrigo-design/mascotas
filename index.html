@@ -49,7 +49,6 @@
       font-size: 20px !important;
     }
 
-    /* Clase cuando se sube imagen propia de fondo */
     body.custom-wallpaper {
       background-size: cover !important;
       background-position: center center !important;
@@ -58,10 +57,10 @@
     }
 
     body {
-      padding: 26px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 20px;
     }
 
     /* ENCABEZADO */
@@ -69,35 +68,35 @@
       background: var(--card-bg) !important;
       border: 3.5px solid var(--kraft-border) !important;
       border-radius: 22px;
-      padding: 20px 28px;
+      padding: 18px 26px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 18px;
+      gap: 16px;
       box-shadow: var(--shadow-box);
     }
 
-    .brand { display: flex; align-items: center; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 16px; }
     .brand-icon {
-      width: 70px; height: 70px; border-radius: 50%;
+      width: 65px; height: 65px; border-radius: 50%;
       background: #FFF; color: var(--vet-purple);
       display: flex; align-items: center; justify-content: center;
-      font-size: 34pt; border: 3px solid var(--kraft-border);
+      font-size: 30pt; border: 3px solid var(--kraft-border);
       box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
     .brand-title {
       font-family: 'Nunito', sans-serif !important;
-      font-size: 28pt !important;
+      font-size: 26pt !important;
       font-weight: 900 !important;
       color: var(--vet-purple) !important;
       line-height: 1.1;
     }
     .brand-sub {
-      font-size: 15pt !important;
+      font-size: 14.5pt !important;
       color: var(--text-muted) !important;
       font-weight: 800 !important;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     /* BOTONES */
@@ -106,7 +105,7 @@
       background: var(--vet-purple) !important;
       color: #FFF !important;
       border: none !important;
-      padding: 12px 22px !important;
+      padding: 12px 20px !important;
       border-radius: 16px !important;
       font-weight: 900 !important;
       cursor: pointer;
@@ -130,45 +129,22 @@
       color: #FFF !important; 
     }
 
-    /* BANNER RESUMEN LIMPIO */
-    .hero-banner {
-      background: var(--card-bg);
-      border: 3.5px solid var(--kraft-border);
-      border-radius: 22px;
-      padding: 22px 30px;
-      box-shadow: var(--shadow-box);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .hero-banner h3 {
-      font-family: 'Nunito', sans-serif !important;
-      font-size: 22pt;
-      font-weight: 900;
-      color: var(--vet-purple);
-    }
-    .hero-banner p {
-      font-size: 15pt;
-      color: var(--text-muted);
-      font-weight: 800;
-    }
-
     /* FILTROS Y BUSCADOR */
     .toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       flex-wrap: wrap;
     }
-    .filters { display: flex; gap: 12px; flex-wrap: wrap; }
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; }
     .chip {
       background: var(--card-bg) !important;
       border: 3px solid var(--kraft-border) !important;
       color: var(--text-dark) !important;
-      padding: 11px 22px !important;
+      padding: 10px 20px !important;
       border-radius: 34px !important;
-      font-size: 14.5pt !important;
+      font-size: 14pt !important;
       font-weight: 900 !important;
       cursor: pointer;
       box-shadow: var(--shadow-box);
@@ -187,9 +163,9 @@
       background: var(--card-bg) !important;
       border: 3px solid var(--kraft-border) !important;
       border-radius: 34px !important;
-      padding: 12px 24px !important;
-      gap: 12px;
-      min-width: 360px;
+      padding: 10px 22px !important;
+      gap: 10px;
+      min-width: 320px;
       box-shadow: var(--shadow-box);
     }
     .search-box input {
@@ -197,41 +173,43 @@
       border: none !important;
       outline: none !important;
       color: var(--text-dark) !important;
-      font-size: 14.5pt !important;
+      font-size: 14pt !important;
       width: 100%;
       font-weight: 800 !important;
     }
 
-    /* GRILLA PRINCIPAL */
+    /* GRILLA DE RETRATOS */
     .album-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
     }
 
-    .polaroid-card {
+    /* MINI RETRATO */
+    .portrait-card {
       background: var(--card-bg) !important;
       border: 3.5px solid var(--kraft-border) !important;
       border-radius: 24px;
-      padding: 20px;
+      padding: 16px;
       box-shadow: var(--shadow-box);
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
+      align-items: center;
       transition: all 0.25s ease;
     }
-    .polaroid-card:hover {
-      transform: translateY(-6px);
+    .portrait-card:hover {
+      transform: translateY(-5px);
       border-color: var(--vet-purple) !important;
-      box-shadow: 0 12px 28px rgba(45, 25, 10, 0.28);
+      box-shadow: 0 10px 24px rgba(45, 25, 10, 0.3);
     }
 
-    .photo-frame {
+    .portrait-frame {
       width: 100%;
-      height: 250px;
-      border-radius: 16px;
-      background-color: #E6D8C7;
+      height: 260px;
+      border-radius: 18px;
+      background-color: #EFE4D6;
       background-size: cover;
       background-position: center;
       position: relative;
@@ -239,35 +217,50 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2.5px solid var(--kraft-border);
+      border: 3px solid var(--kraft-border);
     }
-    .photo-fallback { font-size: 58pt; opacity: 0.9; }
-    
+    .portrait-fallback { font-size: 64pt; opacity: 0.9; }
+
     .memorial-ribbon {
-      position: absolute; top: 12px; right: 12px;
+      position: absolute; top: 10px; right: 10px;
       background: rgba(30, 18, 12, 0.9); color: #FFF;
-      font-size: 12pt; font-weight: 900; padding: 6px 14px;
+      font-size: 11pt; font-weight: 900; padding: 4px 12px;
       border-radius: 20px;
     }
     .chip-microchip {
-      position: absolute; bottom: 12px; left: 12px;
+      position: absolute; bottom: 10px; left: 10px;
       background: #FFF; font-size: 11pt; font-weight: 900;
-      padding: 6px 14px; border-radius: 10px; color: var(--vet-purple);
+      padding: 4px 10px; border-radius: 10px; color: var(--vet-purple);
       border: 2px solid var(--kraft-border);
     }
 
-    .card-content { display: flex; flex-direction: column; gap: 8px; text-align: center; }
-    .card-name {
+    .portrait-name {
       font-family: 'Nunito', sans-serif !important;
-      font-size: 23pt !important;
+      font-size: 22pt !important;
       font-weight: 900 !important;
       color: var(--vet-purple) !important;
+      text-align: center;
+      line-height: 1.1;
     }
-    .card-meta { font-size: 14pt !important; color: var(--text-muted) !important; font-weight: 800 !important; }
-    .card-badges { display: flex; justify-content: center; gap: 10px; margin-top: 4px; }
+    .portrait-meta {
+      font-size: 13.5pt !important;
+      color: var(--text-muted) !important;
+      font-weight: 800 !important;
+      text-align: center;
+    }
+    .portrait-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
     .badge-pill {
-      font-size: 12pt !important; padding: 5px 14px; border-radius: 14px;
-      background: #DDF0E4; color: var(--vet-green-tag); font-weight: 900 !important;
+      font-size: 11pt !important;
+      padding: 4px 12px;
+      border-radius: 12px;
+      background: #DDF0E4;
+      color: var(--vet-green-tag);
+      font-weight: 900 !important;
       border: 1.5px solid var(--kraft-border);
     }
 
@@ -285,27 +278,27 @@
       max-width: 96vw;
       max-height: 94vh;
       overflow-y: auto;
-      padding: 34px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 20px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
     }
 
     .vet-header {
       text-align: center;
-      padding-bottom: 16px;
+      padding-bottom: 14px;
       border-bottom: 3.5px dashed var(--kraft-border);
       position: relative;
     }
     .vet-header h2 {
       font-family: 'Nunito', sans-serif !important;
-      font-size: 28pt !important;
+      font-size: 26pt !important;
       font-weight: 900 !important;
       color: var(--vet-purple) !important;
     }
     .vet-header span {
-      font-size: 14pt !important;
+      font-size: 13.5pt !important;
       font-weight: 900 !important;
       color: var(--vet-teal) !important;
       text-transform: uppercase;
@@ -316,30 +309,30 @@
       background: var(--vet-teal) !important;
       color: #FFF !important;
       font-family: 'Nunito', sans-serif !important;
-      font-size: 16.5pt !important;
+      font-size: 16pt !important;
       font-weight: 900 !important;
       text-align: center;
-      padding: 10px 18px;
+      padding: 8px 16px;
       border-radius: 14px;
-      margin: 18px 0 14px 0;
+      margin: 16px 0 12px 0;
     }
     .section-subtitle {
       font-family: 'Nunito', sans-serif !important;
-      font-size: 16pt !important;
+      font-size: 15.5pt !important;
       font-weight: 900 !important;
       color: var(--vet-purple) !important;
       text-align: center;
-      margin: 16px 0 10px 0;
+      margin: 14px 0 8px 0;
     }
 
     .tabs {
-      display: flex; gap: 12px; border-bottom: 3px solid var(--kraft-border);
-      padding-bottom: 14px; overflow-x: auto;
+      display: flex; gap: 10px; border-bottom: 3px solid var(--kraft-border);
+      padding-bottom: 12px; overflow-x: auto;
     }
     .tab-btn {
       background: #FFF !important; border: 2.5px solid var(--kraft-border) !important; 
       color: var(--text-dark) !important;
-      font-size: 14pt !important; font-weight: 900 !important; padding: 12px 22px !important;
+      font-size: 13.5pt !important; font-weight: 900 !important; padding: 10px 18px !important;
       cursor: pointer; border-radius: 14px !important; white-space: nowrap;
     }
     .tab-btn.active { 
@@ -349,7 +342,7 @@
     }
 
     .cover-box {
-      width: 100%; height: 240px; border-radius: 18px;
+      width: 100%; height: 230px; border-radius: 18px;
       border: 3.5px dashed var(--vet-teal);
       background-color: #EFE4D6; background-size: cover; background-position: center;
       display: flex; align-items: center; justify-content: center;
@@ -357,16 +350,16 @@
     }
     .cover-box:hover { border-color: var(--vet-purple); }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
-    .field { display: flex; flex-direction: column; gap: 8px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
     .field label {
-      font-size: 13.5pt !important; font-weight: 900 !important; color: var(--vet-purple) !important;
+      font-size: 13pt !important; font-weight: 900 !important; color: var(--vet-purple) !important;
     }
     .field input, .field select, .field textarea {
       background: #FFF !important; border: 2.5px solid var(--kraft-border) !important; 
-      border-radius: 14px !important; padding: 14px 18px !important; 
-      color: var(--text-dark) !important; font-size: 14.5pt !important;
+      border-radius: 14px !important; padding: 12px 16px !important; 
+      color: var(--text-dark) !important; font-size: 14pt !important;
       outline: none; font-weight: 800 !important;
     }
     .field input:focus, .field select:focus, .field textarea:focus {
@@ -375,12 +368,12 @@
     }
 
     .record-card {
-      background: #FFF !important; padding: 20px !important; border-radius: 16px !important;
+      background: #FFF !important; padding: 18px !important; border-radius: 16px !important;
       border: 3px solid var(--kraft-border) !important; border-left: 10px solid var(--vet-teal) !important;
-      display: flex; flex-direction: column; gap: 10px; font-size: 14.5pt !important;
+      display: flex; flex-direction: column; gap: 8px; font-size: 14pt !important;
     }
 
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; margin-top: 18px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-top: 16px; }
     .gallery-card {
       aspect-ratio: 1; border-radius: 16px; border: 3px solid var(--kraft-border);
       background-size: cover; background-position: center; position: relative; overflow: hidden;
@@ -388,7 +381,7 @@
     .gallery-title {
       position: absolute; bottom: 0; left: 0; right: 0;
       background: rgba(45, 20, 65, 0.92); color: #FFF;
-      font-size: 12pt; font-weight: 800; padding: 9px; text-align: center;
+      font-size: 11pt; font-weight: 800; padding: 8px; text-align: center;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
   </style>
@@ -405,21 +398,15 @@
       </div>
     </div>
     <div class="actions">
-      <!-- BOTÓN PARA SUBIR FONDO DE PANTALLA DIRECTO -->
-      <button class="btn btn-alt" onclick="document.getElementById('inputFondoPantalla').click()">🖼️ Cambiar Fondo</button>
+      <!-- SUBIR / CAMBIAR FONDO -->
+      <button class="btn btn-alt" onclick="document.getElementById('inputFondoPantalla').click()">🖼️ Fondo</button>
       <input type="file" id="inputFondoPantalla" accept="image/*" style="display:none;" onchange="subirFondoPantalla(this)">
-      <button class="btn btn-alt" onclick="restablecerFondoDefecto()" title="Restablecer fondo original">↺ Fondo Original</button>
+      <button class="btn btn-alt" onclick="restablecerFondoDefecto()" title="Restablecer fondo original">↺ Restablecer</button>
 
       <button class="btn btn-alt" onclick="sincronizar()">🔄 Sincronizar</button>
       <button class="btn" onclick="abrirNuevo()">＋ Nueva Ficha</button>
     </div>
   </header>
-
-  <!-- BANNER DE RESUMEN (LIMPIO, SIN IMAGEN ROTA) -->
-  <div class="hero-banner">
-    <h3>🐾 Registro Familiar de Salud Animal</h3>
-    <p>Cuidado integral, vacunas, controles de peso y bitácora clínica para nuestros compañeros en Rinconada de Idahue.</p>
-  </div>
 
   <!-- BARRA DE FILTROS & BUSCADOR -->
   <div class="toolbar">
@@ -435,7 +422,7 @@
     </div>
   </div>
 
-  <!-- GRILLA PRINCIPAL -->
+  <!-- GRILLA PRINCIPAL DE MINI RETRATOS -->
   <div class="album-grid" id="grid"></div>
 
   <!-- MODAL / HISTORIA CLÍNICA -->
@@ -445,7 +432,7 @@
       <!-- ENCABEZADO MODAL -->
       <div class="vet-header">
         <div style="position: absolute; right: 0; top: 0;">
-          <button class="btn btn-alt" style="padding: 8px 18px; font-size: 13pt;" onclick="cerrar()">✕ Cerrar</button>
+          <button class="btn btn-alt" style="padding: 6px 16px; font-size: 12.5pt;" onclick="cerrar()">✕ Cerrar</button>
         </div>
         <span>CONSULTORIO VETERINARIO FAMILIAR</span>
         <h2 id="modalName">HISTORIA CLÍNICA</h2>
@@ -453,7 +440,7 @@
 
       <!-- PORTADA PRINCIPAL -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
-        <span id="coverTxt" style="font-size:15pt; font-weight:900; color:var(--vet-purple);">📸 Haz clic para cargar o cambiar la foto principal</span>
+        <span id="coverTxt" style="font-size:14pt; font-weight:900; color:var(--vet-purple);">📸 Haz clic para cargar o cambiar la foto</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
@@ -479,7 +466,7 @@
           </div>
         </div>
 
-        <div class="section-banner" style="margin-top:24px;">Datos de la Mascota</div>
+        <div class="section-banner" style="margin-top:20px;">Datos de la Mascota</div>
         <div class="form-row">
           <div class="field"><label>Nombre o Arete *</label><input type="text" id="fNom"></div>
           <div class="field">
@@ -492,7 +479,7 @@
           </div>
         </div>
 
-        <div class="form-row-3" style="margin-top:18px;">
+        <div class="form-row-3" style="margin-top:16px;">
           <div class="field">
             <label>Sexo</label>
             <select id="fSexo">
@@ -510,7 +497,7 @@
           <div class="field"><label>N° Microchip</label><input type="text" id="fChip" placeholder="956000000..."></div>
         </div>
 
-        <div class="form-row-3" style="margin-top:18px;">
+        <div class="form-row-3" style="margin-top:16px;">
           <div class="field"><label>Raza</label><input type="text" id="fRaza"></div>
           <div class="field"><label>Fecha de Nacimiento</label><input type="date" id="fNac"></div>
           <div class="field"><label>Fecha Defunción (si aplica)</label><input type="date" id="fDef"></div>
@@ -521,14 +508,14 @@
           <textarea id="fNot" rows="3" placeholder="Carácter, alergias, antecedentes médicos, anécdotas o cuidados..."></textarea>
         </div>
 
-        <button class="btn" style="margin-top:22px; width:100%; justify-content:center; font-size:15pt; padding:16px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
+        <button class="btn" style="margin-top:20px; width:100%; justify-content:center; font-size:15pt; padding:15px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
       </div>
 
       <!-- TAB 2: CLÍNICA & SALUD -->
       <div id="tab2" style="display:none;">
-        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:22px; border-radius:20px; margin-bottom:20px;">
+        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registrar Atención / Tratamiento</div>
-          <div class="form-row-3" style="margin-top:14px;">
+          <div class="form-row-3" style="margin-top:12px;">
             <div class="field"><label>Fecha</label><input type="date" id="cFecha"></div>
             <div class="field">
               <label>Categoría</label>
@@ -542,29 +529,29 @@
             </div>
             <div class="field"><label>Próxima Dosis / Control</label><input type="date" id="cProx"></div>
           </div>
-          <div class="field" style="margin-top:14px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
-          <div class="field" style="margin-top:14px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, gotas óticas, indicaciones..."></div>
-          <button class="btn" style="margin-top:18px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
+          <div class="field" style="margin-top:12px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
+          <div class="field" style="margin-top:12px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, indicaciones..."></div>
+          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
         </div>
-        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:14px;"></div>
+        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:12px;"></div>
       </div>
 
       <!-- TAB 3: CONTROL DE PESO -->
       <div id="tab3" style="display:none;">
-        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:22px; border-radius:20px; margin-bottom:20px;">
+        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registro de Peso</div>
-          <div class="form-row" style="margin-top:14px;">
+          <div class="form-row" style="margin-top:12px;">
             <div class="field"><label>Fecha de Pesaje</label><input type="date" id="pFecha"></div>
             <div class="field"><label>Peso (kg)</label><input type="number" step="0.01" id="pKg" placeholder="Ej: 5.20"></div>
           </div>
-          <button class="btn" style="margin-top:18px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
+          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
         </div>
-        <div id="pesoLista" style="display:flex; flex-direction:column; gap:14px;"></div>
+        <div id="pesoLista" style="display:flex; flex-direction:column; gap:12px;"></div>
       </div>
 
       <!-- TAB 4: ÁLBUM FOTOGRÁFICO -->
       <div id="tab4" style="display:none;">
-        <div style="display:flex; gap:14px;">
+        <div style="display:flex; gap:12px;">
           <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Descripción de la foto o momento...">
           <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
         </div>
@@ -586,7 +573,7 @@
     let b64Portada = null;
     let filtroEsp = "todos";
 
-    // CARGAR Y CAMBIAR FONDO DE PANTALLA
+    // FONDOS DE PANTALLA
     function subirFondoPantalla(input) {
       if (!input.files || !input.files[0]) return;
       const file = input.files[0];
@@ -654,14 +641,25 @@
         return matchEsp && matchText;
       });
 
+      // Si no hay mascotas aún, mostramos una tarjeta retrato para agregar la primera
       if (lista.length === 0) {
-        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:65px 24px; color:var(--text-dark); font-size:17pt; font-weight:900; background:var(--card-bg); border:3px solid var(--kraft-border); border-radius:20px;">No hay historias clínicas registradas. Pulsa <b>＋ Nueva Ficha</b> para comenzar.</div>`;
+        const emptyCard = document.createElement("div");
+        emptyCard.className = "portrait-card";
+        emptyCard.onclick = abrirNuevo;
+        emptyCard.innerHTML = `
+          <div class="portrait-frame" style="border-style: dashed; cursor:pointer;">
+            <div class="portrait-fallback">🐾</div>
+          </div>
+          <div class="portrait-name">＋ Agregar Mascota</div>
+          <div class="portrait-meta">Toca aquí para crear el primer mini retrato</div>
+        `;
+        g.appendChild(emptyCard);
         return;
       }
 
       lista.forEach(m => {
         const card = document.createElement("div");
-        card.className = "polaroid-card";
+        card.className = "portrait-card";
         card.onclick = () => abrir(m);
 
         const imgStyle = m.fotoPortada ? `background-image:url('${m.fotoPortada}')` : '';
@@ -670,19 +668,16 @@
         const chipTag = m.microchip ? `<div class="chip-microchip">Chip: ${m.microchip}</div>` : '';
 
         card.innerHTML = `
-          <div class="photo-frame" style="${imgStyle}">
-            ${!m.fotoPortada ? `<div class="photo-fallback">${fallbackIcon}</div>` : ''}
+          <div class="portrait-frame" style="${imgStyle}">
+            ${!m.fotoPortada ? `<div class="portrait-fallback">${fallbackIcon}</div>` : ''}
             ${memorialTag}
             ${chipTag}
           </div>
-          <div class="card-content">
-            <div class="card-name">${m.nombre}</div>
-            <div class="card-meta">${m.especie} • ${m.raza || 'Compañero familiar'}</div>
-            <div class="card-badges">
-              <span class="badge-pill">${m.sexo || 'Macho'}</span>
-              <span class="badge-pill">${m.esterilizado === 'Sí' ? 'Esterilizado/a' : 'No esterilizado'}</span>
-            </div>
-            ${m.notas ? `<div style="font-size:13pt; color:var(--text-muted); font-style:italic; margin-top:8px; line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
+          <div class="portrait-name">${m.nombre}</div>
+          <div class="portrait-meta">${m.especie} • ${m.raza || 'Compañero familiar'}</div>
+          <div class="portrait-badges">
+            <span class="badge-pill">${m.sexo || 'Macho'}</span>
+            <span class="badge-pill">${m.esterilizado === 'Sí' ? 'Esterilizado/a' : 'No esterilizado'}</span>
           </div>
         `;
         g.appendChild(card);
