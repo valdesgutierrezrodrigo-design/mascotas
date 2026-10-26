@@ -3,168 +3,374 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Álbum Familiar & Ficha Clínica • Rinconada de Idahue</title>
+  <title>Historia Clínica & Álbum Familiar • Rinconada de Idahue</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #FDFBF7;
-      --card-bg: #FFFFFF;
-      --border: #EADBCC;
-      --border-focus: #D08C5C;
-      --text-main: #332720;
-      --text-muted: #8C7E74;
-      --primary: #C36A38;
-      --primary-hover: #A55326;
-      --primary-soft: #F9EFE7;
-      --terracotta: #B45330;
-      --sage: #4E7053;
-      --sage-soft: #EEF5EF;
-      --shadow-photo: 0 4px 14px rgba(60, 40, 30, 0.08), 0 1px 3px rgba(60, 40, 30, 0.04);
-      --shadow-hover: 0 10px 24px rgba(60, 40, 30, 0.12);
+      /* Paleta inspirada en plantilla veterinaria & papel reciclado */
+      --bg-craft: #F4EAD8;
+      --bg-paper: #FAF6EE;
+      --card-bg: #FCFAF6;
+      --border: #DBC8B0;
+      
+      --purple-title: #4B286D;
+      --teal-banner: #7CD2CB;
+      --teal-dark: #3F9A93;
+      --pink-soft: #F9CAD5;
+      --text-main: #2E2520;
+      --text-muted: #6B5B52;
+
+      --shadow-paper: 0 4px 14px rgba(75, 40, 109, 0.08), 0 2px 6px rgba(0,0,0,0.05);
+      --shadow-card: 0 6px 18px rgba(75, 40, 109, 0.12);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background: var(--bg); color: var(--text-main); padding: 24px; display: flex; flex-direction: column; gap: 20px; min-height: 100vh; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
 
+    /* Fondo con textura de papel reciclado artesanal */
+    body {
+      background-color: var(--bg-craft);
+      background-image: 
+        radial-gradient(#d3c2a6 1px, transparent 1px),
+        radial-gradient(#dfd1b8 1px, var(--bg-craft) 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+      color: var(--text-main);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 100vh;
+      font-size: 17px;
+    }
+
+    /* HEADER */
     header {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
-      padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
-      box-shadow: var(--shadow-photo);
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow-paper);
     }
-    .brand { display: flex; align-items: center; gap: 14px; }
+
+    .brand { display: flex; align-items: center; gap: 16px; }
     .brand-icon {
-      width: 48px; height: 48px; border-radius: 50%; background: var(--primary-soft); color: var(--primary);
-      display: flex; align-items: center; justify-content: center; font-size: 20pt; border: 1px solid #F2DAC5;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #FFF; color: var(--purple-title);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26pt; border: 2px solid var(--pink-soft);
+      box-shadow: 0 2px 8px rgba(249, 202, 213, 0.5);
     }
-    .brand-title { font-family: 'Playfair Display', serif; font-size: 19pt; font-weight: 700; color: var(--text-main); }
-    .brand-sub { font-size: 9pt; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+    .brand-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 24pt;
+      font-weight: 900;
+      color: var(--purple-title);
+      letter-spacing: -0.5px;
+    }
+    .brand-sub {
+      font-size: 13pt;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-top: 2px;
+    }
 
-    .actions { display: flex; gap: 10px; align-items: center; }
+    /* BOTONES */
+    .actions { display: flex; gap: 12px; align-items: center; }
     .btn {
-      background: var(--primary); color: #FFF; border: none; padding: 9px 18px; border-radius: 10px;
-      font-weight: 700; cursor: pointer; font-size: 9pt; display: inline-flex; align-items: center; gap: 6px;
-      box-shadow: 0 2px 6px rgba(195, 106, 56, 0.25); transition: all 0.2s ease;
+      background: var(--purple-title);
+      color: #FFF;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 13pt;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(75, 40, 109, 0.25);
+      transition: all 0.2s ease;
     }
-    .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
-    .btn-alt { background: #FFF; border: 1px solid var(--border); color: var(--text-main); box-shadow: none; }
-    .btn-alt:hover { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+    .btn:hover { background: #371C52; transform: translateY(-2px); }
+    .btn-alt {
+      background: #FFF;
+      border: 2px solid var(--border);
+      color: var(--purple-title);
+      box-shadow: none;
+    }
+    .btn-alt:hover { background: var(--teal-banner); border-color: var(--teal-banner); color: #FFF; }
 
-    .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
-    .chip {
-      background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted);
-      padding: 7px 16px; border-radius: 24px; font-size: 8.5pt; font-weight: 700; cursor: pointer; transition: 0.2s;
+    /* FILTROS Y BÚSQUEDA */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .chip:hover, .chip.active { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; }
+    .chip {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      color: var(--text-muted);
+      padding: 9px 20px;
+      border-radius: 28px;
+      font-size: 12pt;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .chip:hover, .chip.active {
+      background: var(--teal-banner);
+      border-color: var(--teal-banner);
+      color: #FFF;
+      box-shadow: 0 2px 8px rgba(124, 210, 203, 0.4);
+    }
 
     .search-box {
-      display: flex; align-items: center; background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 24px; padding: 8px 16px; gap: 8px; min-width: 250px;
+      display: flex;
+      align-items: center;
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 28px;
+      padding: 10px 20px;
+      gap: 10px;
+      min-width: 300px;
     }
-    .search-box input { background: transparent; border: none; outline: none; color: var(--text-main); font-size: 9pt; width: 100%; font-weight: 600; }
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      font-size: 12pt;
+      width: 100%;
+      font-weight: 700;
+    }
 
-    .album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+    /* GRILLA POLAROID / VETERINARIA */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
     .polaroid-card {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
-      padding: 12px 12px 16px 12px; box-shadow: var(--shadow-photo); cursor: pointer;
-      display: flex; flex-direction: column; gap: 12px; transition: all 0.25s ease;
+      background: #FFF;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow-paper);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: all 0.25s ease;
     }
-    .polaroid-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: #DBC4AF; }
+    .polaroid-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+      border-color: var(--teal-banner);
+    }
+
     .photo-frame {
-      width: 100%; height: 210px; border-radius: 8px; background-color: var(--primary-soft);
-      background-size: cover; background-position: center; position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      height: 230px;
+      border-radius: 12px;
+      background-color: #F0ECE1;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
     }
-    .photo-fallback { font-size: 38pt; opacity: 0.7; }
+    .photo-fallback { font-size: 46pt; opacity: 0.8; }
+    
     .memorial-ribbon {
-      position: absolute; top: 10px; right: 10px; background: rgba(40, 30, 25, 0.75);
-      color: #FFF; font-size: 7.5pt; font-weight: 700; padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(45, 30, 25, 0.85); color: #FFF;
+      font-size: 10pt; font-weight: 700; padding: 5px 12px;
+      border-radius: 20px; backdrop-filter: blur(4px);
     }
     .chip-microchip {
-      position: absolute; bottom: 8px; left: 8px; background: rgba(255, 255, 255, 0.85);
-      font-size: 7pt; font-weight: 700; padding: 2px 7px; border-radius: 6px; color: var(--text-main);
+      position: absolute; bottom: 10px; left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      font-size: 9.5pt; font-weight: 800; padding: 4px 10px;
+      border-radius: 8px; color: var(--purple-title);
+      border: 1px solid var(--border);
     }
 
-    .card-content { display: flex; flex-direction: column; gap: 4px; text-align: center; }
-    .card-name { font-family: 'Playfair Display', serif; font-size: 14pt; font-weight: 700; color: var(--text-main); }
-    .card-meta { font-size: 8.5pt; color: var(--text-muted); font-weight: 600; }
-    .card-badges { display: flex; justify-content: center; gap: 6px; margin-top: 4px; }
-    .badge-pill { font-size: 7.5pt; padding: 2px 8px; border-radius: 12px; background: var(--sage-soft); color: var(--sage); font-weight: 700; }
+    .card-content { display: flex; flex-direction: column; gap: 6px; text-align: center; }
+    .card-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 18pt;
+      font-weight: 900;
+      color: var(--purple-title);
+    }
+    .card-meta { font-size: 11pt; color: var(--text-muted); font-weight: 700; }
+    .card-badges { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
+    .badge-pill {
+      font-size: 9.5pt; padding: 4px 10px; border-radius: 12px;
+      background: #EAF7F6; color: var(--teal-dark); font-weight: 800;
+    }
 
-    /* MODAL */
+    /* MODAL DE HISTORIA CLÍNICA */
     .overlay {
-      position: fixed; inset: 0; background: rgba(30, 20, 15, 0.45); display: none;
-      align-items: center; justify-content: center; padding: 16px; z-index: 1000; backdrop-filter: blur(5px);
+      position: fixed; inset: 0; background: rgba(40, 25, 55, 0.55);
+      display: none; align-items: center; justify-content: center;
+      padding: 16px; z-index: 1000; backdrop-filter: blur(5px);
     }
     .modal {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px;
-      width: 760px; max-width: 95vw; max-height: 90vh; overflow-y: auto; padding: 24px;
-      display: flex; flex-direction: column; gap: 16px; box-shadow: 0 20px 30px rgba(40, 25, 15, 0.2);
+      background: var(--bg-paper);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      width: 820px;
+      max-width: 95vw;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     }
-    .cover-box {
-      width: 100%; height: 180px; border-radius: 12px; border: 2px dashed #D6C2B0;
-      background-color: var(--primary-soft); background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
+
+    .vet-header {
+      text-align: center;
+      padding-bottom: 12px;
+      border-bottom: 2px dashed var(--border);
+      position: relative;
     }
-    .tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; overflow-x: auto; }
+    .vet-header h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 22pt;
+      font-weight: 900;
+      color: var(--purple-title);
+      letter-spacing: 0.5px;
+    }
+    .vet-header span {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* BANNERS DE SECCIÓN ESTILO CANVA */
+    .section-banner {
+      background: var(--teal-banner);
+      color: #FFF;
+      font-family: 'Nunito', sans-serif;
+      font-size: 13pt;
+      font-weight: 900;
+      text-align: center;
+      padding: 6px 14px;
+      border-radius: 10px;
+      margin: 14px 0 10px 0;
+      letter-spacing: 0.5px;
+    }
+    .section-subtitle {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13pt;
+      font-weight: 800;
+      color: var(--purple-title);
+      text-align: center;
+      margin: 12px 0 6px 0;
+    }
+
+    /* PESTAÑAS */
+    .tabs {
+      display: flex; gap: 8px; border-bottom: 2px solid var(--border);
+      padding-bottom: 10px; overflow-x: auto;
+    }
     .tab-btn {
-      background: transparent; border: none; color: var(--text-muted); font-size: 9pt;
-      font-weight: 700; padding: 8px 14px; cursor: pointer; border-radius: 8px; white-space: nowrap;
+      background: transparent; border: none; color: var(--text-muted);
+      font-size: 12pt; font-weight: 800; padding: 10px 18px;
+      cursor: pointer; border-radius: 10px; white-space: nowrap;
     }
-    .tab-btn.active { color: var(--primary); background: var(--primary-soft); }
+    .tab-btn.active { color: #FFF; background: var(--purple-title); }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-    .field { display: flex; flex-direction: column; gap: 5px; }
-    .field label { font-size: 7.5pt; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
+    /* FOTO PORTADA MODAL */
+    .cover-box {
+      width: 100%; height: 210px; border-radius: 14px;
+      border: 3px dashed var(--teal-banner);
+      background-color: #FFF; background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: 0.2s;
+    }
+    .cover-box:hover { border-color: var(--purple-title); }
+
+    /* FORMULARIOS & CAMPOS */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 11pt; font-weight: 800; color: var(--purple-title);
+    }
     .field input, .field select, .field textarea {
-      background: #FFF; border: 1px solid var(--border); border-radius: 8px;
-      padding: 9px 12px; color: var(--text-main); font-size: 9pt; outline: none; font-weight: 600;
+      background: #FFF; border: 2px solid var(--border); border-radius: 10px;
+      padding: 12px 14px; color: var(--text-main); font-size: 12pt;
+      outline: none; font-weight: 700;
     }
-    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--primary); }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--teal-banner);
+      box-shadow: 0 0 0 3px rgba(124, 210, 203, 0.25);
+    }
 
+    /* TARJETAS DE HISTORIAL */
     .record-card {
-      background: #FFF; padding: 12px; border-radius: 8px; font-size: 8.5pt;
-      border: 1px solid var(--border); border-left: 4px solid var(--primary); display: flex; flex-direction: column; gap: 4px;
+      background: #FFF; padding: 16px; border-radius: 12px;
+      border: 2px solid var(--border); border-left: 6px solid var(--teal-banner);
+      display: flex; flex-direction: column; gap: 6px; font-size: 11.5pt;
     }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 12px; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-top: 14px; }
     .gallery-card {
-      aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--border);
+      aspect-ratio: 1; border-radius: 12px; border: 2px solid var(--border);
       background-size: cover; background-position: center; position: relative; overflow: hidden;
     }
     .gallery-title {
-      position: absolute; bottom: 0; left: 0; right: 0; background: rgba(35, 25, 20, 0.85);
-      color: #FFF; font-size: 7.5pt; padding: 5px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(45, 25, 65, 0.85); color: #FFF;
+      font-size: 10pt; font-weight: 700; padding: 6px; text-align: center;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
   </style>
 </head>
 <body>
 
-  <!-- CABECERA -->
+  <!-- CABECERA PRINCIPAL -->
   <header>
     <div class="brand">
-      <div class="brand-icon">🐾</div>
+      <div class="brand-icon">🩺</div>
       <div>
-        <div class="brand-title">Mascotas & Rebaño</div>
-        <div class="brand-sub">Álbum familiar y ficha clínica • Rinconada de Idahue</div>
+        <div class="brand-title">Historia Clínica & Mascotas</div>
+        <div class="brand-sub">Ficha de Vida Veterinaria • Rinconada de Idahue</div>
       </div>
     </div>
     <div class="actions">
       <button class="btn btn-alt" onclick="sincronizar()">🔄 Sincronizar</button>
-      <button class="btn" onclick="abrirNuevo()">＋ Nuevo Compañero</button>
+      <button class="btn" onclick="abrirNuevo()">＋ Nueva Ficha</button>
     </div>
   </header>
 
-  <!-- FILTROS -->
+  <!-- BARRA DE FILTROS & BUSCADOR -->
   <div class="toolbar">
     <div class="filters">
       <button class="chip active" onclick="filtrar('todos', this)">Todos</button>
       <button class="chip" onclick="filtrar('Perro', this)">🐶 Perros</button>
       <button class="chip" onclick="filtrar('Gato', this)">🐱 Gatos</button>
-      <button class="chip" onclick="filtrar('Oveja', this)">🐑 Ovejas</button>
+      <button class="chip" onclick="filtrar('Oveja', this)">🐑 Ovejas / Rebaño</button>
     </div>
     <div class="search-box">
       <span>🔍</span>
@@ -172,34 +378,54 @@
     </div>
   </div>
 
-  <!-- GRILLA -->
+  <!-- GRILLA PRINCIPAL -->
   <div class="album-grid" id="grid"></div>
 
-  <!-- MODAL PRINCIPAL -->
+  <!-- MODAL / HISTORIA CLÍNICA ESTILO VETERINARIA -->
   <div class="overlay" id="overlay">
     <div class="modal">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h3 id="modalName" style="font-family:'Playfair Display', serif; color:var(--primary); font-size:16pt;">Ficha Clínica</h3>
-        <button class="btn btn-alt" style="padding:4px 12px;" onclick="cerrar()">✕ Cerrar</button>
+      
+      <!-- ENCABEZADO VETERINARIO -->
+      <div class="vet-header">
+        <div style="position: absolute; right: 0; top: 0;">
+          <button class="btn btn-alt" style="padding: 6px 14px; font-size: 11pt;" onclick="cerrar()">✕ Cerrar</button>
+        </div>
+        <span>CONSULTORIO VETERINARIO FAMILIAR</span>
+        <h2 id="modalName">HISTORIA CLÍNICA</h2>
       </div>
 
-      <!-- PORTADA -->
+      <!-- FOTO PRINCIPAL / PORTADA -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
-        <span id="coverTxt" style="font-size:9pt; font-weight:700; color:var(--primary);">📸 Haz clic para elegir la foto principal</span>
+        <span id="coverTxt" style="font-size:12pt; font-weight:800; color:var(--purple-title);">📸 Haz clic para cargar o cambiar la foto principal</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
+      <!-- TABS -->
       <div class="tabs">
-        <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">Datos Generales</button>
+        <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">Datos & Reseña</button>
         <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">Clínica & Salud</button>
         <button class="tab-btn" id="tabBtn3" onclick="verTab(3)">Control de Peso</button>
         <button class="tab-btn" id="tabBtn4" onclick="verTab(4)">Álbum de Recuerdos</button>
       </div>
 
-      <!-- TAB 1: DATOS GENERALES -->
+      <!-- TAB 1: DATOS (PROPIETARIO Y MASCOTA) -->
       <div id="tab1">
+        
+        <div class="section-banner">Datos de los Propietarios / Tutores</div>
         <div class="form-row">
-          <div class="field"><label>Nombre o Identificación *</label><input type="text" id="fNom"></div>
+          <div class="field">
+            <label>Tutor(es)</label>
+            <input type="text" id="fTutores" placeholder="Rodrigo Valdés / Lilian Pino">
+          </div>
+          <div class="field">
+            <label>Contacto / Residencia</label>
+            <input type="text" id="fContacto" placeholder="Rinconada de Idahue, Coltauco">
+          </div>
+        </div>
+
+        <div class="section-banner" style="margin-top:20px;">Datos de la Mascota</div>
+        <div class="form-row">
+          <div class="field"><label>Nombre o Arete *</label><input type="text" id="fNom"></div>
           <div class="field">
             <label>Especie</label>
             <select id="fEsp">
@@ -209,7 +435,8 @@
             </select>
           </div>
         </div>
-        <div class="form-row-3" style="margin-top:12px;">
+
+        <div class="form-row-3" style="margin-top:14px;">
           <div class="field">
             <label>Sexo</label>
             <select id="fSexo">
@@ -218,76 +445,77 @@
             </select>
           </div>
           <div class="field">
-            <label>Esterilizado</label>
+            <label>Esterilizado/a</label>
             <select id="fEst">
               <option value="Sí">Sí</option>
               <option value="No">No</option>
             </select>
           </div>
-          <div class="field"><label>N° Microchip</label><input type="text" id="fChip" placeholder="9560000..."></div>
+          <div class="field"><label>N° Microchip</label><input type="text" id="fChip" placeholder="956000000..."></div>
         </div>
-        <div class="form-row" style="margin-top:12px;">
-          <div class="field"><label>Raza o Características</label><input type="text" id="fRaza"></div>
-          <div class="field"><label>Fecha de Nacimiento o Llegada</label><input type="date" id="fNac"></div>
+
+        <div class="form-row-3" style="margin-top:14px;">
+          <div class="field"><label>Raza</label><input type="text" id="fRaza"></div>
+          <div class="field"><label>Fecha de Nacimiento</label><input type="date" id="fNac"></div>
+          <div class="field"><label>Fecha Defunción (si aplica)</label><input type="date" id="fDef"></div>
         </div>
-        <div class="form-row" style="margin-top:12px;">
-          <div class="field"><label>Fecha de Defunción (si aplica)</label><input type="date" id="fDef"></div>
-          <div class="field"><label>Tutores</label><input type="text" id="fTutores" placeholder="Rodrigo & Lilian"></div>
+
+        <div class="section-subtitle">Anamnesis / Observaciones Especiales</div>
+        <div class="field">
+          <textarea id="fNot" rows="3" placeholder="Carácter, alergias, antecedentes médicos, anécdotas o juguetes preferidos..."></textarea>
         </div>
-        <div class="field" style="margin-top:12px;">
-          <label>Notas Clínicas y Personalidad</label>
-          <textarea id="fNot" rows="3" placeholder="Alergias, comportamiento, cuidados especiales..."></textarea>
-        </div>
-        <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarFicha()">💾 Guardar Datos Generales</button>
+
+        <button class="btn" style="margin-top:18px; width:100%; justify-content:center; font-size:13pt; padding:14px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
       </div>
 
       <!-- TAB 2: CLÍNICA & SALUD -->
       <div id="tab2" style="display:none;">
-        <div style="background:var(--primary-soft); border:1px solid var(--border); padding:14px; border-radius:10px; margin-bottom:14px;">
-          <span style="font-size:8.5pt; font-weight:800; color:var(--terracotta);">+ Registrar Atención Clínica</span>
-          <div class="form-row-3" style="margin-top:8px;">
+        <div style="background:#FFF; border:2px solid var(--border); padding:18px; border-radius:16px; margin-bottom:16px;">
+          <div class="section-subtitle" style="margin-top:0;">+ Registrar Atención / Tratamiento</div>
+          <div class="form-row-3" style="margin-top:10px;">
             <div class="field"><label>Fecha</label><input type="date" id="cFecha"></div>
             <div class="field">
               <label>Categoría</label>
               <select id="cTipo">
-                <option value="Vacunas">Vacuna</option>
+                <option value="Vacunas">Vacunación</option>
                 <option value="Desparasitación interna">Desparasitación Interna</option>
                 <option value="Desparasitación externa">Desparasitación Externa</option>
-                <option value="Consultas">Consulta Médica</option>
-                <option value="Procedimiento">Esquila / Procedimiento</option>
+                <option value="Consultas">Consulta Veterinaria</option>
+                <option value="Procedimiento">Procedimiento / Esquila</option>
               </select>
             </div>
             <div class="field"><label>Próxima Dosis / Control</label><input type="date" id="cProx"></div>
           </div>
-          <div class="field" style="margin-top:8px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Triple Felina, Otitis..."></div>
-          <div class="field" style="margin-top:8px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, marca o medicación..."></div>
-          <button class="btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Agregar Registro de Salud</button>
+          <div class="field" style="margin-top:10px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
+          <div class="field" style="margin-top:10px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, gotas óticas, indicaciones..."></div>
+          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
         </div>
-        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:8px;"></div>
+        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
 
       <!-- TAB 3: CONTROL DE PESO -->
       <div id="tab3" style="display:none;">
-        <div style="background:var(--primary-soft); border:1px solid var(--border); padding:14px; border-radius:10px; margin-bottom:14px;">
-          <span style="font-size:8.5pt; font-weight:800; color:var(--terracotta);">+ Anotar Nuevo Peso</span>
-          <div class="form-row" style="margin-top:8px;">
-            <div class="field"><label>Fecha</label><input type="date" id="pFecha"></div>
-            <div class="field"><label>Peso (kg)</label><input type="number" step="0.01" id="pKg" placeholder="Ej: 4.85"></div>
+        <div style="background:#FFF; border:2px solid var(--border); padding:18px; border-radius:16px; margin-bottom:16px;">
+          <div class="section-subtitle" style="margin-top:0;">+ Registro de Peso</div>
+          <div class="form-row" style="margin-top:10px;">
+            <div class="field"><label>Fecha de Pesaje</label><input type="date" id="pFecha"></div>
+            <div class="field"><label>Peso (kg)</label><input type="number" step="0.01" id="pKg" placeholder="Ej: 5.20"></div>
           </div>
-          <button class="btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Registrar Peso</button>
+          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
         </div>
-        <div id="pesoLista" style="display:flex; flex-direction:column; gap:8px;"></div>
+        <div id="pesoLista" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
 
       <!-- TAB 4: ÁLBUM FOTOGRÁFICO -->
       <div id="tab4" style="display:none;">
-        <div style="display:flex; gap:8px;">
-          <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Momento especial, título o lugar...">
+        <div style="display:flex; gap:10px;">
+          <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Descripción de la foto o recuerdo...">
           <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
         </div>
         <input type="file" id="fileVida" accept="image/*" style="display:none;" onchange="subirFotoVida(this)">
         <div class="gallery-grid" id="albGrid"></div>
       </div>
+
     </div>
   </div>
 
@@ -314,7 +542,7 @@
           render();
         }
       } catch (e) {
-        console.warn("Sincronización local / sin conexión:", e);
+        console.warn("Modo local o fuera de línea:", e);
       }
     }
 
@@ -340,7 +568,7 @@
       });
 
       if (lista.length === 0) {
-        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:50px 20px; color:var(--text-muted); font-size:10pt;">No hay registros disponibles. Pulsa <b>＋ Nuevo Compañero</b> para ingresar uno.</div>`;
+        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:50px 20px; color:var(--text-muted); font-size:13pt; font-weight:700;">No hay historias clínicas registradas. Pulsa <b>＋ Nueva Ficha</b> para comenzar.</div>`;
         return;
       }
 
@@ -362,12 +590,12 @@
           </div>
           <div class="card-content">
             <div class="card-name">${m.nombre}</div>
-            <div class="card-meta">${m.especie} • ${m.raza || 'Mestizo'}</div>
+            <div class="card-meta">${m.especie} • ${m.raza || 'Compañero familiar'}</div>
             <div class="card-badges">
               <span class="badge-pill">${m.sexo || 'Sexo no ind.'}</span>
               <span class="badge-pill">${m.esterilizado === 'Sí' ? 'Esterilizado/a' : 'No esterilizado'}</span>
             </div>
-            ${m.notas ? `<div style="font-size:8pt; color:#6E5F55; font-style:italic; margin-top:6px; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
+            ${m.notas ? `<div style="font-size:10.5pt; color:#6E5F55; font-style:italic; margin-top:6px; line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
           </div>
         `;
         g.appendChild(card);
@@ -377,8 +605,8 @@
     function abrir(m) {
       actual = m;
       b64Portada = null;
-      document.getElementById("modalName").textContent = `Ficha de ${m.nombre}`;
-      document.getElementById("fNom").value = m.nombre;
+      document.getElementById("modalName").textContent = `HISTORIA CLÍNICA: ${m.nombre.toUpperCase()}`;
+      document.getElementById("fNom").value = m.nombre || "";
       document.getElementById("fEsp").value = m.especie || "Perro";
       document.getElementById("fSexo").value = m.sexo || "Macho";
       document.getElementById("fEst").value = m.esterilizado || "Sí";
@@ -387,6 +615,7 @@
       document.getElementById("fNac").value = m.nacimiento || "";
       document.getElementById("fDef").value = m.defuncion || "";
       document.getElementById("fTutores").value = m.tutores || "";
+      document.getElementById("fContacto").value = m.contacto || "Rinconada de Idahue, Coltauco";
       document.getElementById("fNot").value = m.notas || "";
 
       const box = document.getElementById("coverBox");
@@ -407,7 +636,7 @@
     }
 
     function abrirNuevo() {
-      abrir({ nombre: "", especie: "Perro", sexo: "Macho", esterilizado: "Sí", microchip: "", raza: "", nacimiento: "", defuncion: "", tutores: "", notas: "", fotoPortada: "", fila: null });
+      abrir({ nombre: "", especie: "Perro", sexo: "Macho", esterilizado: "Sí", microchip: "", raza: "", nacimiento: "", defuncion: "", tutores: "", contacto: "", notas: "", fotoPortada: "", fila: null });
     }
 
     function cerrar() { document.getElementById("overlay").style.display = "none"; }
@@ -435,7 +664,7 @@
 
     async function guardarFicha() {
       const nom = document.getElementById("fNom").value.trim();
-      if (!nom) return alert("Por favor ingresa un nombre o identificación.");
+      if (!nom) return alert("Por favor ingresa un nombre para la mascota.");
 
       const payload = {
         accion: "guardar_mascota",
@@ -449,6 +678,7 @@
         nacimiento: document.getElementById("fNac").value,
         defuncion: document.getElementById("fDef").value,
         tutores: document.getElementById("fTutores").value,
+        contacto: document.getElementById("fContacto").value,
         notas: document.getElementById("fNot").value,
         fotoPortadaActual: actual ? actual.fotoPortada : "",
         fotoPortadaNueva: b64Portada
@@ -469,18 +699,18 @@
       c.innerHTML = "";
       const evs = salud.filter(s => s.mascota === nom);
       if (evs.length === 0) {
-        c.innerHTML = `<span style="font-size:8.5pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas.</span>`;
+        c.innerHTML = `<span style="font-size:11pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
         return;
       }
       evs.forEach(e => {
         c.innerHTML += `
           <div class="record-card">
-            <div style="display:flex; justify-content:space-between;">
-              <b>${e.categoria || e.tipo || 'Atención'} - ${e.diagnostico || e.detalle || ''}</b>
-              <span style="color:var(--text-muted); font-size:8pt;">${e.fecha || ''}</span>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <b style="color:var(--purple-title); font-size:12pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
+              <span style="color:var(--text-muted); font-size:10.5pt; font-weight:700;">${e.fecha || ''}</span>
             </div>
-            ${e.tratamiento ? `<div><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
-            ${e.proximaDosis ? `<div style="color:var(--terracotta); font-size:8pt; font-weight:700;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
+            ${e.tratamiento ? `<div style="margin-top:4px;"><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
+            ${e.proximaDosis ? `<div style="color:var(--teal-dark); font-size:10.5pt; font-weight:800; margin-top:4px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
           </div>
         `;
       });
@@ -515,15 +745,15 @@
       c.innerHTML = "";
       const lista = pesos.filter(p => p.mascota === nom);
       if (lista.length === 0) {
-        c.innerHTML = `<span style="font-size:8.5pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
+        c.innerHTML = `<span style="font-size:11pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
         return;
       }
       lista.forEach(p => {
         c.innerHTML += `
-          <div class="record-card" style="border-left-color: var(--sage);">
-            <div style="display:flex; justify-content:space-between;">
-              <span><b>${p.peso} kg</b></span>
-              <span style="color:var(--text-muted); font-size:8pt;">${p.fecha}</span>
+          <div class="record-card" style="border-left-color: var(--purple-title);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:13pt; font-weight:900; color:var(--purple-title);">${p.peso} kg</span>
+              <span style="color:var(--text-muted); font-size:10.5pt; font-weight:700;">Fecha: ${p.fecha}</span>
             </div>
           </div>
         `;
