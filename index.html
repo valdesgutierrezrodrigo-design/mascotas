@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Álbum Familiar • Mascotas & Rebaño</title>
+  <title>Álbum Familiar & Ficha Clínica • Rinconada de Idahue</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -20,201 +20,124 @@
       --primary-hover: #A55326;
       --primary-soft: #F9EFE7;
       --terracotta: #B45330;
-      --sage: #6B8E70;
+      --sage: #4E7053;
       --sage-soft: #EEF5EF;
-      --gold: #DDA15E;
-      --rose-soft: #FCEBEA;
       --shadow-photo: 0 4px 14px rgba(60, 40, 30, 0.08), 0 1px 3px rgba(60, 40, 30, 0.04);
       --shadow-hover: 0 10px 24px rgba(60, 40, 30, 0.12);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { 
-      background: var(--bg); 
-      color: var(--text-main); 
-      padding: 24px; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 20px; 
-      min-height: 100vh; 
-    }
+    body { background: var(--bg); color: var(--text-main); padding: 24px; display: flex; flex-direction: column; gap: 20px; min-height: 100vh; }
 
-    /* HEADER */
     header {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+      padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
       box-shadow: var(--shadow-photo);
     }
     .brand { display: flex; align-items: center; gap: 14px; }
     .brand-icon {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--primary-soft); color: var(--primary);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20pt; border: 1px solid #F2DAC5;
+      width: 48px; height: 48px; border-radius: 50%; background: var(--primary-soft); color: var(--primary);
+      display: flex; align-items: center; justify-content: center; font-size: 20pt; border: 1px solid #F2DAC5;
     }
-    .brand-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 19pt; font-weight: 700; color: var(--text-main); letter-spacing: -0.3px;
-    }
+    .brand-title { font-family: 'Playfair Display', serif; font-size: 19pt; font-weight: 700; color: var(--text-main); }
     .brand-sub { font-size: 9pt; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
 
-    /* BOTONES */
     .actions { display: flex; gap: 10px; align-items: center; }
     .btn {
-      background: var(--primary); color: #FFF; border: none;
-      padding: 9px 18px; border-radius: 10px; font-weight: 700; cursor: pointer;
-      font-size: 9pt; display: inline-flex; align-items: center; gap: 6px;
-      box-shadow: 0 2px 6px rgba(195, 106, 56, 0.25);
-      transition: all 0.2s ease;
+      background: var(--primary); color: #FFF; border: none; padding: 9px 18px; border-radius: 10px;
+      font-weight: 700; cursor: pointer; font-size: 9pt; display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 2px 6px rgba(195, 106, 56, 0.25); transition: all 0.2s ease;
     }
     .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
-    .btn-alt {
-      background: #FFF; border: 1px solid var(--border); color: var(--text-main);
-      box-shadow: none;
-    }
+    .btn-alt { background: #FFF; border: 1px solid var(--border); color: var(--text-main); box-shadow: none; }
     .btn-alt:hover { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
 
-    /* BARRA DE FILTROS & BUSCADOR */
-    .toolbar {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 14px; flex-wrap: wrap;
-    }
+    .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
     .filters { display: flex; gap: 8px; flex-wrap: wrap; }
     .chip {
       background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted);
-      padding: 7px 16px; border-radius: 24px; font-size: 8.5pt; font-weight: 700;
-      cursor: pointer; transition: 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      padding: 7px 16px; border-radius: 24px; font-size: 8.5pt; font-weight: 700; cursor: pointer; transition: 0.2s;
     }
-    .chip:hover { border-color: var(--primary); color: var(--primary); }
-    .chip.active {
-      background: var(--primary-soft); border-color: var(--primary); color: var(--primary);
-    }
+    .chip:hover, .chip.active { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
 
     .search-box {
-      display: flex; align-items: center; background: var(--card-bg);
-      border: 1px solid var(--border); border-radius: 24px; padding: 8px 16px; gap: 8px;
-      min-width: 250px; box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      display: flex; align-items: center; background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 24px; padding: 8px 16px; gap: 8px; min-width: 250px;
     }
-    .search-box input {
-      background: transparent; border: none; outline: none;
-      color: var(--text-main); font-size: 9pt; width: 100%; font-weight: 600;
-    }
+    .search-box input { background: transparent; border: none; outline: none; color: var(--text-main); font-size: 9pt; width: 100%; font-weight: 600; }
 
-    /* GALERÍA / POLAROIDS */
-    .album-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
+    .album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
     .polaroid-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 12px 16px 12px;
-      box-shadow: var(--shadow-photo);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: all 0.25s ease;
-      position: relative;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+      padding: 12px 12px 16px 12px; box-shadow: var(--shadow-photo); cursor: pointer;
+      display: flex; flex-direction: column; gap: 12px; transition: all 0.25s ease;
     }
-    .polaroid-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: #DBC4AF;
-    }
-
+    .polaroid-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: #DBC4AF; }
     .photo-frame {
-      width: 100%; height: 210px; border-radius: 8px;
-      background-color: var(--primary-soft);
-      background-size: cover; background-position: center;
-      position: relative; overflow: hidden;
+      width: 100%; height: 210px; border-radius: 8px; background-color: var(--primary-soft);
+      background-size: cover; background-position: center; position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
     .photo-fallback { font-size: 38pt; opacity: 0.7; }
-
-    /* CINTA MEMORIAL */
     .memorial-ribbon {
-      position: absolute; top: 10px; right: 10px;
-      background: rgba(40, 30, 25, 0.75); color: #FFF;
-      font-size: 7.5pt; font-weight: 700; padding: 4px 9px;
-      border-radius: 20px; backdrop-filter: blur(4px);
-      display: flex; align-items: center; gap: 4px;
+      position: absolute; top: 10px; right: 10px; background: rgba(40, 30, 25, 0.75);
+      color: #FFF; font-size: 7.5pt; font-weight: 700; padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);
+    }
+    .chip-microchip {
+      position: absolute; bottom: 8px; left: 8px; background: rgba(255, 255, 255, 0.85);
+      font-size: 7pt; font-weight: 700; padding: 2px 7px; border-radius: 6px; color: var(--text-main);
     }
 
     .card-content { display: flex; flex-direction: column; gap: 4px; text-align: center; }
-    .card-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 14pt; font-weight: 700; color: var(--text-main);
-    }
-    .card-meta {
-      font-size: 8.5pt; color: var(--text-muted); font-weight: 600;
-    }
-    .card-note {
-      font-size: 8pt; color: #6E5F55; font-style: italic;
-      margin-top: 4px; line-height: 1.4;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    }
+    .card-name { font-family: 'Playfair Display', serif; font-size: 14pt; font-weight: 700; color: var(--text-main); }
+    .card-meta { font-size: 8.5pt; color: var(--text-muted); font-weight: 600; }
+    .card-badges { display: flex; justify-content: center; gap: 6px; margin-top: 4px; }
+    .badge-pill { font-size: 7.5pt; padding: 2px 8px; border-radius: 12px; background: var(--sage-soft); color: var(--sage); font-weight: 700; }
 
     /* MODAL */
     .overlay {
-      position: fixed; inset: 0; background: rgba(30, 20, 15, 0.45);
-      display: none; align-items: center; justify-content: center;
-      padding: 16px; z-index: 1000; backdrop-filter: blur(5px);
+      position: fixed; inset: 0; background: rgba(30, 20, 15, 0.45); display: none;
+      align-items: center; justify-content: center; padding: 16px; z-index: 1000; backdrop-filter: blur(5px);
     }
     .modal {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 18px; width: 720px; max-width: 95vw; max-height: 90vh;
-      overflow-y: auto; padding: 24px; display: flex; flex-direction: column;
-      gap: 16px; box-shadow: 0 20px 30px rgba(40, 25, 15, 0.2);
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px;
+      width: 760px; max-width: 95vw; max-height: 90vh; overflow-y: auto; padding: 24px;
+      display: flex; flex-direction: column; gap: 16px; box-shadow: 0 20px 30px rgba(40, 25, 15, 0.2);
     }
-
     .cover-box {
-      width: 100%; height: 210px; border-radius: 12px;
-      border: 2px dashed #D6C2B0; background-color: var(--primary-soft);
-      background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: 0.2s;
+      width: 100%; height: 180px; border-radius: 12px; border: 2px dashed #D6C2B0;
+      background-color: var(--primary-soft); background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
     }
-    .cover-box:hover { border-color: var(--primary); }
-
-    .tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; overflow-x: auto; }
     .tab-btn {
-      background: transparent; border: none; color: var(--text-muted); font-size: 9.5pt;
-      font-weight: 700; padding: 8px 16px; cursor: pointer; border-radius: 8px;
+      background: transparent; border: none; color: var(--text-muted); font-size: 9pt;
+      font-weight: 700; padding: 8px 14px; cursor: pointer; border-radius: 8px; white-space: nowrap;
     }
     .tab-btn.active { color: var(--primary); background: var(--primary-soft); }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
     .field { display: flex; flex-direction: column; gap: 5px; }
     .field label { font-size: 7.5pt; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
     .field input, .field select, .field textarea {
       background: #FFF; border: 1px solid var(--border); border-radius: 8px;
       padding: 9px 12px; color: var(--text-main); font-size: 9pt; outline: none; font-weight: 600;
     }
-    .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--primary); box-shadow: 0 0 0 3px rgba(195, 106, 56, 0.15);
-    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--primary); }
 
+    .record-card {
+      background: #FFF; padding: 12px; border-radius: 8px; font-size: 8.5pt;
+      border: 1px solid var(--border); border-left: 4px solid var(--primary); display: flex; flex-direction: column; gap: 4px;
+    }
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 12px; }
     .gallery-card {
       aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--border);
       background-size: cover; background-position: center; position: relative; overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
     .gallery-title {
-      position: absolute; bottom: 0; left: 0; right: 0; background: rgba(35, 25, 20, 0.8);
-      color: #FFF; font-size: 7.5pt; padding: 6px; text-align: center;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      position: absolute; bottom: 0; left: 0; right: 0; background: rgba(35, 25, 20, 0.85);
+      color: #FFF; font-size: 7.5pt; padding: 5px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
   </style>
 </head>
@@ -226,7 +149,7 @@
       <div class="brand-icon">🐾</div>
       <div>
         <div class="brand-title">Mascotas & Rebaño</div>
-        <div class="brand-sub">Álbum familiar y bitácora de vida • Rinconada de Idahue</div>
+        <div class="brand-sub">Álbum familiar y ficha clínica • Rinconada de Idahue</div>
       </div>
     </div>
     <div class="actions">
@@ -235,7 +158,7 @@
     </div>
   </header>
 
-  <!-- BARRA DE FILTROS & BÚSQUEDA -->
+  <!-- FILTROS -->
   <div class="toolbar">
     <div class="filters">
       <button class="chip active" onclick="filtrar('todos', this)">Todos</button>
@@ -245,37 +168,38 @@
     </div>
     <div class="search-box">
       <span>🔍</span>
-      <input type="text" id="busqueda" placeholder="Buscar por nombre o raza..." oninput="render()">
+      <input type="text" id="busqueda" placeholder="Buscar por nombre, microchip o raza..." oninput="render()">
     </div>
   </div>
 
-  <!-- ÁLBUM POLAROID -->
+  <!-- GRILLA -->
   <div class="album-grid" id="grid"></div>
 
-  <!-- MODAL / DIARIO ÍNTIMO -->
+  <!-- MODAL PRINCIPAL -->
   <div class="overlay" id="overlay">
     <div class="modal">
       <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h3 id="modalName" style="font-family:'Playfair Display', serif; color:var(--primary); font-size:16pt;">Libro de Vida</h3>
+        <h3 id="modalName" style="font-family:'Playfair Display', serif; color:var(--primary); font-size:16pt;">Ficha Clínica</h3>
         <button class="btn btn-alt" style="padding:4px 12px;" onclick="cerrar()">✕ Cerrar</button>
       </div>
 
-      <!-- FOTO PRINCIPAL -->
+      <!-- PORTADA -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
         <span id="coverTxt" style="font-size:9pt; font-weight:700; color:var(--primary);">📸 Haz clic para elegir la foto principal</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
       <div class="tabs">
-        <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">Datos & Recuerdos</button>
-        <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">Cuidados & Salud</button>
-        <button class="tab-btn" id="tabBtn3" onclick="verTab(3)">Álbum de Fotos</button>
+        <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">Datos Generales</button>
+        <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">Clínica & Salud</button>
+        <button class="tab-btn" id="tabBtn3" onclick="verTab(3)">Control de Peso</button>
+        <button class="tab-btn" id="tabBtn4" onclick="verTab(4)">Álbum de Recuerdos</button>
       </div>
 
-      <!-- TAB 1: DATOS & RECUERDOS -->
+      <!-- TAB 1: DATOS GENERALES -->
       <div id="tab1">
         <div class="form-row">
-          <div class="field"><label>Nombre o Arete *</label><input type="text" id="fNom"></div>
+          <div class="field"><label>Nombre o Identificación *</label><input type="text" id="fNom"></div>
           <div class="field">
             <label>Especie</label>
             <select id="fEsp">
@@ -284,43 +208,79 @@
               <option value="Oveja">Oveja / Cordero 🐑</option>
             </select>
           </div>
+        </div>
+        <div class="form-row-3" style="margin-top:12px;">
+          <div class="field">
+            <label>Sexo</label>
+            <select id="fSexo">
+              <option value="Macho">Macho</option>
+              <option value="Hembra">Hembra</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Esterilizado</label>
+            <select id="fEst">
+              <option value="Sí">Sí</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="field"><label>N° Microchip</label><input type="text" id="fChip" placeholder="9560000..."></div>
+        </div>
+        <div class="form-row" style="margin-top:12px;">
           <div class="field"><label>Raza o Características</label><input type="text" id="fRaza"></div>
           <div class="field"><label>Fecha de Nacimiento o Llegada</label><input type="date" id="fNac"></div>
-          <div class="field"><label>Fecha de Partida (si aplica)</label><input type="date" id="fDef"></div>
+        </div>
+        <div class="form-row" style="margin-top:12px;">
+          <div class="field"><label>Fecha de Defunción (si aplica)</label><input type="date" id="fDef"></div>
+          <div class="field"><label>Tutores</label><input type="text" id="fTutores" placeholder="Rodrigo & Lilian"></div>
         </div>
         <div class="field" style="margin-top:12px;">
-          <label>Notas, Personalidad y Cuidados Especiales</label>
-          <textarea id="fNot" rows="3" placeholder="Su juguete favorito, carácter, anécdotas o cuidados..."></textarea>
+          <label>Notas Clínicas y Personalidad</label>
+          <textarea id="fNot" rows="3" placeholder="Alergias, comportamiento, cuidados especiales..."></textarea>
         </div>
-        <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarFicha()">💾 Guardar en el Álbum</button>
+        <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarFicha()">💾 Guardar Datos Generales</button>
       </div>
 
-      <!-- TAB 2: CUIDADOS & SALUD -->
+      <!-- TAB 2: CLÍNICA & SALUD -->
       <div id="tab2" style="display:none;">
         <div style="background:var(--primary-soft); border:1px solid var(--border); padding:14px; border-radius:10px; margin-bottom:14px;">
-          <span style="font-size:8.5pt; font-weight:800; color:var(--terracotta);">+ Anotar Atención o Procedimiento</span>
-          <div class="form-row" style="margin-top:8px;">
-            <div class="field"><label>Fecha</label><input type="date" id="bFec"></div>
+          <span style="font-size:8.5pt; font-weight:800; color:var(--terracotta);">+ Registrar Atención Clínica</span>
+          <div class="form-row-3" style="margin-top:8px;">
+            <div class="field"><label>Fecha</label><input type="date" id="cFecha"></div>
             <div class="field">
-              <label>Tipo de Atención</label>
-              <select id="bTip">
-                <option value="Vacunación">Vacunación</option>
-                <option value="Desparasitación">Desparasitación</option>
-                <option value="Control">Control Veterinario</option>
-                <option value="Esquila">Esquila</option>
-                <option value="Pezuñas">Cuidado de Pezuñas</option>
+              <label>Categoría</label>
+              <select id="cTipo">
+                <option value="Vacunas">Vacuna</option>
+                <option value="Desparasitación interna">Desparasitación Interna</option>
+                <option value="Desparasitación externa">Desparasitación Externa</option>
+                <option value="Consultas">Consulta Médica</option>
+                <option value="Procedimiento">Esquila / Procedimiento</option>
               </select>
             </div>
+            <div class="field"><label>Próxima Dosis / Control</label><input type="date" id="cProx"></div>
           </div>
-          <div class="field" style="margin-top:8px;"><label>Detalle / Tratamiento</label><input type="text" id="bDet" placeholder="Dosis, producto o motivo..."></div>
-          <div class="field" style="margin-top:8px;"><label>Próxima Fecha (Opcional)</label><input type="date" id="bProx"></div>
-          <button class="btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="guardarBitacora()">＋ Registrar Cuidado</button>
+          <div class="field" style="margin-top:8px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Triple Felina, Otitis..."></div>
+          <div class="field" style="margin-top:8px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, marca o medicación..."></div>
+          <button class="btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Agregar Registro de Salud</button>
         </div>
-        <div id="bitLista" style="display:flex; flex-direction:column; gap:8px;"></div>
+        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:8px;"></div>
       </div>
 
-      <!-- TAB 3: ÁLBUM FOTOGRÁFICO -->
+      <!-- TAB 3: CONTROL DE PESO -->
       <div id="tab3" style="display:none;">
+        <div style="background:var(--primary-soft); border:1px solid var(--border); padding:14px; border-radius:10px; margin-bottom:14px;">
+          <span style="font-size:8.5pt; font-weight:800; color:var(--terracotta);">+ Anotar Nuevo Peso</span>
+          <div class="form-row" style="margin-top:8px;">
+            <div class="field"><label>Fecha</label><input type="date" id="pFecha"></div>
+            <div class="field"><label>Peso (kg)</label><input type="number" step="0.01" id="pKg" placeholder="Ej: 4.85"></div>
+          </div>
+          <button class="btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Registrar Peso</button>
+        </div>
+        <div id="pesoLista" style="display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+
+      <!-- TAB 4: ÁLBUM FOTOGRÁFICO -->
+      <div id="tab4" style="display:none;">
         <div style="display:flex; gap:8px;">
           <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Momento especial, título o lugar...">
           <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
@@ -335,7 +295,8 @@
     const API_URL = "https://script.google.com/macros/s/AKfycbwuQug9z9cBOUEgNRoo-lt6Mz_W1-UH3syKEG2L4s-VX9gu8Zp_sSelzowurPnKTqCoog/exec";
 
     let mascotas = [];
-    let bitacora = [];
+    let salud = [];
+    let pesos = [];
     let fotos = [];
     let actual = null;
     let b64Portada = null;
@@ -347,12 +308,13 @@
         const data = await res.json();
         if (data.status === "success") {
           mascotas = data.mascotas || [];
-          bitacora = data.bitacora || [];
+          salud = data.salud || data.bitacora || [];
+          pesos = data.pesos || [];
           fotos = data.fotos || [];
           render();
         }
       } catch (e) {
-        console.warn("Error al sincronizar:", e);
+        console.warn("Sincronización local / sin conexión:", e);
       }
     }
 
@@ -370,12 +332,15 @@
 
       let lista = mascotas.filter(m => {
         const matchEsp = (filtroEsp === "todos") || ((m.especie || "").toLowerCase() === filtroEsp.toLowerCase());
-        const matchText = !q || (m.nombre || "").toLowerCase().includes(q) || (m.raza || "").toLowerCase().includes(q);
+        const matchText = !q || 
+          (m.nombre || "").toLowerCase().includes(q) || 
+          (m.raza || "").toLowerCase().includes(q) ||
+          (m.microchip || "").toString().includes(q);
         return matchEsp && matchText;
       });
 
       if (lista.length === 0) {
-        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:50px 20px; color:var(--text-muted); font-size:10pt;">Aún no hay compañeros en esta categoría. Pulsa en <b>＋ Nuevo Compañero</b> para agregarlos.</div>`;
+        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:50px 20px; color:var(--text-muted); font-size:10pt;">No hay registros disponibles. Pulsa <b>＋ Nuevo Compañero</b> para ingresar uno.</div>`;
         return;
       }
 
@@ -387,16 +352,22 @@
         const imgStyle = m.fotoPortada ? `background-image:url('${m.fotoPortada}')` : '';
         const fallbackIcon = m.especie === 'Gato' ? '🐱' : (m.especie === 'Oveja' ? '🐑' : '🐶');
         const memorialTag = m.defuncion ? `<div class="memorial-ribbon">🕊️ En memoria</div>` : '';
+        const chipTag = m.microchip ? `<div class="chip-microchip">Chip: ${m.microchip}</div>` : '';
 
         card.innerHTML = `
           <div class="photo-frame" style="${imgStyle}">
             ${!m.fotoPortada ? `<div class="photo-fallback">${fallbackIcon}</div>` : ''}
             ${memorialTag}
+            ${chipTag}
           </div>
           <div class="card-content">
             <div class="card-name">${m.nombre}</div>
-            <div class="card-meta">${m.especie} • ${m.raza || 'Compañero familiar'}</div>
-            ${m.notas ? `<div class="card-note">“${m.notas}”</div>` : ''}
+            <div class="card-meta">${m.especie} • ${m.raza || 'Mestizo'}</div>
+            <div class="card-badges">
+              <span class="badge-pill">${m.sexo || 'Sexo no ind.'}</span>
+              <span class="badge-pill">${m.esterilizado === 'Sí' ? 'Esterilizado/a' : 'No esterilizado'}</span>
+            </div>
+            ${m.notas ? `<div style="font-size:8pt; color:#6E5F55; font-style:italic; margin-top:6px; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
           </div>
         `;
         g.appendChild(card);
@@ -406,12 +377,16 @@
     function abrir(m) {
       actual = m;
       b64Portada = null;
-      document.getElementById("modalName").textContent = `Recuerdos de ${m.nombre}`;
+      document.getElementById("modalName").textContent = `Ficha de ${m.nombre}`;
       document.getElementById("fNom").value = m.nombre;
       document.getElementById("fEsp").value = m.especie || "Perro";
+      document.getElementById("fSexo").value = m.sexo || "Macho";
+      document.getElementById("fEst").value = m.esterilizado || "Sí";
+      document.getElementById("fChip").value = m.microchip || "";
       document.getElementById("fRaza").value = m.raza || "";
       document.getElementById("fNac").value = m.nacimiento || "";
       document.getElementById("fDef").value = m.defuncion || "";
+      document.getElementById("fTutores").value = m.tutores || "";
       document.getElementById("fNot").value = m.notas || "";
 
       const box = document.getElementById("coverBox");
@@ -425,23 +400,24 @@
       }
 
       verTab(1);
-      renderBitacora(m.nombre);
+      renderSalud(m.nombre);
+      renderPesos(m.nombre);
       renderFotos(m.nombre);
       document.getElementById("overlay").style.display = "flex";
     }
 
     function abrirNuevo() {
-      abrir({ nombre: "", especie: "Perro", raza: "", nacimiento: "", defuncion: "", fotoPortada: "", notas: "", fila: null });
+      abrir({ nombre: "", especie: "Perro", sexo: "Macho", esterilizado: "Sí", microchip: "", raza: "", nacimiento: "", defuncion: "", tutores: "", notas: "", fotoPortada: "", fila: null });
     }
 
-    function cerrar() {
-      document.getElementById("overlay").style.display = "none";
-    }
+    function cerrar() { document.getElementById("overlay").style.display = "none"; }
 
     function verTab(n) {
-      [1, 2, 3].forEach(i => {
-        document.getElementById("tab" + i).style.display = (i === n) ? "block" : "none";
-        document.getElementById("tabBtn" + i).className = (i === n) ? "tab-btn active" : "tab-btn";
+      [1, 2, 3, 4].forEach(i => {
+        const t = document.getElementById("tab" + i);
+        const b = document.getElementById("tabBtn" + i);
+        if (t) t.style.display = (i === n) ? "block" : "none";
+        if (b) b.className = (i === n) ? "tab-btn active" : "tab-btn";
       });
     }
 
@@ -459,16 +435,20 @@
 
     async function guardarFicha() {
       const nom = document.getElementById("fNom").value.trim();
-      if (!nom) return alert("Por favor ingresa un nombre o arete.");
+      if (!nom) return alert("Por favor ingresa un nombre o identificación.");
 
       const payload = {
         accion: "guardar_mascota",
         fila: actual ? actual.fila : null,
         nombre: nom,
         especie: document.getElementById("fEsp").value,
+        sexo: document.getElementById("fSexo").value,
+        esterilizado: document.getElementById("fEst").value,
+        microchip: document.getElementById("fChip").value,
         raza: document.getElementById("fRaza").value,
         nacimiento: document.getElementById("fNac").value,
         defuncion: document.getElementById("fDef").value,
+        tutores: document.getElementById("fTutores").value,
         notas: document.getElementById("fNot").value,
         fotoPortadaActual: actual ? actual.fotoPortada : "",
         fotoPortadaNueva: b64Portada
@@ -484,47 +464,89 @@
       sincronizar();
     }
 
-    function renderBitacora(nom) {
-      const c = document.getElementById("bitLista");
+    function renderSalud(nom) {
+      const c = document.getElementById("clinicaLista");
       c.innerHTML = "";
-      const evs = bitacora.filter(b => b.mascota === nom);
+      const evs = salud.filter(s => s.mascota === nom);
       if (evs.length === 0) {
-        c.innerHTML = `<span style="font-size:8.5pt; color:var(--text-muted); font-style:italic;">Aún no se han anotado atenciones veterinarias.</span>`;
+        c.innerHTML = `<span style="font-size:8.5pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas.</span>`;
         return;
       }
       evs.forEach(e => {
         c.innerHTML += `
-          <div style="background:#FFF; padding:12px; border-radius:8px; font-size:8.5pt; border:1px solid var(--border); border-left:4px solid var(--primary);">
-            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-              <b>${e.tipo}</b>
-              <span style="color:var(--text-muted); font-size:8pt; font-weight:600;">${e.fecha}</span>
+          <div class="record-card">
+            <div style="display:flex; justify-content:space-between;">
+              <b>${e.categoria || e.tipo || 'Atención'} - ${e.diagnostico || e.detalle || ''}</b>
+              <span style="color:var(--text-muted); font-size:8pt;">${e.fecha || ''}</span>
             </div>
-            <div>${e.detalle}</div>
-            ${e.proximoControl ? `<div style="color:var(--terracotta); font-size:8pt; margin-top:4px; font-weight:700;">➔ Próxima fecha sugerida: ${e.proximoControl}</div>` : ''}
+            ${e.tratamiento ? `<div><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
+            ${e.proximaDosis ? `<div style="color:var(--terracotta); font-size:8pt; font-weight:700;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
           </div>
         `;
       });
     }
 
-    async function guardarBitacora() {
+    async function guardarClinica() {
       if (!actual) return;
-      const det = document.getElementById("bDet").value.trim();
-      if (!det) return alert("Ingresa el detalle del cuidado.");
+      const diag = document.getElementById("cDiag").value.trim();
+      if (!diag) return alert("Ingresa el diagnóstico o motivo.");
 
       await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
-          accion: "guardar_bitacora",
+          accion: "guardar_salud",
           mascota: actual.nombre,
-          fecha: document.getElementById("bFec").value,
-          tipo: document.getElementById("bTip").value,
-          detalle: det,
-          proximoControl: document.getElementById("bProx").value
+          fecha: document.getElementById("cFecha").value,
+          categoria: document.getElementById("cTipo").value,
+          diagnostico: diag,
+          tratamiento: document.getElementById("cTrat").value,
+          proximaDosis: document.getElementById("cProx").value
         })
       });
 
-      document.getElementById("bDet").value = "";
+      document.getElementById("cDiag").value = "";
+      document.getElementById("cTrat").value = "";
+      sincronizar();
+    }
+
+    function renderPesos(nom) {
+      const c = document.getElementById("pesoLista");
+      c.innerHTML = "";
+      const lista = pesos.filter(p => p.mascota === nom);
+      if (lista.length === 0) {
+        c.innerHTML = `<span style="font-size:8.5pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
+        return;
+      }
+      lista.forEach(p => {
+        c.innerHTML += `
+          <div class="record-card" style="border-left-color: var(--sage);">
+            <div style="display:flex; justify-content:space-between;">
+              <span><b>${p.peso} kg</b></span>
+              <span style="color:var(--text-muted); font-size:8pt;">${p.fecha}</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    async function guardarPeso() {
+      if (!actual) return;
+      const kg = document.getElementById("pKg").value;
+      if (!kg) return alert("Ingresa el peso en kg.");
+
+      await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          accion: "guardar_peso",
+          mascota: actual.nombre,
+          fecha: document.getElementById("pFecha").value,
+          peso: kg
+        })
+      });
+
+      document.getElementById("pKg").value = "";
       sincronizar();
     }
 
