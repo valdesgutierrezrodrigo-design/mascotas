@@ -6,167 +6,168 @@
   <title>Historia Clínica & Álbum Familiar • Rinconada de Idahue</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Paleta inspirada en plantilla veterinaria & papel reciclado */
-      --bg-craft: #F4EAD8;
-      --bg-paper: #FAF6EE;
-      --card-bg: #FCFAF6;
-      --border: #DBC8B0;
+      /* Papel Kraft reciclado según imagen adjunta */
+      --kraft-bg: #BCA185;
+      --kraft-light: #CBB49C;
+      --kraft-card: #FDFBF7;
+      --kraft-border: #8D7358;
       
-      --purple-title: #4B286D;
-      --teal-banner: #7CD2CB;
-      --teal-dark: #3F9A93;
-      --pink-soft: #F9CAD5;
-      --text-main: #2E2520;
-      --text-muted: #6B5B52;
-
-      --shadow-paper: 0 4px 14px rgba(75, 40, 109, 0.08), 0 2px 6px rgba(0,0,0,0.05);
-      --shadow-card: 0 6px 18px rgba(75, 40, 109, 0.12);
+      /* Colores de acento e historia clínica veterinaria */
+      --vet-green: #3F5E46;
+      --vet-teal: #4EA39B;
+      --vet-purple: #462A64;
+      --text-dark: #221A15;
+      --text-muted: #5E4E42;
+      
+      --shadow-paper: 0 4px 12px rgba(60, 40, 20, 0.15), 0 1px 4px rgba(0,0,0,0.1);
+      --shadow-card: 0 8px 24px rgba(50, 30, 15, 0.2);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
 
-    /* Fondo con textura de papel reciclado artesanal */
+    /* Fondo de papel reciclado kraft con microfibras y moteado */
     body {
-      background-color: var(--bg-craft);
+      background-color: var(--kraft-bg);
       background-image: 
-        radial-gradient(#d3c2a6 1px, transparent 1px),
-        radial-gradient(#dfd1b8 1px, var(--bg-craft) 1px);
-      background-size: 32px 32px;
-      background-position: 0 0, 16px 16px;
-      color: var(--text-main);
+        radial-gradient(#9B8066 1px, transparent 1px),
+        radial-gradient(#AA8F74 1.5px, var(--kraft-bg) 1.5px);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+      color: var(--text-dark);
       padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 24px;
       min-height: 100vh;
-      font-size: 17px;
+      font-size: 19px; /* Letra base más grande */
     }
 
     /* HEADER */
     header {
-      background: var(--card-bg);
-      border: 2px solid var(--border);
-      border-radius: 20px;
-      padding: 20px 28px;
+      background: var(--kraft-card);
+      border: 3px solid var(--kraft-border);
+      border-radius: 22px;
+      padding: 22px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 18px;
       box-shadow: var(--shadow-paper);
     }
 
-    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 18px; }
     .brand-icon {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #FFF; color: var(--purple-title);
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #FFF; color: var(--vet-purple);
       display: flex; align-items: center; justify-content: center;
-      font-size: 26pt; border: 2px solid var(--pink-soft);
-      box-shadow: 0 2px 8px rgba(249, 202, 213, 0.5);
+      font-size: 30pt; border: 3px solid var(--kraft-border);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
     .brand-title {
       font-family: 'Nunito', sans-serif;
-      font-size: 24pt;
+      font-size: 26pt;
       font-weight: 900;
-      color: var(--purple-title);
+      color: var(--vet-purple);
       letter-spacing: -0.5px;
     }
     .brand-sub {
-      font-size: 13pt;
+      font-size: 14pt;
       color: var(--text-muted);
       font-weight: 700;
       margin-top: 2px;
     }
 
-    /* BOTONES */
-    .actions { display: flex; gap: 12px; align-items: center; }
+    /* BOTONES ACCIONES */
+    .actions { display: flex; gap: 14px; align-items: center; }
     .btn {
-      background: var(--purple-title);
+      background: var(--vet-purple);
       color: #FFF;
       border: none;
-      padding: 12px 22px;
+      padding: 13px 24px;
       border-radius: 14px;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
-      font-size: 13pt;
+      font-size: 14pt;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 10px rgba(75, 40, 109, 0.25);
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(70, 42, 100, 0.3);
       transition: all 0.2s ease;
     }
-    .btn:hover { background: #371C52; transform: translateY(-2px); }
+    .btn:hover { background: #321c49; transform: translateY(-2px); }
     .btn-alt {
       background: #FFF;
-      border: 2px solid var(--border);
-      color: var(--purple-title);
+      border: 2.5px solid var(--kraft-border);
+      color: var(--vet-purple);
       box-shadow: none;
     }
-    .btn-alt:hover { background: var(--teal-banner); border-color: var(--teal-banner); color: #FFF; }
+    .btn-alt:hover { background: var(--vet-teal); border-color: var(--vet-teal); color: #FFF; }
 
-    /* FILTROS Y BÚSQUEDA */
+    /* BARRA DE FILTROS Y BÚSQUEDA */
     .toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
       flex-wrap: wrap;
     }
-    .filters { display: flex; gap: 10px; flex-wrap: wrap; }
+    .filters { display: flex; gap: 12px; flex-wrap: wrap; }
     .chip {
-      background: var(--card-bg);
-      border: 2px solid var(--border);
-      color: var(--text-muted);
-      padding: 9px 20px;
-      border-radius: 28px;
-      font-size: 12pt;
-      font-weight: 700;
+      background: var(--kraft-card);
+      border: 2.5px solid var(--kraft-border);
+      color: var(--text-dark);
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 13.5pt;
+      font-weight: 800;
       cursor: pointer;
       transition: 0.2s;
     }
     .chip:hover, .chip.active {
-      background: var(--teal-banner);
-      border-color: var(--teal-banner);
+      background: var(--vet-teal);
+      border-color: var(--vet-teal);
       color: #FFF;
-      box-shadow: 0 2px 8px rgba(124, 210, 203, 0.4);
+      box-shadow: 0 3px 10px rgba(78, 163, 155, 0.45);
     }
 
     .search-box {
       display: flex;
       align-items: center;
-      background: var(--card-bg);
-      border: 2px solid var(--border);
-      border-radius: 28px;
-      padding: 10px 20px;
+      background: var(--kraft-card);
+      border: 2.5px solid var(--kraft-border);
+      border-radius: 30px;
+      padding: 11px 22px;
       gap: 10px;
-      min-width: 300px;
+      min-width: 330px;
+      box-shadow: var(--shadow-paper);
     }
     .search-box input {
       background: transparent;
       border: none;
       outline: none;
-      color: var(--text-main);
-      font-size: 12pt;
+      color: var(--text-dark);
+      font-size: 13pt;
       width: 100%;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    /* GRILLA POLAROID / VETERINARIA */
+    /* GRILLA POLAROID / EXPEDIENTES */
     .album-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 26px;
     }
 
     .polaroid-card {
-      background: #FFF;
-      border: 2px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
+      background: var(--kraft-card);
+      border: 3px solid var(--kraft-border);
+      border-radius: 20px;
+      padding: 18px;
       box-shadow: var(--shadow-paper);
       cursor: pointer;
       display: flex;
@@ -177,14 +178,14 @@
     .polaroid-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-card);
-      border-color: var(--teal-banner);
+      border-color: var(--vet-purple);
     }
 
     .photo-frame {
       width: 100%;
-      height: 230px;
-      border-radius: 12px;
-      background-color: #F0ECE1;
+      height: 240px;
+      border-radius: 14px;
+      background-color: var(--kraft-light);
       background-size: cover;
       background-position: center;
       position: relative;
@@ -192,164 +193,165 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--border);
+      border: 2px solid var(--kraft-border);
     }
-    .photo-fallback { font-size: 46pt; opacity: 0.8; }
+    .photo-fallback { font-size: 52pt; opacity: 0.85; }
     
     .memorial-ribbon {
       position: absolute; top: 12px; right: 12px;
-      background: rgba(45, 30, 25, 0.85); color: #FFF;
-      font-size: 10pt; font-weight: 700; padding: 5px 12px;
+      background: rgba(30, 20, 15, 0.88); color: #FFF;
+      font-size: 11pt; font-weight: 800; padding: 6px 14px;
       border-radius: 20px; backdrop-filter: blur(4px);
     }
     .chip-microchip {
-      position: absolute; bottom: 10px; left: 10px;
+      position: absolute; bottom: 12px; left: 12px;
       background: rgba(255, 255, 255, 0.95);
-      font-size: 9.5pt; font-weight: 800; padding: 4px 10px;
-      border-radius: 8px; color: var(--purple-title);
-      border: 1px solid var(--border);
+      font-size: 10.5pt; font-weight: 900; padding: 5px 12px;
+      border-radius: 8px; color: var(--vet-purple);
+      border: 2px solid var(--kraft-border);
     }
 
-    .card-content { display: flex; flex-direction: column; gap: 6px; text-align: center; }
+    .card-content { display: flex; flex-direction: column; gap: 8px; text-align: center; }
     .card-name {
       font-family: 'Nunito', sans-serif;
-      font-size: 18pt;
+      font-size: 20pt;
       font-weight: 900;
-      color: var(--purple-title);
+      color: var(--vet-purple);
     }
-    .card-meta { font-size: 11pt; color: var(--text-muted); font-weight: 700; }
-    .card-badges { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
+    .card-meta { font-size: 12.5pt; color: var(--text-muted); font-weight: 700; }
+    .card-badges { display: flex; justify-content: center; gap: 10px; margin-top: 4px; }
     .badge-pill {
-      font-size: 9.5pt; padding: 4px 10px; border-radius: 12px;
-      background: #EAF7F6; color: var(--teal-dark); font-weight: 800;
+      font-size: 11pt; padding: 5px 12px; border-radius: 14px;
+      background: #E4EFEA; color: var(--vet-green); font-weight: 900;
+      border: 1px solid var(--kraft-border);
     }
 
     /* MODAL DE HISTORIA CLÍNICA */
     .overlay {
-      position: fixed; inset: 0; background: rgba(40, 25, 55, 0.55);
+      position: fixed; inset: 0; background: rgba(45, 30, 20, 0.65);
       display: none; align-items: center; justify-content: center;
-      padding: 16px; z-index: 1000; backdrop-filter: blur(5px);
+      padding: 18px; z-index: 1000; backdrop-filter: blur(6px);
     }
     .modal {
-      background: var(--bg-paper);
-      border: 2px solid var(--border);
-      border-radius: 24px;
-      width: 820px;
+      background: var(--kraft-card);
+      border: 3.5px solid var(--kraft-border);
+      border-radius: 26px;
+      width: 860px;
       max-width: 95vw;
       max-height: 92vh;
       overflow-y: auto;
-      padding: 28px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      gap: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
     }
 
     .vet-header {
       text-align: center;
-      padding-bottom: 12px;
-      border-bottom: 2px dashed var(--border);
+      padding-bottom: 14px;
+      border-bottom: 3px dashed var(--kraft-border);
       position: relative;
     }
     .vet-header h2 {
       font-family: 'Nunito', sans-serif;
-      font-size: 22pt;
+      font-size: 25pt;
       font-weight: 900;
-      color: var(--purple-title);
+      color: var(--vet-purple);
       letter-spacing: 0.5px;
     }
     .vet-header span {
-      font-size: 11pt;
-      font-weight: 700;
-      color: var(--teal-dark);
+      font-size: 12.5pt;
+      font-weight: 800;
+      color: var(--vet-green);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
 
-    /* BANNERS DE SECCIÓN ESTILO CANVA */
+    /* BANNERS DE SECCIÓN */
     .section-banner {
-      background: var(--teal-banner);
+      background: var(--vet-teal);
       color: #FFF;
       font-family: 'Nunito', sans-serif;
-      font-size: 13pt;
+      font-size: 15pt;
       font-weight: 900;
       text-align: center;
-      padding: 6px 14px;
-      border-radius: 10px;
-      margin: 14px 0 10px 0;
+      padding: 8px 16px;
+      border-radius: 12px;
+      margin: 16px 0 12px 0;
       letter-spacing: 0.5px;
     }
     .section-subtitle {
       font-family: 'Nunito', sans-serif;
-      font-size: 13pt;
-      font-weight: 800;
-      color: var(--purple-title);
+      font-size: 14.5pt;
+      font-weight: 900;
+      color: var(--vet-purple);
       text-align: center;
-      margin: 12px 0 6px 0;
+      margin: 14px 0 8px 0;
     }
 
     /* PESTAÑAS */
     .tabs {
-      display: flex; gap: 8px; border-bottom: 2px solid var(--border);
-      padding-bottom: 10px; overflow-x: auto;
+      display: flex; gap: 10px; border-bottom: 2.5px solid var(--kraft-border);
+      padding-bottom: 12px; overflow-x: auto;
     }
     .tab-btn {
-      background: transparent; border: none; color: var(--text-muted);
-      font-size: 12pt; font-weight: 800; padding: 10px 18px;
-      cursor: pointer; border-radius: 10px; white-space: nowrap;
+      background: #FFF; border: 2px solid var(--kraft-border); color: var(--text-dark);
+      font-size: 13pt; font-weight: 900; padding: 11px 20px;
+      cursor: pointer; border-radius: 12px; white-space: nowrap;
     }
-    .tab-btn.active { color: #FFF; background: var(--purple-title); }
+    .tab-btn.active { color: #FFF; background: var(--vet-purple); border-color: var(--vet-purple); }
 
-    /* FOTO PORTADA MODAL */
+    /* FOTO PORTADA */
     .cover-box {
-      width: 100%; height: 210px; border-radius: 14px;
-      border: 3px dashed var(--teal-banner);
-      background-color: #FFF; background-size: cover; background-position: center;
+      width: 100%; height: 230px; border-radius: 16px;
+      border: 3px dashed var(--vet-teal);
+      background-color: var(--kraft-light); background-size: cover; background-position: center;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; transition: 0.2s;
     }
-    .cover-box:hover { border-color: var(--purple-title); }
+    .cover-box:hover { border-color: var(--vet-purple); }
 
-    /* FORMULARIOS & CAMPOS */
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
-    .field { display: flex; flex-direction: column; gap: 6px; }
+    /* CAMPOS DEL FORMULARIO */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
     .field label {
-      font-size: 11pt; font-weight: 800; color: var(--purple-title);
+      font-size: 12pt; font-weight: 900; color: var(--vet-purple);
     }
     .field input, .field select, .field textarea {
-      background: #FFF; border: 2px solid var(--border); border-radius: 10px;
-      padding: 12px 14px; color: var(--text-main); font-size: 12pt;
-      outline: none; font-weight: 700;
+      background: #FFF; border: 2.5px solid var(--kraft-border); border-radius: 12px;
+      padding: 13px 16px; color: var(--text-dark); font-size: 13pt;
+      outline: none; font-weight: 800;
     }
     .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--teal-banner);
-      box-shadow: 0 0 0 3px rgba(124, 210, 203, 0.25);
+      border-color: var(--vet-teal);
+      box-shadow: 0 0 0 4px rgba(78, 163, 155, 0.3);
     }
 
-    /* TARJETAS DE HISTORIAL */
+    /* REGISTROS HISTÓRICOS */
     .record-card {
-      background: #FFF; padding: 16px; border-radius: 12px;
-      border: 2px solid var(--border); border-left: 6px solid var(--teal-banner);
-      display: flex; flex-direction: column; gap: 6px; font-size: 11.5pt;
+      background: #FFF; padding: 18px; border-radius: 14px;
+      border: 2.5px solid var(--kraft-border); border-left: 8px solid var(--vet-teal);
+      display: flex; flex-direction: column; gap: 8px; font-size: 13pt;
     }
 
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-top: 14px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-top: 16px; }
     .gallery-card {
-      aspect-ratio: 1; border-radius: 12px; border: 2px solid var(--border);
+      aspect-ratio: 1; border-radius: 14px; border: 2.5px solid var(--kraft-border);
       background-size: cover; background-position: center; position: relative; overflow: hidden;
     }
     .gallery-title {
       position: absolute; bottom: 0; left: 0; right: 0;
-      background: rgba(45, 25, 65, 0.85); color: #FFF;
-      font-size: 10pt; font-weight: 700; padding: 6px; text-align: center;
+      background: rgba(45, 25, 65, 0.9); color: #FFF;
+      font-size: 11pt; font-weight: 800; padding: 8px; text-align: center;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
   </style>
 </head>
 <body>
 
-  <!-- CABECERA PRINCIPAL -->
+  <!-- CABECERA -->
   <header>
     <div class="brand">
       <div class="brand-icon">🩺</div>
@@ -381,22 +383,22 @@
   <!-- GRILLA PRINCIPAL -->
   <div class="album-grid" id="grid"></div>
 
-  <!-- MODAL / HISTORIA CLÍNICA ESTILO VETERINARIA -->
+  <!-- MODAL / HISTORIA CLÍNICA -->
   <div class="overlay" id="overlay">
     <div class="modal">
       
-      <!-- ENCABEZADO VETERINARIO -->
+      <!-- ENCABEZADO MODAL -->
       <div class="vet-header">
         <div style="position: absolute; right: 0; top: 0;">
-          <button class="btn btn-alt" style="padding: 6px 14px; font-size: 11pt;" onclick="cerrar()">✕ Cerrar</button>
+          <button class="btn btn-alt" style="padding: 7px 16px; font-size: 12pt;" onclick="cerrar()">✕ Cerrar</button>
         </div>
         <span>CONSULTORIO VETERINARIO FAMILIAR</span>
         <h2 id="modalName">HISTORIA CLÍNICA</h2>
       </div>
 
-      <!-- FOTO PRINCIPAL / PORTADA -->
+      <!-- PORTADA PRINCIPAL -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
-        <span id="coverTxt" style="font-size:12pt; font-weight:800; color:var(--purple-title);">📸 Haz clic para cargar o cambiar la foto principal</span>
+        <span id="coverTxt" style="font-size:14pt; font-weight:900; color:var(--vet-purple);">📸 Haz clic para cargar o cambiar la foto principal</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
@@ -408,9 +410,8 @@
         <button class="tab-btn" id="tabBtn4" onclick="verTab(4)">Álbum de Recuerdos</button>
       </div>
 
-      <!-- TAB 1: DATOS (PROPIETARIO Y MASCOTA) -->
+      <!-- TAB 1: DATOS GENERALES -->
       <div id="tab1">
-        
         <div class="section-banner">Datos de los Propietarios / Tutores</div>
         <div class="form-row">
           <div class="field">
@@ -423,7 +424,7 @@
           </div>
         </div>
 
-        <div class="section-banner" style="margin-top:20px;">Datos de la Mascota</div>
+        <div class="section-banner" style="margin-top:22px;">Datos de la Mascota</div>
         <div class="form-row">
           <div class="field"><label>Nombre o Arete *</label><input type="text" id="fNom"></div>
           <div class="field">
@@ -436,7 +437,7 @@
           </div>
         </div>
 
-        <div class="form-row-3" style="margin-top:14px;">
+        <div class="form-row-3" style="margin-top:16px;">
           <div class="field">
             <label>Sexo</label>
             <select id="fSexo">
@@ -454,7 +455,7 @@
           <div class="field"><label>N° Microchip</label><input type="text" id="fChip" placeholder="956000000..."></div>
         </div>
 
-        <div class="form-row-3" style="margin-top:14px;">
+        <div class="form-row-3" style="margin-top:16px;">
           <div class="field"><label>Raza</label><input type="text" id="fRaza"></div>
           <div class="field"><label>Fecha de Nacimiento</label><input type="date" id="fNac"></div>
           <div class="field"><label>Fecha Defunción (si aplica)</label><input type="date" id="fDef"></div>
@@ -462,17 +463,17 @@
 
         <div class="section-subtitle">Anamnesis / Observaciones Especiales</div>
         <div class="field">
-          <textarea id="fNot" rows="3" placeholder="Carácter, alergias, antecedentes médicos, anécdotas o juguetes preferidos..."></textarea>
+          <textarea id="fNot" rows="3" placeholder="Carácter, alergias, antecedentes médicos, anécdotas o cuidados..."></textarea>
         </div>
 
-        <button class="btn" style="margin-top:18px; width:100%; justify-content:center; font-size:13pt; padding:14px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
+        <button class="btn" style="margin-top:20px; width:100%; justify-content:center; font-size:14pt; padding:15px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
       </div>
 
       <!-- TAB 2: CLÍNICA & SALUD -->
       <div id="tab2" style="display:none;">
-        <div style="background:#FFF; border:2px solid var(--border); padding:18px; border-radius:16px; margin-bottom:16px;">
+        <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registrar Atención / Tratamiento</div>
-          <div class="form-row-3" style="margin-top:10px;">
+          <div class="form-row-3" style="margin-top:12px;">
             <div class="field"><label>Fecha</label><input type="date" id="cFecha"></div>
             <div class="field">
               <label>Categoría</label>
@@ -486,30 +487,30 @@
             </div>
             <div class="field"><label>Próxima Dosis / Control</label><input type="date" id="cProx"></div>
           </div>
-          <div class="field" style="margin-top:10px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
-          <div class="field" style="margin-top:10px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, gotas óticas, indicaciones..."></div>
-          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
+          <div class="field" style="margin-top:12px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
+          <div class="field" style="margin-top:12px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, gotas óticas, indicaciones..."></div>
+          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
         </div>
-        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:10px;"></div>
+        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:12px;"></div>
       </div>
 
       <!-- TAB 3: CONTROL DE PESO -->
       <div id="tab3" style="display:none;">
-        <div style="background:#FFF; border:2px solid var(--border); padding:18px; border-radius:16px; margin-bottom:16px;">
+        <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registro de Peso</div>
-          <div class="form-row" style="margin-top:10px;">
+          <div class="form-row" style="margin-top:12px;">
             <div class="field"><label>Fecha de Pesaje</label><input type="date" id="pFecha"></div>
             <div class="field"><label>Peso (kg)</label><input type="number" step="0.01" id="pKg" placeholder="Ej: 5.20"></div>
           </div>
-          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
+          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
         </div>
-        <div id="pesoLista" style="display:flex; flex-direction:column; gap:10px;"></div>
+        <div id="pesoLista" style="display:flex; flex-direction:column; gap:12px;"></div>
       </div>
 
       <!-- TAB 4: ÁLBUM FOTOGRÁFICO -->
       <div id="tab4" style="display:none;">
-        <div style="display:flex; gap:10px;">
-          <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Descripción de la foto o recuerdo...">
+        <div style="display:flex; gap:12px;">
+          <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Descripción de la foto o momento...">
           <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
         </div>
         <input type="file" id="fileVida" accept="image/*" style="display:none;" onchange="subirFotoVida(this)">
@@ -542,7 +543,7 @@
           render();
         }
       } catch (e) {
-        console.warn("Modo local o fuera de línea:", e);
+        console.warn("Modo local / sin conexión:", e);
       }
     }
 
@@ -568,7 +569,7 @@
       });
 
       if (lista.length === 0) {
-        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:50px 20px; color:var(--text-muted); font-size:13pt; font-weight:700;">No hay historias clínicas registradas. Pulsa <b>＋ Nueva Ficha</b> para comenzar.</div>`;
+        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:55px 20px; color:var(--text-dark); font-size:15pt; font-weight:800;">No hay historias clínicas registradas aún. Pulsa <b>＋ Nueva Ficha</b> para comenzar.</div>`;
         return;
       }
 
@@ -590,12 +591,12 @@
           </div>
           <div class="card-content">
             <div class="card-name">${m.nombre}</div>
-            <div class="card-meta">${m.especie} • ${m.raza || 'Compañero familiar'}</div>
+            <div class="card-meta">${m.especie} • ${m.raza || 'Compañero'}</div>
             <div class="card-badges">
-              <span class="badge-pill">${m.sexo || 'Sexo no ind.'}</span>
+              <span class="badge-pill">${m.sexo || 'Macho'}</span>
               <span class="badge-pill">${m.esterilizado === 'Sí' ? 'Esterilizado/a' : 'No esterilizado'}</span>
             </div>
-            ${m.notas ? `<div style="font-size:10.5pt; color:#6E5F55; font-style:italic; margin-top:6px; line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
+            ${m.notas ? `<div style="font-size:11.5pt; color:var(--text-muted); font-style:italic; margin-top:8px; line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
           </div>
         `;
         g.appendChild(card);
@@ -699,18 +700,18 @@
       c.innerHTML = "";
       const evs = salud.filter(s => s.mascota === nom);
       if (evs.length === 0) {
-        c.innerHTML = `<span style="font-size:11pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
+        c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
         return;
       }
       evs.forEach(e => {
         c.innerHTML += `
           <div class="record-card">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <b style="color:var(--purple-title); font-size:12pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
-              <span style="color:var(--text-muted); font-size:10.5pt; font-weight:700;">${e.fecha || ''}</span>
+              <b style="color:var(--vet-purple); font-size:13.5pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
+              <span style="color:var(--text-muted); font-size:11.5pt; font-weight:800;">${e.fecha || ''}</span>
             </div>
             ${e.tratamiento ? `<div style="margin-top:4px;"><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
-            ${e.proximaDosis ? `<div style="color:var(--teal-dark); font-size:10.5pt; font-weight:800; margin-top:4px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
+            ${e.proximaDosis ? `<div style="color:var(--vet-green); font-size:12pt; font-weight:900; margin-top:4px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
           </div>
         `;
       });
@@ -745,15 +746,15 @@
       c.innerHTML = "";
       const lista = pesos.filter(p => p.mascota === nom);
       if (lista.length === 0) {
-        c.innerHTML = `<span style="font-size:11pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
+        c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
         return;
       }
       lista.forEach(p => {
         c.innerHTML += `
-          <div class="record-card" style="border-left-color: var(--purple-title);">
+          <div class="record-card" style="border-left-color: var(--vet-purple);">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:13pt; font-weight:900; color:var(--purple-title);">${p.peso} kg</span>
-              <span style="color:var(--text-muted); font-size:10.5pt; font-weight:700;">Fecha: ${p.fecha}</span>
+              <span style="font-size:14.5pt; font-weight:900; color:var(--vet-purple);">${p.peso} kg</span>
+              <span style="color:var(--text-muted); font-size:11.5pt; font-weight:800;">Fecha: ${p.fecha}</span>
             </div>
           </div>
         `;
