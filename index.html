@@ -6,109 +6,124 @@
   <title>Historia Clínica & Álbum Familiar • Rinconada de Idahue</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Papel Kraft reciclado según imagen adjunta */
-      --kraft-bg: #BCA185;
-      --kraft-light: #CBB49C;
-      --kraft-card: #FDFBF7;
-      --kraft-border: #8D7358;
+      /* Color idéntico al papel kraft / reciclado de la referencia */
+      --kraft-bg: #B79C82;
+      --kraft-dark: #9E8267;
+      --kraft-border: #6E533B;
       
-      /* Colores de acento e historia clínica veterinaria */
-      --vet-green: #3F5E46;
-      --vet-teal: #4EA39B;
-      --vet-purple: #462A64;
-      --text-dark: #221A15;
-      --text-muted: #5E4E42;
+      /* Tarjetas y fondos interiores en papel pergamino claro */
+      --card-bg: #FAF5EB;
       
-      --shadow-paper: 0 4px 12px rgba(60, 40, 20, 0.15), 0 1px 4px rgba(0,0,0,0.1);
-      --shadow-card: 0 8px 24px rgba(50, 30, 15, 0.2);
+      /* Colores temáticos veterinaria */
+      --vet-purple: #3C1C59;
+      --vet-teal: #338B82;
+      --vet-teal-light: #4EABA1;
+      --vet-green-tag: #2D5A36;
+      
+      --text-dark: #1E1611;
+      --text-muted: #57463A;
+
+      --shadow-box: 0 6px 18px rgba(45, 28, 15, 0.22);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Quicksand', sans-serif !important; 
+    }
 
-    /* Fondo de papel reciclado kraft con microfibras y moteado */
-    body {
-      background-color: var(--kraft-bg);
+    /* Fondo principal: papel kraft texturizado */
+    html, body {
+      background-color: var(--kraft-bg) !important;
       background-image: 
-        radial-gradient(#9B8066 1px, transparent 1px),
-        radial-gradient(#AA8F74 1.5px, var(--kraft-bg) 1.5px);
-      background-size: 28px 28px;
-      background-position: 0 0, 14px 14px;
-      color: var(--text-dark);
-      padding: 24px;
+        radial-gradient(#8F745B 1.2px, transparent 1.2px),
+        radial-gradient(#A3886E 1.2px, var(--kraft-bg) 1.2px) !important;
+      background-size: 24px 24px !important;
+      background-position: 0 0, 12px 12px !important;
+      color: var(--text-dark) !important;
+      min-height: 100vh;
+      font-size: 20px !important; /* LETRA BASE GRANDE */
+    }
+
+    body {
+      padding: 26px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      min-height: 100vh;
-      font-size: 19px; /* Letra base más grande */
+      gap: 26px;
     }
 
-    /* HEADER */
+    /* ENCABEZADO */
     header {
-      background: var(--kraft-card);
-      border: 3px solid var(--kraft-border);
+      background: var(--card-bg) !important;
+      border: 3.5px solid var(--kraft-border) !important;
       border-radius: 22px;
       padding: 22px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 18px;
-      box-shadow: var(--shadow-paper);
+      gap: 20px;
+      box-shadow: var(--shadow-box);
     }
 
-    .brand { display: flex; align-items: center; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 20px; }
     .brand-icon {
-      width: 64px; height: 64px; border-radius: 50%;
+      width: 70px; height: 70px; border-radius: 50%;
       background: #FFF; color: var(--vet-purple);
       display: flex; align-items: center; justify-content: center;
-      font-size: 30pt; border: 3px solid var(--kraft-border);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      font-size: 34pt; border: 3px solid var(--kraft-border);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
     .brand-title {
-      font-family: 'Nunito', sans-serif;
-      font-size: 26pt;
-      font-weight: 900;
-      color: var(--vet-purple);
-      letter-spacing: -0.5px;
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 30pt !important; /* TÍTULO DESTACADO */
+      font-weight: 900 !important;
+      color: var(--vet-purple) !important;
+      line-height: 1.1;
     }
     .brand-sub {
-      font-size: 14pt;
-      color: var(--text-muted);
-      font-weight: 700;
-      margin-top: 2px;
+      font-size: 15.5pt !important;
+      color: var(--text-muted) !important;
+      font-weight: 800 !important;
+      margin-top: 4px;
     }
 
-    /* BOTONES ACCIONES */
+    /* BOTONES */
     .actions { display: flex; gap: 14px; align-items: center; }
     .btn {
-      background: var(--vet-purple);
-      color: #FFF;
-      border: none;
-      padding: 13px 24px;
-      border-radius: 14px;
-      font-weight: 800;
+      background: var(--vet-purple) !important;
+      color: #FFF !important;
+      border: none !important;
+      padding: 14px 28px !important;
+      border-radius: 16px !important;
+      font-weight: 900 !important;
       cursor: pointer;
-      font-size: 14pt;
+      font-size: 15pt !important;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 4px 12px rgba(70, 42, 100, 0.3);
+      box-shadow: 0 4px 14px rgba(60, 28, 89, 0.35);
       transition: all 0.2s ease;
     }
-    .btn:hover { background: #321c49; transform: translateY(-2px); }
+    .btn:hover { background: #260E3B !important; transform: translateY(-2px); }
     .btn-alt {
-      background: #FFF;
-      border: 2.5px solid var(--kraft-border);
-      color: var(--vet-purple);
-      box-shadow: none;
+      background: #FFF !important;
+      border: 3px solid var(--kraft-border) !important;
+      color: var(--vet-purple) !important;
+      box-shadow: none !important;
     }
-    .btn-alt:hover { background: var(--vet-teal); border-color: var(--vet-teal); color: #FFF; }
+    .btn-alt:hover { 
+      background: var(--vet-teal) !important; 
+      border-color: var(--vet-teal) !important; 
+      color: #FFF !important; 
+    }
 
-    /* BARRA DE FILTROS Y BÚSQUEDA */
+    /* FILTROS Y BUSCADOR */
     .toolbar {
       display: flex;
       justify-content: space-between;
@@ -118,74 +133,75 @@
     }
     .filters { display: flex; gap: 12px; flex-wrap: wrap; }
     .chip {
-      background: var(--kraft-card);
-      border: 2.5px solid var(--kraft-border);
-      color: var(--text-dark);
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-size: 13.5pt;
-      font-weight: 800;
+      background: var(--card-bg) !important;
+      border: 3px solid var(--kraft-border) !important;
+      color: var(--text-dark) !important;
+      padding: 11px 24px !important;
+      border-radius: 34px !important;
+      font-size: 14.5pt !important;
+      font-weight: 900 !important;
       cursor: pointer;
+      box-shadow: var(--shadow-box);
       transition: 0.2s;
     }
     .chip:hover, .chip.active {
-      background: var(--vet-teal);
-      border-color: var(--vet-teal);
-      color: #FFF;
-      box-shadow: 0 3px 10px rgba(78, 163, 155, 0.45);
+      background: var(--vet-teal) !important;
+      border-color: var(--vet-purple) !important;
+      color: #FFF !important;
+      box-shadow: 0 4px 14px rgba(51, 139, 130, 0.45);
     }
 
     .search-box {
       display: flex;
       align-items: center;
-      background: var(--kraft-card);
-      border: 2.5px solid var(--kraft-border);
-      border-radius: 30px;
-      padding: 11px 22px;
-      gap: 10px;
-      min-width: 330px;
-      box-shadow: var(--shadow-paper);
+      background: var(--card-bg) !important;
+      border: 3px solid var(--kraft-border) !important;
+      border-radius: 34px !important;
+      padding: 12px 24px !important;
+      gap: 12px;
+      min-width: 360px;
+      box-shadow: var(--shadow-box);
     }
     .search-box input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text-dark);
-      font-size: 13pt;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      color: var(--text-dark) !important;
+      font-size: 14.5pt !important;
       width: 100%;
-      font-weight: 800;
+      font-weight: 800 !important;
     }
 
-    /* GRILLA POLAROID / EXPEDIENTES */
+    /* GRILLA DE TARJETAS */
     .album-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 26px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
     }
 
     .polaroid-card {
-      background: var(--kraft-card);
-      border: 3px solid var(--kraft-border);
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: var(--shadow-paper);
+      background: var(--card-bg) !important;
+      border: 3.5px solid var(--kraft-border) !important;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow-box);
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       transition: all 0.25s ease;
     }
     .polaroid-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-card);
-      border-color: var(--vet-purple);
+      transform: translateY(-6px);
+      border-color: var(--vet-purple) !important;
+      box-shadow: 0 12px 28px rgba(45, 25, 10, 0.28);
     }
 
     .photo-frame {
       width: 100%;
-      height: 240px;
-      border-radius: 14px;
-      background-color: var(--kraft-light);
+      height: 250px;
+      border-radius: 16px;
+      background-color: #E6D8C7;
       background-size: cover;
       background-position: center;
       position: relative;
@@ -193,158 +209,161 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid var(--kraft-border);
+      border: 2.5px solid var(--kraft-border);
     }
-    .photo-fallback { font-size: 52pt; opacity: 0.85; }
+    .photo-fallback { font-size: 58pt; opacity: 0.9; }
     
     .memorial-ribbon {
       position: absolute; top: 12px; right: 12px;
-      background: rgba(30, 20, 15, 0.88); color: #FFF;
-      font-size: 11pt; font-weight: 800; padding: 6px 14px;
-      border-radius: 20px; backdrop-filter: blur(4px);
+      background: rgba(30, 18, 12, 0.9); color: #FFF;
+      font-size: 12pt; font-weight: 900; padding: 6px 14px;
+      border-radius: 20px;
     }
     .chip-microchip {
       position: absolute; bottom: 12px; left: 12px;
-      background: rgba(255, 255, 255, 0.95);
-      font-size: 10.5pt; font-weight: 900; padding: 5px 12px;
-      border-radius: 8px; color: var(--vet-purple);
+      background: #FFF; font-size: 11pt; font-weight: 900;
+      padding: 6px 14px; border-radius: 10px; color: var(--vet-purple);
       border: 2px solid var(--kraft-border);
     }
 
     .card-content { display: flex; flex-direction: column; gap: 8px; text-align: center; }
     .card-name {
-      font-family: 'Nunito', sans-serif;
-      font-size: 20pt;
-      font-weight: 900;
-      color: var(--vet-purple);
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 23pt !important;
+      font-weight: 900 !important;
+      color: var(--vet-purple) !important;
     }
-    .card-meta { font-size: 12.5pt; color: var(--text-muted); font-weight: 700; }
+    .card-meta { font-size: 14pt !important; color: var(--text-muted) !important; font-weight: 800 !important; }
     .card-badges { display: flex; justify-content: center; gap: 10px; margin-top: 4px; }
     .badge-pill {
-      font-size: 11pt; padding: 5px 12px; border-radius: 14px;
-      background: #E4EFEA; color: var(--vet-green); font-weight: 900;
-      border: 1px solid var(--kraft-border);
+      font-size: 12pt !important; padding: 5px 14px; border-radius: 14px;
+      background: #DDF0E4; color: var(--vet-green-tag); font-weight: 900 !important;
+      border: 1.5px solid var(--kraft-border);
     }
 
     /* MODAL DE HISTORIA CLÍNICA */
     .overlay {
-      position: fixed; inset: 0; background: rgba(45, 30, 20, 0.65);
+      position: fixed; inset: 0; background: rgba(35, 20, 12, 0.75);
       display: none; align-items: center; justify-content: center;
-      padding: 18px; z-index: 1000; backdrop-filter: blur(6px);
+      padding: 20px; z-index: 1000; backdrop-filter: blur(8px);
     }
     .modal {
-      background: var(--kraft-card);
-      border: 3.5px solid var(--kraft-border);
-      border-radius: 26px;
-      width: 860px;
-      max-width: 95vw;
-      max-height: 92vh;
+      background: var(--card-bg) !important;
+      border: 4px solid var(--kraft-border) !important;
+      border-radius: 28px;
+      width: 900px;
+      max-width: 96vw;
+      max-height: 94vh;
       overflow-y: auto;
-      padding: 30px;
+      padding: 34px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+      gap: 22px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
     }
 
     .vet-header {
       text-align: center;
-      padding-bottom: 14px;
-      border-bottom: 3px dashed var(--kraft-border);
+      padding-bottom: 16px;
+      border-bottom: 3.5px dashed var(--kraft-border);
       position: relative;
     }
     .vet-header h2 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 25pt;
-      font-weight: 900;
-      color: var(--vet-purple);
-      letter-spacing: 0.5px;
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 28pt !important;
+      font-weight: 900 !important;
+      color: var(--vet-purple) !important;
     }
     .vet-header span {
-      font-size: 12.5pt;
-      font-weight: 800;
-      color: var(--vet-green);
+      font-size: 14pt !important;
+      font-weight: 900 !important;
+      color: var(--vet-teal) !important;
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }
 
-    /* BANNERS DE SECCIÓN */
+    /* SECCIONES ESTILO HISTORIA CLÍNICA */
     .section-banner {
-      background: var(--vet-teal);
-      color: #FFF;
-      font-family: 'Nunito', sans-serif;
-      font-size: 15pt;
-      font-weight: 900;
+      background: var(--vet-teal) !important;
+      color: #FFF !important;
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 16.5pt !important;
+      font-weight: 900 !important;
       text-align: center;
-      padding: 8px 16px;
-      border-radius: 12px;
-      margin: 16px 0 12px 0;
-      letter-spacing: 0.5px;
+      padding: 10px 18px;
+      border-radius: 14px;
+      margin: 18px 0 14px 0;
     }
     .section-subtitle {
-      font-family: 'Nunito', sans-serif;
-      font-size: 14.5pt;
-      font-weight: 900;
-      color: var(--vet-purple);
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 16pt !important;
+      font-weight: 900 !important;
+      color: var(--vet-purple) !important;
       text-align: center;
-      margin: 14px 0 8px 0;
+      margin: 16px 0 10px 0;
     }
 
     /* PESTAÑAS */
     .tabs {
-      display: flex; gap: 10px; border-bottom: 2.5px solid var(--kraft-border);
-      padding-bottom: 12px; overflow-x: auto;
+      display: flex; gap: 12px; border-bottom: 3px solid var(--kraft-border);
+      padding-bottom: 14px; overflow-x: auto;
     }
     .tab-btn {
-      background: #FFF; border: 2px solid var(--kraft-border); color: var(--text-dark);
-      font-size: 13pt; font-weight: 900; padding: 11px 20px;
-      cursor: pointer; border-radius: 12px; white-space: nowrap;
+      background: #FFF !important; border: 2.5px solid var(--kraft-border) !important; 
+      color: var(--text-dark) !important;
+      font-size: 14pt !important; font-weight: 900 !important; padding: 12px 22px !important;
+      cursor: pointer; border-radius: 14px !important; white-space: nowrap;
     }
-    .tab-btn.active { color: #FFF; background: var(--vet-purple); border-color: var(--vet-purple); }
+    .tab-btn.active { 
+      color: #FFF !important; 
+      background: var(--vet-purple) !important; 
+      border-color: var(--vet-purple) !important; 
+    }
 
-    /* FOTO PORTADA */
+    /* FOTO PORTADA MODAL */
     .cover-box {
-      width: 100%; height: 230px; border-radius: 16px;
-      border: 3px dashed var(--vet-teal);
-      background-color: var(--kraft-light); background-size: cover; background-position: center;
+      width: 100%; height: 240px; border-radius: 18px;
+      border: 3.5px dashed var(--vet-teal);
+      background-color: #EFE4D6; background-size: cover; background-position: center;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; transition: 0.2s;
     }
     .cover-box:hover { border-color: var(--vet-purple); }
 
     /* CAMPOS DEL FORMULARIO */
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    .field { display: flex; flex-direction: column; gap: 7px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
     .field label {
-      font-size: 12pt; font-weight: 900; color: var(--vet-purple);
+      font-size: 13.5pt !important; font-weight: 900 !important; color: var(--vet-purple) !important;
     }
     .field input, .field select, .field textarea {
-      background: #FFF; border: 2.5px solid var(--kraft-border); border-radius: 12px;
-      padding: 13px 16px; color: var(--text-dark); font-size: 13pt;
-      outline: none; font-weight: 800;
+      background: #FFF !important; border: 2.5px solid var(--kraft-border) !important; 
+      border-radius: 14px !important; padding: 14px 18px !important; 
+      color: var(--text-dark) !important; font-size: 14.5pt !important;
+      outline: none; font-weight: 800 !important;
     }
     .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--vet-teal);
-      box-shadow: 0 0 0 4px rgba(78, 163, 155, 0.3);
+      border-color: var(--vet-teal) !important;
+      box-shadow: 0 0 0 4px rgba(51, 139, 130, 0.3) !important;
     }
 
     /* REGISTROS HISTÓRICOS */
     .record-card {
-      background: #FFF; padding: 18px; border-radius: 14px;
-      border: 2.5px solid var(--kraft-border); border-left: 8px solid var(--vet-teal);
-      display: flex; flex-direction: column; gap: 8px; font-size: 13pt;
+      background: #FFF !important; padding: 20px !important; border-radius: 16px !important;
+      border: 3px solid var(--kraft-border) !important; border-left: 10px solid var(--vet-teal) !important;
+      display: flex; flex-direction: column; gap: 10px; font-size: 14.5pt !important;
     }
 
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-top: 16px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; margin-top: 18px; }
     .gallery-card {
-      aspect-ratio: 1; border-radius: 14px; border: 2.5px solid var(--kraft-border);
+      aspect-ratio: 1; border-radius: 16px; border: 3px solid var(--kraft-border);
       background-size: cover; background-position: center; position: relative; overflow: hidden;
     }
     .gallery-title {
       position: absolute; bottom: 0; left: 0; right: 0;
-      background: rgba(45, 25, 65, 0.9); color: #FFF;
-      font-size: 11pt; font-weight: 800; padding: 8px; text-align: center;
+      background: rgba(45, 20, 65, 0.92); color: #FFF;
+      font-size: 12pt; font-weight: 800; padding: 9px; text-align: center;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
   </style>
@@ -390,7 +409,7 @@
       <!-- ENCABEZADO MODAL -->
       <div class="vet-header">
         <div style="position: absolute; right: 0; top: 0;">
-          <button class="btn btn-alt" style="padding: 7px 16px; font-size: 12pt;" onclick="cerrar()">✕ Cerrar</button>
+          <button class="btn btn-alt" style="padding: 8px 18px; font-size: 13pt;" onclick="cerrar()">✕ Cerrar</button>
         </div>
         <span>CONSULTORIO VETERINARIO FAMILIAR</span>
         <h2 id="modalName">HISTORIA CLÍNICA</h2>
@@ -398,7 +417,7 @@
 
       <!-- PORTADA PRINCIPAL -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
-        <span id="coverTxt" style="font-size:14pt; font-weight:900; color:var(--vet-purple);">📸 Haz clic para cargar o cambiar la foto principal</span>
+        <span id="coverTxt" style="font-size:15pt; font-weight:900; color:var(--vet-purple);">📸 Haz clic para cargar o cambiar la foto principal</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
@@ -424,7 +443,7 @@
           </div>
         </div>
 
-        <div class="section-banner" style="margin-top:22px;">Datos de la Mascota</div>
+        <div class="section-banner" style="margin-top:24px;">Datos de la Mascota</div>
         <div class="form-row">
           <div class="field"><label>Nombre o Arete *</label><input type="text" id="fNom"></div>
           <div class="field">
@@ -437,7 +456,7 @@
           </div>
         </div>
 
-        <div class="form-row-3" style="margin-top:16px;">
+        <div class="form-row-3" style="margin-top:18px;">
           <div class="field">
             <label>Sexo</label>
             <select id="fSexo">
@@ -455,7 +474,7 @@
           <div class="field"><label>N° Microchip</label><input type="text" id="fChip" placeholder="956000000..."></div>
         </div>
 
-        <div class="form-row-3" style="margin-top:16px;">
+        <div class="form-row-3" style="margin-top:18px;">
           <div class="field"><label>Raza</label><input type="text" id="fRaza"></div>
           <div class="field"><label>Fecha de Nacimiento</label><input type="date" id="fNac"></div>
           <div class="field"><label>Fecha Defunción (si aplica)</label><input type="date" id="fDef"></div>
@@ -466,14 +485,14 @@
           <textarea id="fNot" rows="3" placeholder="Carácter, alergias, antecedentes médicos, anécdotas o cuidados..."></textarea>
         </div>
 
-        <button class="btn" style="margin-top:20px; width:100%; justify-content:center; font-size:14pt; padding:15px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
+        <button class="btn" style="margin-top:22px; width:100%; justify-content:center; font-size:15pt; padding:16px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
       </div>
 
       <!-- TAB 2: CLÍNICA & SALUD -->
       <div id="tab2" style="display:none;">
-        <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
+        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:22px; border-radius:20px; margin-bottom:20px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registrar Atención / Tratamiento</div>
-          <div class="form-row-3" style="margin-top:12px;">
+          <div class="form-row-3" style="margin-top:14px;">
             <div class="field"><label>Fecha</label><input type="date" id="cFecha"></div>
             <div class="field">
               <label>Categoría</label>
@@ -487,29 +506,29 @@
             </div>
             <div class="field"><label>Próxima Dosis / Control</label><input type="date" id="cProx"></div>
           </div>
-          <div class="field" style="margin-top:12px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
-          <div class="field" style="margin-top:12px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, gotas óticas, indicaciones..."></div>
-          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
+          <div class="field" style="margin-top:14px;"><label>Diagnóstico / Motivo / Vacuna</label><input type="text" id="cDiag" placeholder="Ej: Octavalente, Triple Felina, Otitis..."></div>
+          <div class="field" style="margin-top:14px;"><label>Tratamiento / Producto administrado</label><input type="text" id="cTrat" placeholder="Dosis, producto, gotas óticas, indicaciones..."></div>
+          <button class="btn" style="margin-top:18px; width:100%; justify-content:center;" onclick="guardarClinica()">＋ Anotar en Ficha Médica</button>
         </div>
-        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:12px;"></div>
+        <div id="clinicaLista" style="display:flex; flex-direction:column; gap:14px;"></div>
       </div>
 
       <!-- TAB 3: CONTROL DE PESO -->
       <div id="tab3" style="display:none;">
-        <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:20px; border-radius:18px; margin-bottom:18px;">
+        <div style="background:#FFF; border:3px solid var(--kraft-border); padding:22px; border-radius:20px; margin-bottom:20px;">
           <div class="section-subtitle" style="margin-top:0;">+ Registro de Peso</div>
-          <div class="form-row" style="margin-top:12px;">
+          <div class="form-row" style="margin-top:14px;">
             <div class="field"><label>Fecha de Pesaje</label><input type="date" id="pFecha"></div>
             <div class="field"><label>Peso (kg)</label><input type="number" step="0.01" id="pKg" placeholder="Ej: 5.20"></div>
           </div>
-          <button class="btn" style="margin-top:16px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
+          <button class="btn" style="margin-top:18px; width:100%; justify-content:center;" onclick="guardarPeso()">＋ Guardar Peso</button>
         </div>
-        <div id="pesoLista" style="display:flex; flex-direction:column; gap:12px;"></div>
+        <div id="pesoLista" style="display:flex; flex-direction:column; gap:14px;"></div>
       </div>
 
       <!-- TAB 4: ÁLBUM FOTOGRÁFICO -->
       <div id="tab4" style="display:none;">
-        <div style="display:flex; gap:12px;">
+        <div style="display:flex; gap:14px;">
           <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Descripción de la foto o momento...">
           <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
         </div>
@@ -543,7 +562,7 @@
           render();
         }
       } catch (e) {
-        console.warn("Modo local / sin conexión:", e);
+        console.warn("Modo sin conexión:", e);
       }
     }
 
@@ -569,7 +588,7 @@
       });
 
       if (lista.length === 0) {
-        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:55px 20px; color:var(--text-dark); font-size:15pt; font-weight:800;">No hay historias clínicas registradas aún. Pulsa <b>＋ Nueva Ficha</b> para comenzar.</div>`;
+        g.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:65px 24px; color:var(--text-dark); font-size:17pt; font-weight:900; background:var(--card-bg); border:3px solid var(--kraft-border); border-radius:20px;">No hay historias clínicas registradas. Pulsa <b>＋ Nueva Ficha</b> para comenzar.</div>`;
         return;
       }
 
@@ -591,12 +610,12 @@
           </div>
           <div class="card-content">
             <div class="card-name">${m.nombre}</div>
-            <div class="card-meta">${m.especie} • ${m.raza || 'Compañero'}</div>
+            <div class="card-meta">${m.especie} • ${m.raza || 'Compañero familiar'}</div>
             <div class="card-badges">
               <span class="badge-pill">${m.sexo || 'Macho'}</span>
               <span class="badge-pill">${m.esterilizado === 'Sí' ? 'Esterilizado/a' : 'No esterilizado'}</span>
             </div>
-            ${m.notas ? `<div style="font-size:11.5pt; color:var(--text-muted); font-style:italic; margin-top:8px; line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
+            ${m.notas ? `<div style="font-size:13pt; color:var(--text-muted); font-style:italic; margin-top:8px; line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">“${m.notas}”</div>` : ''}
           </div>
         `;
         g.appendChild(card);
@@ -700,18 +719,18 @@
       c.innerHTML = "";
       const evs = salud.filter(s => s.mascota === nom);
       if (evs.length === 0) {
-        c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
+        c.innerHTML = `<span style="font-size:13.5pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
         return;
       }
       evs.forEach(e => {
         c.innerHTML += `
           <div class="record-card">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <b style="color:var(--vet-purple); font-size:13.5pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
-              <span style="color:var(--text-muted); font-size:11.5pt; font-weight:800;">${e.fecha || ''}</span>
+              <b style="color:var(--vet-purple); font-size:15pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
+              <span style="color:var(--text-muted); font-size:13pt; font-weight:800;">${e.fecha || ''}</span>
             </div>
-            ${e.tratamiento ? `<div style="margin-top:4px;"><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
-            ${e.proximaDosis ? `<div style="color:var(--vet-green); font-size:12pt; font-weight:900; margin-top:4px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
+            ${e.tratamiento ? `<div style="margin-top:6px;"><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
+            ${e.proximaDosis ? `<div style="color:var(--vet-green-tag); font-size:13.5pt; font-weight:900; margin-top:6px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
           </div>
         `;
       });
@@ -746,15 +765,15 @@
       c.innerHTML = "";
       const lista = pesos.filter(p => p.mascota === nom);
       if (lista.length === 0) {
-        c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
+        c.innerHTML = `<span style="font-size:13.5pt; color:var(--text-muted); font-style:italic;">No hay registros de peso.</span>`;
         return;
       }
       lista.forEach(p => {
         c.innerHTML += `
-          <div class="record-card" style="border-left-color: var(--vet-purple);">
+          <div class="record-card" style="border-left-color: var(--vet-purple) !important;">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:14.5pt; font-weight:900; color:var(--vet-purple);">${p.peso} kg</span>
-              <span style="color:var(--text-muted); font-size:11.5pt; font-weight:800;">Fecha: ${p.fecha}</span>
+              <span style="font-size:16pt; font-weight:900; color:var(--vet-purple);">${p.peso} kg</span>
+              <span style="color:var(--text-muted); font-size:13pt; font-weight:800;">Fecha: ${p.fecha}</span>
             </div>
           </div>
         `;
