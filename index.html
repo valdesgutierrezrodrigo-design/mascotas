@@ -10,12 +10,12 @@
 
   <style>
     :root {
-      /* Colores base por defecto (Kraft) */
-      --page-bg: #B79C82;
+      --kraft-bg: #B79C82;
+      --kraft-dark: #9E8267;
       --kraft-border: #6E533B;
+      
       --card-bg: #FAF5EB;
       
-      /* Colores temáticos veterinaria */
       --vet-purple: #3C1C59;
       --vet-teal: #338B82;
       --vet-teal-light: #4EABA1;
@@ -27,44 +27,6 @@
       --shadow-box: 0 6px 18px rgba(45, 28, 15, 0.22);
     }
 
-    /* Temas de Fondo */
-    body.theme-kraft {
-      background-color: #B79C82 !important;
-      background-image: 
-        radial-gradient(#8F745B 1.2px, transparent 1.2px),
-        radial-gradient(#A3886E 1.2px, #B79C82 1.2px) !important;
-      background-size: 24px 24px !important;
-      background-position: 0 0, 12px 12px !important;
-    }
-
-    body.theme-pergamino {
-      background-color: #E8DFCE !important;
-      background-image: 
-        radial-gradient(#CBBDA8 1px, transparent 1px) !important;
-      background-size: 20px 20px !important;
-    }
-
-    body.theme-verde {
-      background-color: #A3B899 !important;
-      background-image: 
-        radial-gradient(#879E7D 1.2px, transparent 1.2px) !important;
-      background-size: 22px 22px !important;
-    }
-
-    body.theme-oscuro {
-      background-color: #26211E !important;
-      background-image: 
-        radial-gradient(#3D3530 1.2px, transparent 1.2px) !important;
-      background-size: 24px 24px !important;
-    }
-
-    body.theme-custom {
-      background-size: cover !important;
-      background-position: center !important;
-      background-attachment: fixed !important;
-      background-repeat: no-repeat !important;
-    }
-
     * { 
       box-sizing: border-box; 
       margin: 0; 
@@ -72,18 +34,34 @@
       font-family: 'Quicksand', sans-serif !important; 
     }
 
+    /* Fondo principal adaptable */
     html, body {
+      background-color: var(--kraft-bg);
+      background-image: 
+        radial-gradient(#8F745B 1.2px, transparent 1.2px),
+        radial-gradient(#A3886E 1.2px, var(--kraft-bg) 1.2px);
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
+      background-attachment: fixed;
+      background-repeat: repeat;
       color: var(--text-dark) !important;
       min-height: 100vh;
       font-size: 20px !important;
-      transition: background-color 0.3s ease;
+    }
+
+    /* Clase cuando se sube imagen propia de fondo */
+    body.custom-wallpaper {
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
     }
 
     body {
       padding: 26px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 22px;
     }
 
     /* ENCABEZADO */
@@ -91,16 +69,16 @@
       background: var(--card-bg) !important;
       border: 3.5px solid var(--kraft-border) !important;
       border-radius: 22px;
-      padding: 22px 30px;
+      padding: 20px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 18px;
       box-shadow: var(--shadow-box);
     }
 
-    .brand { display: flex; align-items: center; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 18px; }
     .brand-icon {
       width: 70px; height: 70px; border-radius: 50%;
       background: #FFF; color: var(--vet-purple);
@@ -110,68 +88,32 @@
     }
     .brand-title {
       font-family: 'Nunito', sans-serif !important;
-      font-size: 30pt !important;
+      font-size: 28pt !important;
       font-weight: 900 !important;
       color: var(--vet-purple) !important;
       line-height: 1.1;
     }
     .brand-sub {
-      font-size: 15.5pt !important;
+      font-size: 15pt !important;
       color: var(--text-muted) !important;
       font-weight: 800 !important;
       margin-top: 4px;
     }
 
-    /* BANNER ILUSTRADO RÚSTICO */
-    .hero-banner {
-      background: var(--card-bg);
-      border: 3.5px solid var(--kraft-border);
-      border-radius: 22px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      box-shadow: var(--shadow-box);
-      min-height: 160px;
-    }
-    .hero-img {
-      width: 250px;
-      height: 175px;
-      object-fit: cover;
-      border-right: 3.5px solid var(--kraft-border);
-      display: block;
-    }
-    .hero-text {
-      padding: 22px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .hero-text h3 {
-      font-family: 'Nunito', sans-serif !important;
-      font-size: 22pt;
-      font-weight: 900;
-      color: var(--vet-purple);
-    }
-    .hero-text p {
-      font-size: 15pt;
-      color: var(--text-muted);
-      font-weight: 800;
-    }
-
     /* BOTONES */
-    .actions { display: flex; gap: 12px; align-items: center; position: relative; }
+    .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
     .btn {
       background: var(--vet-purple) !important;
       color: #FFF !important;
       border: none !important;
-      padding: 13px 24px !important;
+      padding: 12px 22px !important;
       border-radius: 16px !important;
       font-weight: 900 !important;
       cursor: pointer;
-      font-size: 14.5pt !important;
+      font-size: 14pt !important;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       box-shadow: 0 4px 14px rgba(60, 28, 89, 0.35);
       transition: all 0.2s ease;
     }
@@ -188,41 +130,27 @@
       color: #FFF !important; 
     }
 
-    /* MENÚ DESPLEGABLE DE FONDOS */
-    .bg-menu {
-      position: absolute;
-      top: 110%;
-      right: 0;
+    /* BANNER RESUMEN LIMPIO */
+    .hero-banner {
       background: var(--card-bg);
-      border: 3px solid var(--kraft-border);
-      border-radius: 18px;
+      border: 3.5px solid var(--kraft-border);
+      border-radius: 22px;
+      padding: 22px 30px;
       box-shadow: var(--shadow-box);
-      padding: 12px;
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      z-index: 200;
-      min-width: 230px;
-    }
-    .bg-menu.show { display: flex; }
-    .bg-option {
-      background: #FFF;
-      border: 2px solid var(--kraft-border);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 13.5pt;
-      font-weight: 900;
-      color: var(--text-dark);
-      cursor: pointer;
       display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.2s;
+      flex-direction: column;
+      gap: 6px;
     }
-    .bg-option:hover {
-      background: var(--vet-teal);
-      color: #FFF;
-      border-color: var(--vet-teal);
+    .hero-banner h3 {
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 22pt;
+      font-weight: 900;
+      color: var(--vet-purple);
+    }
+    .hero-banner p {
+      font-size: 15pt;
+      color: var(--text-muted);
+      font-weight: 800;
     }
 
     /* FILTROS Y BUSCADOR */
@@ -238,7 +166,7 @@
       background: var(--card-bg) !important;
       border: 3px solid var(--kraft-border) !important;
       color: var(--text-dark) !important;
-      padding: 11px 24px !important;
+      padding: 11px 22px !important;
       border-radius: 34px !important;
       font-size: 14.5pt !important;
       font-weight: 900 !important;
@@ -274,7 +202,7 @@
       font-weight: 800 !important;
     }
 
-    /* GRILLA DE TARJETAS */
+    /* GRILLA PRINCIPAL */
     .album-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -465,7 +393,7 @@
     }
   </style>
 </head>
-<body class="theme-kraft">
+<body>
 
   <!-- CABECERA -->
   <header>
@@ -477,32 +405,20 @@
       </div>
     </div>
     <div class="actions">
-      <!-- Selector de Fondo -->
-      <button class="btn btn-alt" onclick="toggleMenuFondo()">🎨 Fondo</button>
-      <div class="bg-menu" id="bgMenu">
-        <div class="bg-option" onclick="cambiarFondo('theme-kraft')">📜 Papel Kraft</div>
-        <div class="bg-option" onclick="cambiarFondo('theme-verde')">🌿 Verde Campestre</div>
-        <div class="bg-option" onclick="cambiarFondo('theme-pergamino')">🌾 Pergamino Suave</div>
-        <div class="bg-option" onclick="cambiarFondo('theme-oscuro')">🌑 Pizarra Oscura</div>
-        <div class="bg-option" onclick="document.getElementById('fileCustomBg').click()">🖼️ Subir imagen propia...</div>
-      </div>
-      <input type="file" id="fileCustomBg" accept="image/*" style="display:none;" onchange="cargarFondoPropio(this)">
+      <!-- BOTÓN PARA SUBIR FONDO DE PANTALLA DIRECTO -->
+      <button class="btn btn-alt" onclick="document.getElementById('inputFondoPantalla').click()">🖼️ Cambiar Fondo</button>
+      <input type="file" id="inputFondoPantalla" accept="image/*" style="display:none;" onchange="subirFondoPantalla(this)">
+      <button class="btn btn-alt" onclick="restablecerFondoDefecto()" title="Restablecer fondo original">↺ Fondo Original</button>
 
       <button class="btn btn-alt" onclick="sincronizar()">🔄 Sincronizar</button>
       <button class="btn" onclick="abrirNuevo()">＋ Nueva Ficha</button>
     </div>
   </header>
 
-  <!-- BANNER ILUSTRADO RÚSTICO -->
+  <!-- BANNER DE RESUMEN (LIMPIO, SIN IMAGEN ROTA) -->
   <div class="hero-banner">
-    <img src="Gemini_Generated_Image_n07ja7n07ja7n07j.jpg" 
-         alt="Familia Animal Rinconada de Idahue" 
-         class="hero-img" 
-         onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'250\' height=\'175\' viewBox=\'0 0 250 175\'><rect fill=\'%23FAF5EB\' width=\'250\' height=\'175\'/><text fill=\'%233C1C59\' font-size=\'46\' font-family=\'sans-serif\' x=\'50%25\' y=\'58%25\' text-anchor=\'middle\'>🐾 🐶 🐱 🐑</text></svg>';">
-    <div class="hero-text">
-      <h3>Registro Familiar de Salud Animal</h3>
-      <p>Cuidado integral, vacunas, controles de peso y bitácora clínica para nuestros compañeros de vida en Rinconada de Idahue.</p>
-    </div>
+    <h3>🐾 Registro Familiar de Salud Animal</h3>
+    <p>Cuidado integral, vacunas, controles de peso y bitácora clínica para nuestros compañeros en Rinconada de Idahue.</p>
   </div>
 
   <!-- BARRA DE FILTROS & BUSCADOR -->
@@ -670,53 +586,34 @@
     let b64Portada = null;
     let filtroEsp = "todos";
 
-    // GESTIÓN DE FONDO
-    function toggleMenuFondo() {
-      const menu = document.getElementById("bgMenu");
-      menu.classList.toggle("show");
-    }
-
-    document.addEventListener("click", (e) => {
-      const menu = document.getElementById("bgMenu");
-      if (!e.target.closest(".actions") && menu) {
-        menu.classList.remove("show");
-      }
-    });
-
-    function cambiarFondo(clase) {
-      document.body.className = clase;
-      document.body.style.backgroundImage = "";
-      localStorage.setItem("tema_fondo", clase);
-      localStorage.removeItem("fondo_propio_b64");
-      document.getElementById("bgMenu").classList.remove("show");
-    }
-
-    function cargarFondoPropio(input) {
+    // CARGAR Y CAMBIAR FONDO DE PANTALLA
+    function subirFondoPantalla(input) {
       if (!input.files || !input.files[0]) return;
       const file = input.files[0];
       const reader = new FileReader();
-      reader.onload = (e) => {
-        document.body.className = "theme-custom";
+      reader.onload = function(e) {
+        document.body.classList.add("custom-wallpaper");
         document.body.style.backgroundImage = `url('${e.target.result}')`;
         try {
-          localStorage.setItem("tema_fondo", "theme-custom");
-          localStorage.setItem("fondo_propio_b64", e.target.result);
-        } catch (err) {
-          console.warn("Imagen grande para localStorage:", err);
+          localStorage.setItem("fondo_personalizado", e.target.result);
+        } catch(err) {
+          console.warn("Imagen pesada para localStorage:", err);
         }
       };
       reader.readAsDataURL(file);
-      document.getElementById("bgMenu").classList.remove("show");
+    }
+
+    function restablecerFondoDefecto() {
+      localStorage.removeItem("fondo_personalizado");
+      document.body.classList.remove("custom-wallpaper");
+      document.body.style.backgroundImage = "";
     }
 
     function aplicarFondoGuardado() {
-      const guardado = localStorage.getItem("tema_fondo");
-      const foto = localStorage.getItem("fondo_propio_b64");
-      if (guardado === "theme-custom" && foto) {
-        document.body.className = "theme-custom";
-        document.body.style.backgroundImage = `url('${foto}')`;
-      } else if (guardado) {
-        document.body.className = guardado;
+      const fondo = localStorage.getItem("fondo_personalizado");
+      if (fondo) {
+        document.body.classList.add("custom-wallpaper");
+        document.body.style.backgroundImage = `url('${fondo}')`;
       }
     }
 
@@ -1003,6 +900,7 @@
       reader.readAsDataURL(file);
     }
 
+    // Inicializar
     aplicarFondoGuardado();
     sincronizar();
   </script>
