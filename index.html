@@ -43,7 +43,7 @@
       background-attachment: fixed;
       color: var(--text-dark);
       min-height: 100vh;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     body.custom-wallpaper {
@@ -175,7 +175,7 @@
       font-weight: 800;
     }
 
-    /* GRILLA DE POST-ITS ARRASTRABLES */
+    /* GRILLA DE POST-ITS */
     .postit-grid {
       display: flex;
       flex-wrap: wrap;
@@ -241,10 +241,7 @@
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-    .btn-edit-pin:hover {
-      background: var(--vet-teal);
-      color: #FFF;
-    }
+    .btn-edit-pin:hover { background: var(--vet-teal); color: #FFF; }
 
     .postit-photo {
       width: 100%;
@@ -321,7 +318,7 @@
       cursor: pointer;
     }
 
-    /* MODAL DE HISTORIA CLÍNICA */
+    /* MODAL */
     .overlay {
       position: fixed; inset: 0; background: rgba(35, 20, 12, 0.75);
       display: none; align-items: center; justify-content: center;
@@ -347,6 +344,7 @@
       padding-bottom: 12px;
       border-bottom: 3px dashed var(--kraft-border);
       position: relative;
+      flex-shrink: 0 !important;
     }
     .vet-header h2 {
       font-family: 'Nunito', sans-serif;
@@ -363,11 +361,12 @@
       letter-spacing: 1.5px;
     }
 
-    /* CONTENEDOR DE FOTO DE PORTADA EN MODAL */
+    /* MARCO DE FOTO EN EL MODAL (CORREGIDO: NUNCA SE APLASTA) */
     .cover-box {
-      width: 100%;
-      height: 190px !important;
-      min-height: 190px !important;
+      width: 100% !important;
+      height: 180px !important;
+      min-height: 180px !important;
+      flex-shrink: 0 !important;
       border-radius: 16px;
       border: 3px dashed var(--vet-teal);
       background-color: #EFE4D6;
@@ -381,33 +380,39 @@
     }
     .cover-box:hover { border-color: var(--vet-purple); }
 
-    /* PESTAÑAS (TABS) REPARADAS */
+    /* PESTAÑAS (CORREGIDAS: NUNCA SE APLASTAN) */
     .tabs {
-      display: flex;
-      gap: 8px;
-      border-bottom: 2.5px solid var(--kraft-border);
-      padding-bottom: 10px;
-      overflow-x: auto;
-      min-height: 48px;
-      align-items: center;
+      display: flex !important;
+      gap: 10px !important;
+      border-bottom: 3px solid var(--kraft-border) !important;
+      padding: 6px 0 14px 0 !important;
+      overflow-x: auto !important;
+      flex-shrink: 0 !important;
+      min-height: 58px !important;
+      align-items: center !important;
     }
     .tab-btn {
-      background: #FFF;
-      border: 2px solid var(--kraft-border); 
-      color: var(--text-dark);
-      font-size: 11.5pt;
-      font-weight: 800;
-      padding: 8px 16px;
-      cursor: pointer;
-      border-radius: 12px;
-      white-space: nowrap;
+      background: #FFF !important;
+      border: 2px solid var(--kraft-border) !important; 
+      color: var(--text-dark) !important;
+      font-size: 12pt !important;
+      font-weight: 900 !important;
+      padding: 10px 18px !important;
+      cursor: pointer !important;
+      border-radius: 12px !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      height: 42px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
       transition: 0.2s;
-      flex-shrink: 0;
     }
     .tab-btn.active { 
-      color: #FFF; 
-      background: var(--vet-purple); 
-      border-color: var(--vet-purple); 
+      color: #FFF !important; 
+      background: var(--vet-purple) !important; 
+      border-color: var(--vet-purple) !important; 
     }
 
     .section-banner {
@@ -528,13 +533,13 @@
         <h2 id="modalName">HISTORIA CLÍNICA</h2>
       </div>
 
-      <!-- RECUADRO DE FOTO GRANDE Y VISIBLE -->
+      <!-- FOTO PRINCIPAL BIEN ESPACIOSA -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
         <span id="coverTxt" style="font-size:12.5pt; font-weight:800; color:var(--vet-purple); text-align:center; padding:10px;">📸 Haz clic aquí para cargar o cambiar la foto principal</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
-      <!-- TABS BIEN VISIBLES -->
+      <!-- BOTONES DE PESTAÑAS AMPLIOS Y CLAROS -->
       <div class="tabs">
         <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">📋 Datos & Reseña</button>
         <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">💉 Clínica & Salud</button>
