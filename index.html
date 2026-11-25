@@ -20,7 +20,6 @@
       --vet-teal-light: #4EABA1;
       --vet-green-tag: #2D5A36;
 
-      /* Indicadores de prioridad */
       --alert-red: #E60026;
       --alert-yellow: #EAB308;
       --alert-green: #16A34A;
@@ -117,7 +116,7 @@
       gap: 8px;
       box-shadow: 0 4px 14px rgba(60, 28, 89, 0.35);
       transition: all 0.2s ease;
-      position: relative;
+      text-decoration: none;
     }
     .btn:hover { background: #260E3B; transform: translateY(-2px); }
     .btn-alt {
@@ -154,7 +153,7 @@
       display: none;
     }
 
-    /* BARRA DE ALERTAS DE VACUNAS Y CONTROLES */
+    /* BARRA DE ALERTAS */
     .alerts-banner {
       background: var(--card-bg);
       border: 3px solid var(--kraft-border);
@@ -166,9 +165,7 @@
       gap: 8px;
       box-shadow: var(--shadow-box);
     }
-    .alerts-banner.has-urgent {
-      border-left-color: var(--alert-red);
-    }
+    .alerts-banner.has-urgent { border-left-color: var(--alert-red); }
     .alerts-banner-header {
       display: flex;
       justify-content: space-between;
@@ -182,11 +179,7 @@
       font-weight: 900;
       color: var(--vet-purple);
     }
-    .alerts-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .alerts-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .alert-pill {
       display: inline-flex;
       align-items: center;
@@ -438,7 +431,6 @@
       letter-spacing: 1.5px;
     }
 
-    /* MARCO DE FOTO EN EL MODAL */
     .cover-box {
       width: 100% !important;
       height: 170px !important;
@@ -457,7 +449,7 @@
     }
     .cover-box:hover { border-color: var(--vet-purple); }
 
-    /* PESTAÑAS SIN SCROLL HORIZONTAL */
+    /* PESTAÑAS */
     .tabs {
       display: flex !important;
       flex-wrap: wrap !important;
@@ -561,7 +553,7 @@
     .pdf-info { display: flex; flex-direction: column; gap: 3px; }
     .pdf-title { font-size: 13pt; font-weight: 900; color: var(--vet-purple); }
     .pdf-meta { font-size: 11pt; font-weight: 700; color: var(--text-muted); }
-    .pdf-actions { display: flex; gap: 8px; }
+    .pdf-actions { display: flex; gap: 8px; align-items: center; }
 
     /* CALENDARIO MENSUAL */
     .cal-controls {
@@ -618,9 +610,7 @@
       font-weight: 900;
       color: var(--text-muted);
     }
-    .cal-cell.today .cal-day-num {
-      color: var(--vet-purple);
-    }
+    .cal-cell.today .cal-day-num { color: var(--vet-purple); }
     .cal-event-tag {
       font-size: 9.5pt;
       font-weight: 900;
@@ -689,10 +679,10 @@
     </div>
   </header>
 
-  <!-- BANNER AUTOMÁTICO DE AVISOS (VACUNAS Y CONTROLES) -->
+  <!-- BANNER AUTOMÁTICO DE AVISOS -->
   <div class="alerts-banner" id="alertsBanner">
     <div class="alerts-banner-header">
-      <div class="alerts-banner-title" id="alertsBannerTitle">🔔 Próximos Controles y Vacunas</div>
+      <div class="alerts-banner-title">🔔 Próximos Controles y Vacunas</div>
       <button class="btn btn-alt" style="padding:5px 12px; font-size:11pt;" onclick="abrirCalendario()">Ver Calendario Completo</button>
     </div>
     <div class="alerts-pills" id="alertsPills"></div>
@@ -832,10 +822,10 @@
         <div id="clinicaLista" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
 
-      <!-- TAB 5: COMPROBANTES PDF DE VACUNAS -->
+      <!-- TAB 5: COMPROBANTES PDF EN GOOGLE DRIVE -->
       <div id="tab5" style="display:none;">
         <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:16px; border-radius:16px; margin-bottom:16px;">
-          <div class="section-subtitle" style="margin-top:0;">📄 Subir Comprobante de Vacuna o Certificado (PDF)</div>
+          <div class="section-subtitle" style="margin-top:0;">📄 Subir Comprobante de Vacuna a Google Drive (PDF)</div>
           <div class="form-row" style="margin-top:10px;">
             <div class="field">
               <label>Nombre del Comprobante *</label>
@@ -850,7 +840,7 @@
             <label>Seleccionar archivo PDF *</label>
             <input type="file" id="filePdfVacuna" accept="application/pdf">
           </div>
-          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="subirPdfVacuna()">📤 Guardar Comprobante PDF</button>
+          <button class="btn" id="btnSubirPdf" style="margin-top:14px; width:100%; justify-content:center;" onclick="subirPdfVacuna()">☁️ Subir PDF a Google Drive</button>
         </div>
         <div id="pdfLista" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
@@ -898,17 +888,14 @@
         <span class="legend-item"><span class="dot" style="background:var(--alert-green);"></span> Programado (+15 días)</span>
       </div>
 
-      <!-- CONTROLES DEL MES -->
       <div class="cal-controls">
         <button class="btn btn-alt" style="padding:7px 14px;" onclick="cambiarMes(-1)">◀ Anterior</button>
         <div class="cal-month-label" id="calMonthLabel">Noviembre 2026</div>
         <button class="btn btn-alt" style="padding:7px 14px;" onclick="cambiarMes(1)">Siguiente ▶</button>
       </div>
 
-      <!-- GRILLA DEL CALENDARIO -->
       <div class="cal-grid" id="calGrid"></div>
 
-      <!-- AGREGAR RECORDATORIO RÁPIDO -->
       <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:16px; border-radius:16px;">
         <div class="section-subtitle" style="margin-top:0;">＋ Agendar Próximo Control o Vacuna</div>
         <div class="form-row-3" style="margin-top:10px;">
@@ -937,7 +924,6 @@
         <button class="btn" style="margin-top:12px; width:100%; justify-content:center;" onclick="guardarEventoCalendario()">🔔 Agendar en Calendario</button>
       </div>
 
-      <!-- LISTADO DE PRÓXIMOS EVENTOS -->
       <div>
         <div class="section-banner" style="margin-top:4px;">Listado Completo de Controles Pendientes</div>
         <div id="calListaEventos" style="display:flex; flex-direction:column; gap:10px;"></div>
@@ -952,20 +938,18 @@
     let salud = [];
     let pesos = [];
     let fotos = [];
+    let pdfs = [];
     let actual = null;
     let b64Portada = null;
     let filtroEsp = "todos";
     let draggedIndex = null;
-
-    // Estado del calendario
     let calFechaVista = new Date();
 
     // =========================================================
-    // BASE DE DATOS LOCAL (IndexedDB: Fondos + Comprobantes PDF)
+    // FONDO DE PANTALLA (IndexedDB)
     // =========================================================
     const DB_NAME = "MascotasFondoDB";
     const STORE_FONDOS = "fondos";
-    const STORE_PDFS = "pdfs_vacunas";
 
     function abrirDB() {
       return new Promise((resolve, reject) => {
@@ -974,9 +958,6 @@
           const db = e.target.result;
           if (!db.objectStoreNames.contains(STORE_FONDOS)) {
             db.createObjectStore(STORE_FONDOS);
-          }
-          if (!db.objectStoreNames.contains(STORE_PDFS)) {
-            db.createObjectStore(STORE_PDFS, { keyPath: "id" });
           }
         };
         req.onsuccess = () => resolve(req.result);
@@ -1014,132 +995,6 @@
       });
     }
 
-    // Funciones PDF en IndexedDB
-    async function guardarPdfDB(registro) {
-      const db = await abrirDB();
-      return new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_PDFS, "readwrite");
-        tx.objectStore(STORE_PDFS).put(registro);
-        tx.oncomplete = resolve;
-        tx.onerror = reject;
-      });
-    }
-
-    async function obtenerPdfsMascotaDB(nombreMascota) {
-      const db = await abrirDB();
-      return new Promise((resolve) => {
-        const tx = db.transaction(STORE_PDFS, "readonly");
-        const req = tx.objectStore(STORE_PDFS).getAll();
-        req.onsuccess = () => {
-          const todos = req.result || [];
-          const filtrados = todos.filter(p => (p.mascota || "").toLowerCase() === (nombreMascota || "").toLowerCase());
-          filtrados.sort((a, b) => (b.fecha || "").localeCompare(a.fecha || ""));
-          resolve(filtrados);
-        };
-        req.onerror = () => resolve([]);
-      });
-    }
-
-    async function borrarPdfDB(id) {
-      const db = await abrirDB();
-      return new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_PDFS, "readwrite");
-        tx.objectStore(STORE_PDFS).delete(id);
-        tx.oncomplete = resolve;
-        tx.onerror = reject;
-      });
-    }
-
-    async function subirPdfVacuna() {
-      if (!actual || !actual.nombre) return alert("Primero guarda la ficha de la mascota con su nombre.");
-      const input = document.getElementById("filePdfVacuna");
-      if (!input.files || !input.files[0]) return alert("Selecciona un archivo PDF.");
-
-      const file = input.files[0];
-      if (file.type !== "application/pdf") return alert("El archivo debe ser un PDF.");
-
-      const titulo = document.getElementById("pdfTitulo").value.trim() || file.name.replace(/\.pdf$/i, "");
-      const fecha = document.getElementById("pdfFecha").value || new Date().toISOString().split("T")[0];
-
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        const dataUrl = e.target.result;
-        const nuevoPdf = {
-          id: "pdf_" + Date.now(),
-          mascota: actual.nombre,
-          titulo,
-          fecha,
-          nombreArchivo: file.name,
-          dataUrl
-        };
-        await guardarPdfDB(nuevoPdf);
-
-        document.getElementById("pdfTitulo").value = "";
-        document.getElementById("pdfFecha").value = "";
-        input.value = "";
-        renderPdfs(actual.nombre);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    async function renderPdfs(nom) {
-      const cont = document.getElementById("pdfLista");
-      cont.innerHTML = "";
-      if (!nom) {
-        cont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">Guarda primero la ficha para subir comprobantes PDF.</span>`;
-        return;
-      }
-
-      const lista = await obtenerPdfsMascotaDB(nom);
-      if (lista.length === 0) {
-        cont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay comprobantes PDF guardados aún para ${nom}.</span>`;
-        return;
-      }
-
-      lista.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "pdf-card";
-        card.innerHTML = `
-          <div class="pdf-info">
-            <div class="pdf-title">📄 ${p.titulo}</div>
-            <div class="pdf-meta">Fecha: ${p.fecha || 'Sin fecha'} • Archivo: ${p.nombreArchivo}</div>
-          </div>
-          <div class="pdf-actions">
-            <button class="btn btn-alt" style="padding:6px 12px; font-size:11pt;" onclick="verPdf('${p.id}')">👁️ Abrir PDF</button>
-            <button class="btn btn-danger" onclick="eliminarPdf('${p.id}')">🗑️</button>
-          </div>
-        `;
-        cont.appendChild(card);
-      });
-    }
-
-    async function verPdf(id) {
-      const db = await abrirDB();
-      const tx = db.transaction(STORE_PDFS, "readonly");
-      const req = tx.objectStore(STORE_PDFS).get(id);
-      req.onsuccess = () => {
-        const item = req.result;
-        if (!item || !item.dataUrl) return;
-        // Convertir base64 a Blob para abrir limpio en nueva pestaña
-        const byteString = atob(item.dataUrl.split(',')[1]);
-        const ab = new ArrayBuffer(byteString.length);
-        const ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
-        const blob = new Blob([ab], { type: "application/pdf" });
-        const url = URL.createObjectURL(blob);
-        window.open(url, "_blank");
-      };
-    }
-
-    async function eliminarPdf(id) {
-      if (!confirm("¿Eliminar este comprobante PDF?")) return;
-      await borrarPdfDB(id);
-      if (actual) renderPdfs(actual.nombre);
-    }
-
-    // =========================================================
-    // FONDO DE PANTALLA
-    // =========================================================
     async function subirFondoPantalla(input) {
       if (!input.files || !input.files[0]) return;
       const file = input.files[0];
@@ -1172,16 +1027,8 @@
     }
 
     // =========================================================
-    // SINCRONIZACIÓN Y PERSISTENCIA
+    // SINCRONIZACIÓN CON GOOGLE SHEETS & DRIVE
     // =========================================================
-    function cargarRespaldoLocalSalud() {
-      try {
-        return JSON.parse(localStorage.getItem("salud_local_extra") || "[]");
-      } catch {
-        return [];
-      }
-    }
-
     async function sincronizar() {
       try {
         const res = await fetch(API_URL);
@@ -1202,8 +1049,12 @@
           salud = data.salud || data.bitacora || [];
           pesos = data.pesos || [];
           fotos = data.fotos || [];
+          pdfs = data.pdfs || [];
           render();
           actualizarAlertas();
+          if (actual && actual.nombre) {
+            renderPdfs(actual.nombre);
+          }
         }
       } catch (e) {
         console.warn("Modo sin conexión:", e);
@@ -1224,6 +1075,123 @@
     }
 
     // =========================================================
+    // COMPROBANTES PDF EN GOOGLE DRIVE
+    // =========================================================
+    async function subirPdfVacuna() {
+      if (!actual || !actual.nombre) return alert("Primero guarda la ficha de la mascota con su nombre.");
+      const input = document.getElementById("filePdfVacuna");
+      if (!input.files || !input.files[0]) return alert("Selecciona un archivo PDF.");
+
+      const file = input.files[0];
+      if (file.type !== "application/pdf") return alert("El archivo debe ser un PDF.");
+
+      const btn = document.getElementById("btnSubirPdf");
+      btn.disabled = true;
+      btn.innerText = "⏳ Subiendo a Google Drive...";
+
+      const titulo = document.getElementById("pdfTitulo").value.trim() || file.name.replace(/\.pdf$/i, "");
+      const fecha = document.getElementById("pdfFecha").value || new Date().toISOString().split("T")[0];
+      const idNuevo = "pdf_" + Date.now();
+
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const base64 = e.target.result.split(",")[1];
+        const urlTemporal = URL.createObjectURL(file);
+
+        pdfs.unshift({
+          id: idNuevo,
+          mascota: actual.nombre,
+          titulo,
+          fecha,
+          nombreArchivo: file.name,
+          url: urlTemporal
+        });
+        renderPdfs(actual.nombre);
+
+        try {
+          await fetch(API_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+              accion: "subir_pdf_vacuna",
+              id: idNuevo,
+              mascota: actual.nombre,
+              titulo,
+              fecha,
+              nombreArchivo: file.name,
+              archivo: { base64, mimeType: file.type }
+            })
+          });
+
+          document.getElementById("pdfTitulo").value = "";
+          document.getElementById("pdfFecha").value = "";
+          input.value = "";
+          setTimeout(sincronizar, 3000);
+        } catch (err) {
+          console.error("Error subiendo PDF:", err);
+          alert("Ocurrió un error al subir el PDF.");
+        } finally {
+          btn.disabled = false;
+          btn.innerText = "☁️ Subir PDF a Google Drive";
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderPdfs(nom) {
+      const cont = document.getElementById("pdfLista");
+      cont.innerHTML = "";
+      if (!nom) {
+        cont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">Guarda primero la ficha para subir comprobantes PDF.</span>`;
+        return;
+      }
+
+      const lista = pdfs.filter(p => (p.mascota || "").toLowerCase() === nom.toLowerCase());
+      if (lista.length === 0) {
+        cont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay comprobantes PDF guardados aún para ${nom}.</span>`;
+        return;
+      }
+
+      lista.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "pdf-card";
+        const fechaMostrar = normalizarFechaISO(p.fecha) || p.fecha || "Sin fecha";
+        card.innerHTML = `
+          <div class="pdf-info">
+            <div class="pdf-title">📄 ${p.titulo}</div>
+            <div class="pdf-meta">Fecha: ${fechaMostrar} • Archivo: ${p.nombreArchivo || 'Comprobante.pdf'}</div>
+          </div>
+          <div class="pdf-actions">
+            <a href="${p.url}" target="_blank" class="btn btn-alt" style="padding:6px 12px; font-size:11pt;">👁️ Abrir PDF</a>
+            <button class="btn btn-danger" onclick="eliminarPdf('${p.id}')">🗑️</button>
+          </div>
+        `;
+        cont.appendChild(card);
+      });
+    }
+
+    async function eliminarPdf(id) {
+      if (!confirm("¿Eliminar este comprobante PDF de la ficha?")) return;
+      pdfs = pdfs.filter(p => String(p.id) !== String(id));
+      if (actual) renderPdfs(actual.nombre);
+
+      try {
+        await fetch(API_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            accion: "eliminar_pdf_vacuna",
+            id: id
+          })
+        });
+      } catch (e) {
+        console.warn("Error eliminando PDF:", e);
+      }
+    }
+
+    // =========================================================
     // CALENDARIO Y ALERTAS DE VACUNAS / CONTROLES
     // =========================================================
     function normalizarFechaISO(valor) {
@@ -1236,13 +1204,12 @@
     }
 
     function obtenerEventosProximos() {
-      const combinados = [...salud, ...cargarRespaldoLocalSalud()];
       const vistos = new Set();
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
 
       const eventos = [];
-      combinados.forEach(s => {
+      salud.forEach(s => {
         const fProx = normalizarFechaISO(s.proximaDosis);
         if (!fProx) return;
         const clave = `${s.mascota}|${fProx}|${s.diagnostico || s.detalle || ''}`;
@@ -1353,8 +1320,8 @@
       });
 
       const primerDia = new Date(year, month, 1);
-      let inicioSemana = primerDia.getDay(); // 0=Dom..6=Sab
-      inicioSemana = (inicioSemana === 0) ? 6 : inicioSemana - 1; // Lunes = 0
+      let inicioSemana = primerDia.getDay();
+      inicioSemana = (inicioSemana === 0) ? 6 : inicioSemana - 1;
 
       const diasEnMes = new Date(year, month + 1, 0).getDate();
       const eventos = obtenerEventosProximos();
@@ -1386,11 +1353,10 @@
         grid.appendChild(cell);
       }
 
-      // Listado inferior de todos los controles
       const listaCont = document.getElementById("calListaEventos");
       listaCont.innerHTML = "";
       if (eventos.length === 0) {
-        listaCont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay controles ni vacunas programadas. Agrega una arriba o en la ficha de tu mascota.</span>`;
+        listaCont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay controles ni vacunas programadas.</span>`;
         return;
       }
 
@@ -1428,12 +1394,7 @@
         proximaDosis
       };
 
-      // Guardar inmediatamente en local para reflejarlo al instante
-      const locales = cargarRespaldoLocalSalud();
-      locales.push(registro);
-      localStorage.setItem("salud_local_extra", JSON.stringify(locales));
       salud.push(registro);
-
       document.getElementById("calDetalle").value = "";
       renderCalendario();
       actualizarAlertas();
@@ -1445,8 +1406,9 @@
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(registro)
         });
+        setTimeout(sincronizar, 2500);
       } catch (e) {
-        console.warn("Guardado solo en local:", e);
+        console.warn("Error guardando evento:", e);
       }
     }
 
@@ -1559,8 +1521,8 @@
       document.getElementById("fEst").value = m.esterilizado || "Sí";
       document.getElementById("fChip").value = m.microchip || "";
       document.getElementById("fRaza").value = m.raza || "";
-      document.getElementById("fNac").value = m.nacimiento || "";
-      document.getElementById("fDef").value = m.defuncion || "";
+      document.getElementById("fNac").value = normalizarFechaISO(m.nacimiento);
+      document.getElementById("fDef").value = normalizarFechaISO(m.defuncion);
       document.getElementById("fTutores").value = m.tutores || "";
       document.getElementById("fContacto").value = m.contacto || "Rinconada de Idahue, Coltauco";
       document.getElementById("fGFotos").value = m.googleFotos || "";
@@ -1685,21 +1647,22 @@
     function renderSalud(nom) {
       const c = document.getElementById("clinicaLista");
       c.innerHTML = "";
-      const combinados = [...salud, ...cargarRespaldoLocalSalud()];
-      const evs = combinados.filter(s => s.mascota === nom);
+      const evs = salud.filter(s => s.mascota === nom);
       if (evs.length === 0) {
         c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
         return;
       }
       evs.forEach(e => {
+        const fAtencion = normalizarFechaISO(e.fecha) || e.fecha || '';
+        const fProx = normalizarFechaISO(e.proximaDosis) || e.proximaDosis || '';
         c.innerHTML += `
           <div class="record-card">
             <div style="display:flex; justify-content:space-between; align-items:center;">
               <b style="color:var(--vet-purple); font-size:13pt;">${e.categoria || e.tipo || 'Atención'}: ${e.diagnostico || e.detalle || ''}</b>
-              <span style="color:var(--text-muted); font-size:11pt; font-weight:800;">${e.fecha || ''}</span>
+              <span style="color:var(--text-muted); font-size:11pt; font-weight:800;">${fAtencion}</span>
             </div>
             ${e.tratamiento ? `<div style="margin-top:4px;"><b>Tratamiento:</b> ${e.tratamiento}</div>` : ''}
-            ${e.proximaDosis ? `<div style="color:var(--vet-green-tag); font-size:11.5pt; font-weight:900; margin-top:4px;">➔ Próxima dosis / control: ${e.proximaDosis}</div>` : ''}
+            ${fProx ? `<div style="color:var(--vet-green-tag); font-size:11.5pt; font-weight:900; margin-top:4px;">➔ Próxima dosis / control: ${fProx}</div>` : ''}
           </div>
         `;
       });
@@ -1735,7 +1698,7 @@
         body: JSON.stringify(nuevoReg)
       });
 
-      setTimeout(sincronizar, 2000);
+      setTimeout(sincronizar, 2500);
     }
 
     function renderPesos(nom) {
@@ -1747,11 +1710,12 @@
         return;
       }
       lista.forEach(p => {
+        const fPeso = normalizarFechaISO(p.fecha) || p.fecha || '';
         c.innerHTML += `
           <div class="record-card" style="border-left-color: var(--vet-purple) !important;">
             <div style="display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:14pt; font-weight:900; color:var(--vet-purple);">${p.peso} kg</span>
-              <span style="color:var(--text-muted); font-size:11pt; font-weight:800;">Fecha: ${p.fecha}</span>
+              <span style="color:var(--text-muted); font-size:11pt; font-weight:800;">Fecha: ${fPeso}</span>
             </div>
           </div>
         `;
