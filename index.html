@@ -14,28 +14,33 @@
       --kraft-border: #6E533B;
       --card-bg: #FAF5EB;
       --postit-bg: #FFFDF5;
-      
+
       --vet-purple: #3C1C59;
       --vet-teal: #338B82;
       --vet-teal-light: #4EABA1;
       --vet-green-tag: #2D5A36;
-      
+
+      /* Indicadores de prioridad */
+      --alert-red: #E60026;
+      --alert-yellow: #EAB308;
+      --alert-green: #16A34A;
+
       --text-dark: #1E1611;
       --text-muted: #57463A;
 
       --shadow-box: 0 6px 18px rgba(45, 28, 15, 0.22);
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      font-family: 'Quicksand', sans-serif; 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
     }
 
     html, body {
       background-color: var(--kraft-bg);
-      background-image: 
+      background-image:
         radial-gradient(#8F745B 1.2px, transparent 1.2px),
         radial-gradient(#A3886E 1.2px, var(--kraft-bg) 1.2px);
       background-size: 24px 24px;
@@ -57,7 +62,7 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     /* ENCABEZADO */
@@ -102,16 +107,17 @@
       background: var(--vet-purple);
       color: #FFF;
       border: none;
-      padding: 11px 20px;
+      padding: 11px 18px;
       border-radius: 14px;
       font-weight: 900;
       cursor: pointer;
-      font-size: 13.5pt;
+      font-size: 13pt;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       box-shadow: 0 4px 14px rgba(60, 28, 89, 0.35);
       transition: all 0.2s ease;
+      position: relative;
     }
     .btn:hover { background: #260E3B; transform: translateY(-2px); }
     .btn-alt {
@@ -120,11 +126,82 @@
       color: var(--vet-purple);
       box-shadow: none;
     }
-    .btn-alt:hover { 
-      background: var(--vet-teal); 
-      border-color: var(--vet-teal); 
-      color: #FFF; 
+    .btn-alt:hover {
+      background: var(--vet-teal);
+      border-color: var(--vet-teal);
+      color: #FFF;
     }
+    .btn-danger {
+      background: #FFF;
+      border: 2px solid var(--alert-red);
+      color: var(--alert-red);
+      padding: 6px 12px;
+      font-size: 11pt;
+      box-shadow: none;
+    }
+    .btn-danger:hover {
+      background: var(--alert-red);
+      color: #FFF;
+    }
+
+    .badge-count {
+      background: var(--alert-red);
+      color: #FFF;
+      font-size: 10pt;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 20px;
+      display: none;
+    }
+
+    /* BARRA DE ALERTAS DE VACUNAS Y CONTROLES */
+    .alerts-banner {
+      background: var(--card-bg);
+      border: 3px solid var(--kraft-border);
+      border-left: 10px solid var(--alert-yellow);
+      border-radius: 16px;
+      padding: 12px 18px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: var(--shadow-box);
+    }
+    .alerts-banner.has-urgent {
+      border-left-color: var(--alert-red);
+    }
+    .alerts-banner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .alerts-banner-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13.5pt;
+      font-weight: 900;
+      color: var(--vet-purple);
+    }
+    .alerts-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .alert-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 11.5pt;
+      font-weight: 800;
+      background: #FFF;
+      border: 2px solid var(--kraft-border);
+      cursor: pointer;
+    }
+    .alert-pill.urgent { border-color: var(--alert-red); color: var(--alert-red); }
+    .alert-pill.soon { border-color: var(--alert-yellow); color: #926000; }
+    .alert-pill.ok { border-color: var(--alert-green); color: var(--alert-green); }
 
     /* FILTROS Y BUSCADOR */
     .toolbar {
@@ -328,8 +405,8 @@
       background: var(--card-bg);
       border: 3.5px solid var(--kraft-border);
       border-radius: 24px;
-      width: 860px;
-      max-width: 95vw;
+      width: 900px;
+      max-width: 96vw;
       max-height: 92vh;
       overflow-y: auto;
       padding: 24px 28px;
@@ -361,11 +438,11 @@
       letter-spacing: 1.5px;
     }
 
-    /* MARCO DE FOTO EN EL MODAL (CORREGIDO: NUNCA SE APLASTA) */
+    /* MARCO DE FOTO EN EL MODAL */
     .cover-box {
       width: 100% !important;
-      height: 180px !important;
-      min-height: 180px !important;
+      height: 170px !important;
+      min-height: 170px !important;
       flex-shrink: 0 !important;
       border-radius: 16px;
       border: 3px dashed var(--vet-teal);
@@ -380,39 +457,37 @@
     }
     .cover-box:hover { border-color: var(--vet-purple); }
 
-    /* PESTAÑAS (CORREGIDAS: NUNCA SE APLASTAN) */
+    /* PESTAÑAS SIN SCROLL HORIZONTAL */
     .tabs {
       display: flex !important;
-      gap: 10px !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
       border-bottom: 3px solid var(--kraft-border) !important;
-      padding: 6px 0 14px 0 !important;
-      overflow-x: auto !important;
+      padding: 6px 0 12px 0 !important;
       flex-shrink: 0 !important;
-      min-height: 58px !important;
       align-items: center !important;
+      justify-content: center;
     }
     .tab-btn {
       background: #FFF !important;
-      border: 2px solid var(--kraft-border) !important; 
+      border: 2px solid var(--kraft-border) !important;
       color: var(--text-dark) !important;
-      font-size: 12pt !important;
+      font-size: 11.5pt !important;
       font-weight: 900 !important;
-      padding: 10px 18px !important;
+      padding: 8px 14px !important;
       cursor: pointer !important;
       border-radius: 12px !important;
       white-space: nowrap !important;
-      flex-shrink: 0 !important;
-      height: 42px !important;
       display: inline-flex !important;
       align-items: center !important;
       gap: 6px !important;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
       transition: 0.2s;
     }
-    .tab-btn.active { 
-      color: #FFF !important; 
-      background: var(--vet-purple) !important; 
-      border-color: var(--vet-purple) !important; 
+    .tab-btn.active {
+      color: #FFF !important;
+      background: var(--vet-purple) !important;
+      border-color: var(--vet-purple) !important;
     }
 
     .section-banner {
@@ -445,9 +520,9 @@
     }
     .field input, .field select, .field textarea {
       background: #FFF;
-      border: 2px solid var(--kraft-border); 
+      border: 2px solid var(--kraft-border);
       border-radius: 12px;
-      padding: 9px 13px; 
+      padding: 9px 13px;
       color: var(--text-dark);
       font-size: 12pt;
       outline: none;
@@ -470,6 +545,108 @@
       font-size: 12pt;
     }
 
+    /* TARJETAS DE PDF */
+    .pdf-card {
+      background: #FFF;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 2px solid var(--kraft-border);
+      border-left: 8px solid var(--vet-purple);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pdf-info { display: flex; flex-direction: column; gap: 3px; }
+    .pdf-title { font-size: 13pt; font-weight: 900; color: var(--vet-purple); }
+    .pdf-meta { font-size: 11pt; font-weight: 700; color: var(--text-muted); }
+    .pdf-actions { display: flex; gap: 8px; }
+
+    /* CALENDARIO MENSUAL */
+    .cal-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFF;
+      border: 2.5px solid var(--kraft-border);
+      border-radius: 14px;
+      padding: 10px 16px;
+    }
+    .cal-month-label {
+      font-family: 'Nunito', sans-serif;
+      font-size: 16pt;
+      font-weight: 900;
+      color: var(--vet-purple);
+      text-transform: capitalize;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    .cal-day-header {
+      text-align: center;
+      font-weight: 900;
+      font-size: 11.5pt;
+      color: var(--vet-purple);
+      padding: 6px 0;
+      background: #EFE4D6;
+      border-radius: 8px;
+      border: 1.5px solid var(--kraft-border);
+    }
+    .cal-cell {
+      background: #FFF;
+      border: 2px solid #D5C4B2;
+      border-radius: 10px;
+      min-height: 86px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cal-cell.empty {
+      background: rgba(239, 228, 214, 0.45);
+      border-style: dashed;
+    }
+    .cal-cell.today {
+      border: 3px solid var(--vet-purple);
+      background: #FFFDF2;
+    }
+    .cal-day-num {
+      font-size: 11.5pt;
+      font-weight: 900;
+      color: var(--text-muted);
+    }
+    .cal-cell.today .cal-day-num {
+      color: var(--vet-purple);
+    }
+    .cal-event-tag {
+      font-size: 9.5pt;
+      font-weight: 900;
+      padding: 3px 6px;
+      border-radius: 6px;
+      color: #FFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+    }
+    .cal-event-tag.urgent { background: var(--alert-red); }
+    .cal-event-tag.soon { background: var(--alert-yellow); color: #1E1611; }
+    .cal-event-tag.ok { background: var(--alert-green); }
+
+    .cal-legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 11.5pt;
+      font-weight: 800;
+    }
+    .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; margin-top: 14px; }
     .gallery-card {
       aspect-ratio: 1; border-radius: 14px; border: 2.5px solid var(--kraft-border);
@@ -480,6 +657,11 @@
       background: rgba(45, 20, 65, 0.92); color: #FFF;
       font-size: 10pt; font-weight: 800; padding: 6px; text-align: center;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    @media (max-width: 720px) {
+      .form-row, .form-row-3 { grid-template-columns: 1fr; }
+      .cal-cell { min-height: 64px; }
     }
   </style>
 </head>
@@ -495,6 +677,9 @@
       </div>
     </div>
     <div class="actions">
+      <button class="btn btn-alt" onclick="abrirCalendario()">
+        📅 Calendario y Alertas <span id="badgeAlertas" class="badge-count">0</span>
+      </button>
       <button class="btn btn-alt" onclick="document.getElementById('inputFondoPantalla').click()">🖼️ Fondo</button>
       <input type="file" id="inputFondoPantalla" accept="image/*" style="display:none;" onchange="subirFondoPantalla(this)">
       <button class="btn btn-alt" onclick="restablecerFondoDefecto()" title="Restablecer fondo original">↺ Restablecer</button>
@@ -503,6 +688,15 @@
       <button class="btn" onclick="abrirNuevo()">＋ Nueva Ficha</button>
     </div>
   </header>
+
+  <!-- BANNER AUTOMÁTICO DE AVISOS (VACUNAS Y CONTROLES) -->
+  <div class="alerts-banner" id="alertsBanner">
+    <div class="alerts-banner-header">
+      <div class="alerts-banner-title" id="alertsBannerTitle">🔔 Próximos Controles y Vacunas</div>
+      <button class="btn btn-alt" style="padding:5px 12px; font-size:11pt;" onclick="abrirCalendario()">Ver Calendario Completo</button>
+    </div>
+    <div class="alerts-pills" id="alertsPills"></div>
+  </div>
 
   <!-- BARRA DE FILTROS & BUSCADOR -->
   <div class="toolbar">
@@ -524,7 +718,7 @@
   <!-- MODAL / HISTORIA CLÍNICA -->
   <div class="overlay" id="overlay">
     <div class="modal">
-      
+
       <div class="vet-header">
         <div style="position: absolute; right: 0; top: 0;">
           <button class="btn btn-alt" style="padding: 5px 14px; font-size: 11pt;" onclick="cerrar()">✕ Cerrar</button>
@@ -533,18 +727,19 @@
         <h2 id="modalName">HISTORIA CLÍNICA</h2>
       </div>
 
-      <!-- FOTO PRINCIPAL BIEN ESPACIOSA -->
+      <!-- FOTO PRINCIPAL -->
       <div class="cover-box" id="coverBox" onclick="document.getElementById('filePortada').click()">
         <span id="coverTxt" style="font-size:12.5pt; font-weight:800; color:var(--vet-purple); text-align:center; padding:10px;">📸 Haz clic aquí para cargar o cambiar la foto principal</span>
       </div>
       <input type="file" id="filePortada" accept="image/*" style="display:none;" onchange="previewPortada(this)">
 
-      <!-- BOTONES DE PESTAÑAS AMPLIOS Y CLAROS -->
+      <!-- PESTAÑAS -->
       <div class="tabs">
         <button class="tab-btn active" id="tabBtn1" onclick="verTab(1)">📋 Datos & Reseña</button>
         <button class="tab-btn" id="tabBtn2" onclick="verTab(2)">💉 Clínica & Salud</button>
+        <button class="tab-btn" id="tabBtn5" onclick="verTab(5)">📄 Comprobantes PDF</button>
         <button class="tab-btn" id="tabBtn3" onclick="verTab(3)">⚖️ Control de Peso</button>
-        <button class="tab-btn" id="tabBtn4" onclick="verTab(4)">🖼️ Álbum de Recuerdos</button>
+        <button class="tab-btn" id="tabBtn4" onclick="verTab(4)">🖼️ Álbum</button>
       </div>
 
       <!-- TAB 1: DATOS GENERALES -->
@@ -609,7 +804,7 @@
           <textarea id="fNot" rows="3" placeholder="Carácter, alergias, antecedentes médicos, anécdotas o cuidados..."></textarea>
         </div>
 
-        <button class="btn" style="margin-top:18px; width:100%; justify-content:center; font-size:13.5pt; padding:12px;" onclick="guardarFicha()">💾 Guardar Ficha Clínica</button>
+        <button class="btn" style="margin-top:18px; width:100%; justify-content:center; font-size:13.5pt; padding:12px;" onclick="guardarFicha(event)">💾 Guardar Ficha Clínica</button>
       </div>
 
       <!-- TAB 2: CLÍNICA & SALUD -->
@@ -637,6 +832,29 @@
         <div id="clinicaLista" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
 
+      <!-- TAB 5: COMPROBANTES PDF DE VACUNAS -->
+      <div id="tab5" style="display:none;">
+        <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:16px; border-radius:16px; margin-bottom:16px;">
+          <div class="section-subtitle" style="margin-top:0;">📄 Subir Comprobante de Vacuna o Certificado (PDF)</div>
+          <div class="form-row" style="margin-top:10px;">
+            <div class="field">
+              <label>Nombre del Comprobante *</label>
+              <input type="text" id="pdfTitulo" placeholder="Ej: Certificado Antirrábica 2026">
+            </div>
+            <div class="field">
+              <label>Fecha del Documento</label>
+              <input type="date" id="pdfFecha">
+            </div>
+          </div>
+          <div class="field" style="margin-top:10px;">
+            <label>Seleccionar archivo PDF *</label>
+            <input type="file" id="filePdfVacuna" accept="application/pdf">
+          </div>
+          <button class="btn" style="margin-top:14px; width:100%; justify-content:center;" onclick="subirPdfVacuna()">📤 Guardar Comprobante PDF</button>
+        </div>
+        <div id="pdfLista" style="display:flex; flex-direction:column; gap:10px;"></div>
+      </div>
+
       <!-- TAB 3: CONTROL DE PESO -->
       <div id="tab3" style="display:none;">
         <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:16px; border-radius:16px; margin-bottom:16px;">
@@ -653,13 +871,77 @@
       <!-- TAB 4: ÁLBUM FOTOGRÁFICO -->
       <div id="tab4" style="display:none;">
         <div style="display:flex; gap:10px;">
-          <input type="text" id="albTit" class="field" style="flex:1;" placeholder="Descripción de la foto o momento...">
+          <input type="text" id="albTit" class="field" style="flex:1; background:#FFF; border:2px solid var(--kraft-border); border-radius:12px; padding:9px 13px; font-weight:700;" placeholder="Descripción de la foto o momento...">
           <button class="btn" onclick="document.getElementById('fileVida').click()">📸 Subir Foto</button>
         </div>
         <input type="file" id="fileVida" accept="image/*" style="display:none;" onchange="subirFotoVida(this)">
         <div class="gallery-grid" id="albGrid"></div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- MODAL: CALENDARIO DE CONTROLES Y VACUNAS -->
+  <div class="overlay" id="overlayCalendario">
+    <div class="modal" style="width: 960px;">
+      <div class="vet-header">
+        <div style="position: absolute; right: 0; top: 0;">
+          <button class="btn btn-alt" style="padding: 5px 14px; font-size: 11pt;" onclick="cerrarCalendario()">✕ Cerrar</button>
+        </div>
+        <span>AGENDA VETERINARIA FAMILIAR</span>
+        <h2>📅 CALENDARIO DE CONTROLES Y VACUNAS</h2>
+      </div>
+
+      <div class="cal-legend">
+        <span class="legend-item"><span class="dot" style="background:var(--alert-red);"></span> Vencido o para hoy</span>
+        <span class="legend-item"><span class="dot" style="background:var(--alert-yellow);"></span> Próximos 15 días</span>
+        <span class="legend-item"><span class="dot" style="background:var(--alert-green);"></span> Programado (+15 días)</span>
+      </div>
+
+      <!-- CONTROLES DEL MES -->
+      <div class="cal-controls">
+        <button class="btn btn-alt" style="padding:7px 14px;" onclick="cambiarMes(-1)">◀ Anterior</button>
+        <div class="cal-month-label" id="calMonthLabel">Noviembre 2026</div>
+        <button class="btn btn-alt" style="padding:7px 14px;" onclick="cambiarMes(1)">Siguiente ▶</button>
+      </div>
+
+      <!-- GRILLA DEL CALENDARIO -->
+      <div class="cal-grid" id="calGrid"></div>
+
+      <!-- AGREGAR RECORDATORIO RÁPIDO -->
+      <div style="background:#FFF; border:2.5px solid var(--kraft-border); padding:16px; border-radius:16px;">
+        <div class="section-subtitle" style="margin-top:0;">＋ Agendar Próximo Control o Vacuna</div>
+        <div class="form-row-3" style="margin-top:10px;">
+          <div class="field">
+            <label>Mascota *</label>
+            <select id="calMascota"></select>
+          </div>
+          <div class="field">
+            <label>Tipo</label>
+            <select id="calTipo">
+              <option value="Vacunas">Vacunación</option>
+              <option value="Desparasitación interna">Desparasitación Interna</option>
+              <option value="Desparasitación externa">Desparasitación Externa</option>
+              <option value="Consultas">Control Veterinario</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Fecha del Control *</label>
+            <input type="date" id="calFecha">
+          </div>
+        </div>
+        <div class="field" style="margin-top:10px;">
+          <label>Detalle / Vacuna *</label>
+          <input type="text" id="calDetalle" placeholder="Ej: Refuerzo Antirrábica, Control anual...">
+        </div>
+        <button class="btn" style="margin-top:12px; width:100%; justify-content:center;" onclick="guardarEventoCalendario()">🔔 Agendar en Calendario</button>
+      </div>
+
+      <!-- LISTADO DE PRÓXIMOS EVENTOS -->
+      <div>
+        <div class="section-banner" style="margin-top:4px;">Listado Completo de Controles Pendientes</div>
+        <div id="calListaEventos" style="display:flex; flex-direction:column; gap:10px;"></div>
+      </div>
     </div>
   </div>
 
@@ -675,14 +957,28 @@
     let filtroEsp = "todos";
     let draggedIndex = null;
 
-    // BASE DE DATOS LOCAL (IndexedDB)
+    // Estado del calendario
+    let calFechaVista = new Date();
+
+    // =========================================================
+    // BASE DE DATOS LOCAL (IndexedDB: Fondos + Comprobantes PDF)
+    // =========================================================
     const DB_NAME = "MascotasFondoDB";
-    const STORE_NAME = "fondos";
+    const STORE_FONDOS = "fondos";
+    const STORE_PDFS = "pdfs_vacunas";
 
     function abrirDB() {
       return new Promise((resolve, reject) => {
-        const req = indexedDB.open(DB_NAME, 1);
-        req.onupgradeneeded = () => req.result.createObjectStore(STORE_NAME);
+        const req = indexedDB.open(DB_NAME, 2);
+        req.onupgradeneeded = (e) => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains(STORE_FONDOS)) {
+            db.createObjectStore(STORE_FONDOS);
+          }
+          if (!db.objectStoreNames.contains(STORE_PDFS)) {
+            db.createObjectStore(STORE_PDFS, { keyPath: "id" });
+          }
+        };
         req.onsuccess = () => resolve(req.result);
         req.onerror = () => reject(req.error);
       });
@@ -690,16 +986,19 @@
 
     async function guardarFondoDB(dataUrl) {
       const db = await abrirDB();
-      const tx = db.transaction(STORE_NAME, "readwrite");
-      tx.objectStore(STORE_NAME).put(dataUrl, "fondo_actual");
-      return tx.complete;
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_FONDOS, "readwrite");
+        tx.objectStore(STORE_FONDOS).put(dataUrl, "fondo_actual");
+        tx.oncomplete = resolve;
+        tx.onerror = reject;
+      });
     }
 
     async function cargarFondoDB() {
       const db = await abrirDB();
       return new Promise((resolve) => {
-        const tx = db.transaction(STORE_NAME, "readonly");
-        const req = tx.objectStore(STORE_NAME).get("fondo_actual");
+        const tx = db.transaction(STORE_FONDOS, "readonly");
+        const req = tx.objectStore(STORE_FONDOS).get("fondo_actual");
         req.onsuccess = () => resolve(req.result);
         req.onerror = () => resolve(null);
       });
@@ -707,11 +1006,140 @@
 
     async function borrarFondoDB() {
       const db = await abrirDB();
-      const tx = db.transaction(STORE_NAME, "readwrite");
-      tx.objectStore(STORE_NAME).delete("fondo_actual");
-      return tx.complete;
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_FONDOS, "readwrite");
+        tx.objectStore(STORE_FONDOS).delete("fondo_actual");
+        tx.oncomplete = resolve;
+        tx.onerror = reject;
+      });
     }
 
+    // Funciones PDF en IndexedDB
+    async function guardarPdfDB(registro) {
+      const db = await abrirDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_PDFS, "readwrite");
+        tx.objectStore(STORE_PDFS).put(registro);
+        tx.oncomplete = resolve;
+        tx.onerror = reject;
+      });
+    }
+
+    async function obtenerPdfsMascotaDB(nombreMascota) {
+      const db = await abrirDB();
+      return new Promise((resolve) => {
+        const tx = db.transaction(STORE_PDFS, "readonly");
+        const req = tx.objectStore(STORE_PDFS).getAll();
+        req.onsuccess = () => {
+          const todos = req.result || [];
+          const filtrados = todos.filter(p => (p.mascota || "").toLowerCase() === (nombreMascota || "").toLowerCase());
+          filtrados.sort((a, b) => (b.fecha || "").localeCompare(a.fecha || ""));
+          resolve(filtrados);
+        };
+        req.onerror = () => resolve([]);
+      });
+    }
+
+    async function borrarPdfDB(id) {
+      const db = await abrirDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_PDFS, "readwrite");
+        tx.objectStore(STORE_PDFS).delete(id);
+        tx.oncomplete = resolve;
+        tx.onerror = reject;
+      });
+    }
+
+    async function subirPdfVacuna() {
+      if (!actual || !actual.nombre) return alert("Primero guarda la ficha de la mascota con su nombre.");
+      const input = document.getElementById("filePdfVacuna");
+      if (!input.files || !input.files[0]) return alert("Selecciona un archivo PDF.");
+
+      const file = input.files[0];
+      if (file.type !== "application/pdf") return alert("El archivo debe ser un PDF.");
+
+      const titulo = document.getElementById("pdfTitulo").value.trim() || file.name.replace(/\.pdf$/i, "");
+      const fecha = document.getElementById("pdfFecha").value || new Date().toISOString().split("T")[0];
+
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const dataUrl = e.target.result;
+        const nuevoPdf = {
+          id: "pdf_" + Date.now(),
+          mascota: actual.nombre,
+          titulo,
+          fecha,
+          nombreArchivo: file.name,
+          dataUrl
+        };
+        await guardarPdfDB(nuevoPdf);
+
+        document.getElementById("pdfTitulo").value = "";
+        document.getElementById("pdfFecha").value = "";
+        input.value = "";
+        renderPdfs(actual.nombre);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function renderPdfs(nom) {
+      const cont = document.getElementById("pdfLista");
+      cont.innerHTML = "";
+      if (!nom) {
+        cont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">Guarda primero la ficha para subir comprobantes PDF.</span>`;
+        return;
+      }
+
+      const lista = await obtenerPdfsMascotaDB(nom);
+      if (lista.length === 0) {
+        cont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay comprobantes PDF guardados aún para ${nom}.</span>`;
+        return;
+      }
+
+      lista.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "pdf-card";
+        card.innerHTML = `
+          <div class="pdf-info">
+            <div class="pdf-title">📄 ${p.titulo}</div>
+            <div class="pdf-meta">Fecha: ${p.fecha || 'Sin fecha'} • Archivo: ${p.nombreArchivo}</div>
+          </div>
+          <div class="pdf-actions">
+            <button class="btn btn-alt" style="padding:6px 12px; font-size:11pt;" onclick="verPdf('${p.id}')">👁️ Abrir PDF</button>
+            <button class="btn btn-danger" onclick="eliminarPdf('${p.id}')">🗑️</button>
+          </div>
+        `;
+        cont.appendChild(card);
+      });
+    }
+
+    async function verPdf(id) {
+      const db = await abrirDB();
+      const tx = db.transaction(STORE_PDFS, "readonly");
+      const req = tx.objectStore(STORE_PDFS).get(id);
+      req.onsuccess = () => {
+        const item = req.result;
+        if (!item || !item.dataUrl) return;
+        // Convertir base64 a Blob para abrir limpio en nueva pestaña
+        const byteString = atob(item.dataUrl.split(',')[1]);
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+        const blob = new Blob([ab], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        window.open(url, "_blank");
+      };
+    }
+
+    async function eliminarPdf(id) {
+      if (!confirm("¿Eliminar este comprobante PDF?")) return;
+      await borrarPdfDB(id);
+      if (actual) renderPdfs(actual.nombre);
+    }
+
+    // =========================================================
+    // FONDO DE PANTALLA
+    // =========================================================
     async function subirFondoPantalla(input) {
       if (!input.files || !input.files[0]) return;
       const file = input.files[0];
@@ -743,33 +1171,43 @@
       }
     }
 
+    // =========================================================
     // SINCRONIZACIÓN Y PERSISTENCIA
+    // =========================================================
+    function cargarRespaldoLocalSalud() {
+      try {
+        return JSON.parse(localStorage.getItem("salud_local_extra") || "[]");
+      } catch {
+        return [];
+      }
+    }
+
     async function sincronizar() {
       try {
         const res = await fetch(API_URL);
         const data = await res.json();
         if (data.status === "success") {
           const nuevas = data.mascotas || [];
-          if (mascotas.length > 0) {
-            const ordenGuardado = JSON.parse(localStorage.getItem("orden_mascotas") || "[]");
-            if (ordenGuardado.length > 0) {
-              nuevas.sort((a, b) => {
-                let ia = ordenGuardado.indexOf(a.nombre);
-                let ib = ordenGuardado.indexOf(b.nombre);
-                if (ia === -1) ia = 999;
-                if (ib === -1) ib = 999;
-                return ia - ib;
-              });
-            }
+          const ordenGuardado = JSON.parse(localStorage.getItem("orden_mascotas") || "[]");
+          if (ordenGuardado.length > 0) {
+            nuevas.sort((a, b) => {
+              let ia = ordenGuardado.indexOf(a.nombre);
+              let ib = ordenGuardado.indexOf(b.nombre);
+              if (ia === -1) ia = 999;
+              if (ib === -1) ib = 999;
+              return ia - ib;
+            });
           }
           mascotas = nuevas;
           salud = data.salud || data.bitacora || [];
           pesos = data.pesos || [];
           fotos = data.fotos || [];
           render();
+          actualizarAlertas();
         }
       } catch (e) {
         console.warn("Modo sin conexión:", e);
+        actualizarAlertas();
       }
     }
 
@@ -785,7 +1223,236 @@
       localStorage.setItem("orden_mascotas", JSON.stringify(orden));
     }
 
-    // RENDERIZADO DRAG & DROP
+    // =========================================================
+    // CALENDARIO Y ALERTAS DE VACUNAS / CONTROLES
+    // =========================================================
+    function normalizarFechaISO(valor) {
+      if (!valor) return "";
+      const s = String(valor).trim();
+      if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+      const d = new Date(s);
+      if (isNaN(d.getTime())) return "";
+      return d.toISOString().slice(0, 10);
+    }
+
+    function obtenerEventosProximos() {
+      const combinados = [...salud, ...cargarRespaldoLocalSalud()];
+      const vistos = new Set();
+      const hoy = new Date();
+      hoy.setHours(0, 0, 0, 0);
+
+      const eventos = [];
+      combinados.forEach(s => {
+        const fProx = normalizarFechaISO(s.proximaDosis);
+        if (!fProx) return;
+        const clave = `${s.mascota}|${fProx}|${s.diagnostico || s.detalle || ''}`;
+        if (vistos.has(clave)) return;
+        vistos.add(clave);
+
+        const [y, m, d] = fProx.split("-").map(Number);
+        const fechaObj = new Date(y, m - 1, d);
+        const diffDias = Math.round((fechaObj - hoy) / (1000 * 60 * 60 * 24));
+
+        let estado = "ok";
+        if (diffDias <= 0) estado = "urgent";
+        else if (diffDias <= 15) estado = "soon";
+
+        eventos.push({
+          mascota: s.mascota || "Mascota",
+          categoria: s.categoria || s.tipo || "Control",
+          detalle: s.diagnostico || s.detalle || "Control veterinario",
+          fecha: fProx,
+          diffDias,
+          estado
+        });
+      });
+
+      eventos.sort((a, b) => a.fecha.localeCompare(b.fecha));
+      return eventos;
+    }
+
+    function textoDias(diff) {
+      if (diff < 0) return `Atrasado ${Math.abs(diff)} d`;
+      if (diff === 0) return "¡Hoy!";
+      if (diff === 1) return "Mañana";
+      return `En ${diff} días`;
+    }
+
+    function actualizarAlertas() {
+      const eventos = obtenerEventosProximos();
+      const activos = eventos.filter(e => e.diffDias <= 15);
+      const badge = document.getElementById("badgeAlertas");
+      const banner = document.getElementById("alertsBanner");
+      const pills = document.getElementById("alertsPills");
+
+      if (activos.length > 0) {
+        badge.style.display = "inline-block";
+        badge.textContent = activos.length;
+        banner.style.display = "flex";
+        banner.classList.toggle("has-urgent", activos.some(e => e.estado === "urgent"));
+
+        pills.innerHTML = "";
+        activos.slice(0, 8).forEach(ev => {
+          const icono = ev.estado === "urgent" ? "🔴" : "🟡";
+          const pill = document.createElement("div");
+          pill.className = `alert-pill ${ev.estado}`;
+          pill.innerHTML = `${icono} <b>${ev.mascota}</b>: ${ev.detalle} (${ev.fecha} • ${textoDias(ev.diffDias)})`;
+          pill.onclick = () => abrirFichaPorNombre(ev.mascota);
+          pills.appendChild(pill);
+        });
+      } else {
+        badge.style.display = "none";
+        banner.style.display = "none";
+      }
+    }
+
+    function abrirFichaPorNombre(nombre) {
+      const m = mascotas.find(x => (x.nombre || "").toLowerCase() === (nombre || "").toLowerCase());
+      if (m) {
+        cerrarCalendario();
+        abrir(m);
+        verTab(2);
+      }
+    }
+
+    function abrirCalendario() {
+      const sel = document.getElementById("calMascota");
+      sel.innerHTML = "";
+      if (mascotas.length === 0) {
+        sel.innerHTML = `<option value="">(Primero crea una mascota)</option>`;
+      } else {
+        mascotas.forEach(m => {
+          sel.innerHTML += `<option value="${m.nombre}">${m.nombre} (${m.especie})</option>`;
+        });
+      }
+      renderCalendario();
+      document.getElementById("overlayCalendario").style.display = "flex";
+    }
+
+    function cerrarCalendario() {
+      document.getElementById("overlayCalendario").style.display = "none";
+    }
+
+    function cambiarMes(delta) {
+      calFechaVista.setMonth(calFechaVista.getMonth() + delta);
+      renderCalendario();
+    }
+
+    function renderCalendario() {
+      const year = calFechaVista.getFullYear();
+      const month = calFechaVista.getMonth();
+      const nombreMes = calFechaVista.toLocaleDateString("es-CL", { month: "long", year: "numeric" });
+      document.getElementById("calMonthLabel").textContent = nombreMes;
+
+      const grid = document.getElementById("calGrid");
+      grid.innerHTML = "";
+
+      const diasSemana = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+      diasSemana.forEach(d => {
+        grid.innerHTML += `<div class="cal-day-header">${d}</div>`;
+      });
+
+      const primerDia = new Date(year, month, 1);
+      let inicioSemana = primerDia.getDay(); // 0=Dom..6=Sab
+      inicioSemana = (inicioSemana === 0) ? 6 : inicioSemana - 1; // Lunes = 0
+
+      const diasEnMes = new Date(year, month + 1, 0).getDate();
+      const eventos = obtenerEventosProximos();
+
+      const hoy = new Date();
+      const hoyISO = `${hoy.getFullYear()}-${String(hoy.getMonth()+1).padStart(2,'0')}-${String(hoy.getDate()).padStart(2,'0')}`;
+
+      for (let i = 0; i < inicioSemana; i++) {
+        grid.innerHTML += `<div class="cal-cell empty"></div>`;
+      }
+
+      for (let dia = 1; dia <= diasEnMes; dia++) {
+        const fechaISO = `${year}-${String(month+1).padStart(2,'0')}-${String(dia).padStart(2,'0')}`;
+        const evsDia = eventos.filter(e => e.fecha === fechaISO);
+
+        const cell = document.createElement("div");
+        cell.className = "cal-cell" + (fechaISO === hoyISO ? " today" : "");
+        cell.innerHTML = `<div class="cal-day-num">${dia}</div>`;
+
+        evsDia.forEach(ev => {
+          const tag = document.createElement("div");
+          tag.className = `cal-event-tag ${ev.estado}`;
+          tag.title = `${ev.mascota}: ${ev.categoria} - ${ev.detalle}`;
+          tag.textContent = `${ev.mascota}: ${ev.detalle}`;
+          tag.onclick = () => abrirFichaPorNombre(ev.mascota);
+          cell.appendChild(tag);
+        });
+
+        grid.appendChild(cell);
+      }
+
+      // Listado inferior de todos los controles
+      const listaCont = document.getElementById("calListaEventos");
+      listaCont.innerHTML = "";
+      if (eventos.length === 0) {
+        listaCont.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay controles ni vacunas programadas. Agrega una arriba o en la ficha de tu mascota.</span>`;
+        return;
+      }
+
+      eventos.forEach(ev => {
+        const colorBorde = ev.estado === "urgent" ? "var(--alert-red)" : (ev.estado === "soon" ? "var(--alert-yellow)" : "var(--alert-green)");
+        const icono = ev.estado === "urgent" ? "🔴" : (ev.estado === "soon" ? "🟡" : "🟢");
+        listaCont.innerHTML += `
+          <div class="record-card" style="border-left-color:${colorBorde}; cursor:pointer;" onclick="abrirFichaPorNombre('${ev.mascota}')">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+              <b style="color:var(--vet-purple); font-size:13pt;">${icono} ${ev.mascota} — ${ev.categoria}: ${ev.detalle}</b>
+              <span style="font-weight:900; color:${colorBorde};">${ev.fecha} (${textoDias(ev.diffDias)})</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    async function guardarEventoCalendario() {
+      const mascota = document.getElementById("calMascota").value;
+      const categoria = document.getElementById("calTipo").value;
+      const proximaDosis = document.getElementById("calFecha").value;
+      const detalle = document.getElementById("calDetalle").value.trim();
+
+      if (!mascota || !proximaDosis || !detalle) {
+        return alert("Completa mascota, fecha y detalle del control.");
+      }
+
+      const registro = {
+        accion: "guardar_salud",
+        mascota,
+        fecha: new Date().toISOString().split("T")[0],
+        categoria,
+        diagnostico: detalle,
+        tratamiento: "Agendado desde Calendario",
+        proximaDosis
+      };
+
+      // Guardar inmediatamente en local para reflejarlo al instante
+      const locales = cargarRespaldoLocalSalud();
+      locales.push(registro);
+      localStorage.setItem("salud_local_extra", JSON.stringify(locales));
+      salud.push(registro);
+
+      document.getElementById("calDetalle").value = "";
+      renderCalendario();
+      actualizarAlertas();
+
+      try {
+        await fetch(API_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(registro)
+        });
+      } catch (e) {
+        console.warn("Guardado solo en local:", e);
+      }
+    }
+
+    // =========================================================
+    // RENDERIZADO DRAG & DROP DE MASCOTAS
+    // =========================================================
     function render() {
       const g = document.getElementById("grid");
       g.innerHTML = "";
@@ -793,9 +1460,9 @@
 
       let lista = mascotas.filter(m => {
         const matchEsp = (filtroEsp === "todos") || ((m.especie || "").toLowerCase() === filtroEsp.toLowerCase());
-        const matchText = !q || 
-          (m.nombre || "").toLowerCase().includes(q) || 
-          (m.raza || "").toLowerCase().includes(q) || 
+        const matchText = !q ||
+          (m.nombre || "").toLowerCase().includes(q) ||
+          (m.raza || "").toLowerCase().includes(q) ||
           (m.microchip || "").toString().includes(q);
         return matchEsp && matchText;
       });
@@ -885,7 +1552,7 @@
     function abrir(m) {
       actual = m;
       b64Portada = null;
-      document.getElementById("modalName").textContent = `HISTORIA CLÍNICA: ${m.nombre.toUpperCase()}`;
+      document.getElementById("modalName").textContent = m.nombre ? `HISTORIA CLÍNICA: ${m.nombre.toUpperCase()}` : "NUEVA HISTORIA CLÍNICA";
       document.getElementById("fNom").value = m.nombre || "";
       document.getElementById("fEsp").value = m.especie || "Perro";
       document.getElementById("fSexo").value = m.sexo || "Macho";
@@ -911,6 +1578,7 @@
 
       verTab(1);
       renderSalud(m.nombre);
+      renderPdfs(m.nombre);
       renderPesos(m.nombre);
       renderFotos(m.nombre);
       document.getElementById("overlay").style.display = "flex";
@@ -923,7 +1591,7 @@
     function cerrar() { document.getElementById("overlay").style.display = "none"; }
 
     function verTab(n) {
-      [1, 2, 3, 4].forEach(i => {
+      [1, 2, 3, 4, 5].forEach(i => {
         const t = document.getElementById("tab" + i);
         const b = document.getElementById("tabBtn" + i);
         if (t) t.style.display = (i === n) ? "block" : "none";
@@ -943,11 +1611,11 @@
       reader.readAsDataURL(file);
     }
 
-    async function guardarFicha() {
+    async function guardarFicha(ev) {
       const nom = document.getElementById("fNom").value.trim();
       if (!nom) return alert("Por favor ingresa un nombre para la mascota.");
 
-      const btnGuardar = event ? event.target : null;
+      const btnGuardar = ev ? ev.target : null;
       if (btnGuardar) {
         btnGuardar.disabled = true;
         btnGuardar.innerText = "⏳ Guardando...";
@@ -980,9 +1648,9 @@
           body: JSON.stringify(payload)
         });
 
-        const mLocal = { 
-          ...payload, 
-          fotoPortada: b64Portada ? `data:${b64Portada.mimeType};base64,${b64Portada.base64}` : payload.fotoPortadaActual 
+        const mLocal = {
+          ...payload,
+          fotoPortada: b64Portada ? `data:${b64Portada.mimeType};base64,${b64Portada.base64}` : payload.fotoPortadaActual
         };
 
         const idx = mascotas.findIndex(m => m.nombre.toLowerCase() === nom.toLowerCase());
@@ -1017,7 +1685,8 @@
     function renderSalud(nom) {
       const c = document.getElementById("clinicaLista");
       c.innerHTML = "";
-      const evs = salud.filter(s => s.mascota === nom);
+      const combinados = [...salud, ...cargarRespaldoLocalSalud()];
+      const evs = combinados.filter(s => s.mascota === nom);
       if (evs.length === 0) {
         c.innerHTML = `<span style="font-size:12pt; color:var(--text-muted); font-style:italic;">No hay atenciones médicas anotadas aún.</span>`;
         return;
@@ -1037,28 +1706,36 @@
     }
 
     async function guardarClinica() {
-      if (!actual) return;
+      if (!actual || !actual.nombre) return alert("Primero guarda la ficha de la mascota.");
       const diag = document.getElementById("cDiag").value.trim();
       if (!diag) return alert("Ingresa el diagnóstico o motivo.");
+
+      const nuevoReg = {
+        accion: "guardar_salud",
+        mascota: actual.nombre,
+        fecha: document.getElementById("cFecha").value,
+        categoria: document.getElementById("cTipo").value,
+        diagnostico: diag,
+        tratamiento: document.getElementById("cTrat").value,
+        proximaDosis: document.getElementById("cProx").value
+      };
+
+      salud.push(nuevoReg);
+      renderSalud(actual.nombre);
+      actualizarAlertas();
+
+      document.getElementById("cDiag").value = "";
+      document.getElementById("cTrat").value = "";
+      document.getElementById("cProx").value = "";
 
       await fetch(API_URL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
-          accion: "guardar_salud",
-          mascota: actual.nombre,
-          fecha: document.getElementById("cFecha").value,
-          categoria: document.getElementById("cTipo").value,
-          diagnostico: diag,
-          tratamiento: document.getElementById("cTrat").value,
-          proximaDosis: document.getElementById("cProx").value
-        })
+        body: JSON.stringify(nuevoReg)
       });
 
-      document.getElementById("cDiag").value = "";
-      document.getElementById("cTrat").value = "";
-      sincronizar();
+      setTimeout(sincronizar, 2000);
     }
 
     function renderPesos(nom) {
